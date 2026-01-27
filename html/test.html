@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>test</title>
+  <script>
+    (function () {
+      const theme = localStorage.getItem("theme");
+      if (theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+      }
+    })();
+  </script>
+  <link rel="site icon" type="png" href="../images/icons/logoiconsite.svg" />
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/test.css" />
+</head>
+<body>
+  <div id="progress-bg"></div>
+  <div id="progress-bar"></div>
+  
+  <div class="container">
+    <div class="backto-mainpage-wrapper">
+      <div class="bck-pointer">
+        <svg class="backto-mainpage-icon" width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"/><path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"/></svg>
+        <h3 class="backto-mainpage-p">Orqaga qaytish</h3>
+      </div>
+    </div>
+    
+    <div class="quiz-layout">
+      <div>
+        <div class="quiz-info-card">
+          <div class="quiz-subject">Matematika</div>
+          <div class="quiz-info-title">Tenglamalar</div>
+          <div class="quiz-info-footer">
+            <div class="quiz-info-stat">
+              <img
+              class="quiz-info-icon"
+              src="../images/icons/staricon.svg"
+              alt="Reyting"
+              />
+              <p class="quiz-info-text test-reviews">4.26</p>
+            </div>
+            <div class="quiz-info-stat">
+              <img
+              class="quiz-info-icon"
+              src="../images/icons/quantityicon.svg"
+              alt="Test soni"
+              />
+              <p class="quiz-info-text test-amount">14</p>
+            </div>
+            <div class="quiz-info-stat">
+              <img
+              class="quiz-info-icon"
+              src="../images/icons/viewsicon.svg"
+              alt="Ko‘rilgan"
+              />
+              <p class="quiz-info-text test-views">422</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="progress-card">
+          <h3 class="progress-title">Savollar</h3>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+          </div>
+          <div class="progress-bar-text" id="progress-text">14/1</div>
+        </div>
+      </div>
+      
+      <!-- QUIZ SECTION -->
+      <div class="quiz-container">
+        <div class="quiz-question-box">
+          <div class="quiz-question-header">
+            <span class="quiz-question-progress">14/1</span>
+            <div class="quiz-tmsb-wrap">
+              <div class="quiz-time" id="quizTime">00:00</div>
+              <div class="quiz-subject">Matematika</div>
+            </div>
+          </div>
+          <div class="quiz-question-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam?</div>
+        </div>
+        
+        <div class="quiz-options-box">
+          <img class="quiz-options-pic" src="" alt="" />
+          
+          <button class="quiz-option">
+            <span class="quiz-label">a)</span>
+            <span class="quiz-variant">Lorem ipsum dolor sit amet consectetur.</span>
+          </button>
+          <button class="quiz-option">
+            <span class="quiz-label">b)</span>
+            <span class="quiz-variant">iusto dolorum officiis corporis incidunt? Minus.</span>
+          </button>
+          <button class="quiz-option">
+            <span class="quiz-label">c)</span>
+            <span class="quiz-variant">soluta delectus! Nulla neque atque quas, similique.</span>
+          </button>
+          <button class="quiz-option">
+            <span class="quiz-label">d)</span>
+            <span class="quiz-variant">ratione optio nemo fugiat minus placeat veniam.</span>
+          </button>
+          
+          <div class="quiz-controls">
+            <button class="btn-complete">Yakunlash</button>
+            <div class="answerstatus-check-wrapper">
+              <div class="answer-status"></div>
+              <button class="btn-check">Tekshirish</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- MODAL: YAKUNLASHNI TASDIQLASH -->
+  <div class="modal-overlay" id="endModal">
+    <div class="modal-box">
+      <img
+      class="yakunlash-image"
+      src="../images/icons/complateredicon.png"
+      alt="Warning icon"
+      />
+      <h4 class="modal-title">Testni yakunlashni xohlaysizmi?</h4>
+      <p class="modal-desc">
+        Yakunlaganingizdan so‘ng javoblaringizni o‘zgartira olmaysiz. Davom
+        etishni istaysizmi?
+      </p>
+      <div class="modal-actions">
+        <button id="cancelEnd" class="btn-cancel">Bekor qilish</button>
+        <button id="confirmEnd" class="btn-ok">Yakunlash</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal-overlay ac" id="resultModal">
+    <div class="modal-box result-modal-box">
+      <h4 class="result-title-h">Yakuniy natijalar</h4>
+      <img
+      class="result-icon-main"
+      src="../images/icons/happy-result.webp"
+      alt="natija"
+      />
+      <h2 class="result-user" id="username">O'quvchi_8848756415</h2>
+      <div class="result-summary">
+        <div class="result-stat">
+          <div class="result-icon-text">
+            <img
+            src="../images/icons/alltests.png"
+            alt=""
+            class="result-icon-small"
+            />
+            <b id="totalCount">15</b>
+          </div>
+          <span>Jami test</span>
+        </div>
+        <div class="result-stat">
+          <div class="result-icon-text">
+            <img
+            src="../images/icons/correct.webp"
+            alt=""
+            class="result-icon-small"
+            />
+            <b class="correct-text" id="correctCount">0</b>
+          </div>
+          <span>To‘g‘rilar</span>
+        </div>
+        <div class="result-stat">
+          <div class="result-icon-text">
+            <img
+            src="../images/icons/incorrect.png"
+            alt=""
+            class="result-icon-small"
+            />
+            <b class="wrong-text" id="wrongCount">0</b>
+          </div>
+          <span>Xatolar</span>
+        </div>
+      </div>
+      <div class="result-topic" id="resultTopic">Fan nomi va mavzusi</div>
+      <div class="result-time" id="resultTime">qancha vaqit ketgani</div>
+      <div class="result-actions">
+        <button class="back-tomain-page">Asosiy sahifaga</button>
+        <button id="restartBtn" class="btn-confirm">Qayta ishlash</button>
+      </div>
+    </div>
+  </div> 
+  <script src="../js/quiz.js"></script>
+  <script src="../js/main.js"></script>
+    <script type="module" src="../js/auth-modal.js"></script>
+    <!-- <script type="module" src="./js/user-menu.js"></script> -->
+</body>
+</html>

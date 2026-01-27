@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="index, follow" />
+    <title>theme</title>
+    <script>
+        (function () {
+            const theme = localStorage.getItem("theme");
+            if (theme) {
+                document.documentElement.setAttribute("data-theme", theme);
+            }
+        })();
+    </script>
+    <link rel="site icon" type="png" href="../images/icons/logoiconsite.svg" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/themetest.css" />
+</head>
+<body>
+    <div id="progress-bg"></div>
+    <div id="progress-bar"></div>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-wrapper">
+                <img id="logo-img" src="../images/image/logo_dark.png" alt="">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Bosh sahifa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/themetest.html" class="nav-link theme-navlink">Mavzuli test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/blocktests.html" class="nav-link">Blok testlar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/rating.html" class="nav-link">Reyting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/news.html" class="nav-link">Yangiliklar</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Actions -->
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">🌙</button>
+                <button id="selectLang-uz" class="theme-toggle">uz</button>
+                <button id="selectLang-ru" class="theme-toggle">ru</button>
+                
+                <!-- Login button (auth-modal.js ishlatadi) -->
+                <button class="btn-login" type="button" id="openAuth">Kirish</button>
+                
+                <!-- User menu (login bo'lsa chiqadi) -->
+                <div class="user-menu" id="userMenu" style="display:none;">
+                    <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                        <span class="user-name" id="userName">User</span>
+                        <span class="user-avatar" id="userAvatar">U</span>
+                        <span class="user-caret" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="userDropdown" role="menu">
+                        <a class="dd-item" href="/html/profile.html" role="menuitem">
+                            <span class="dd-ico">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4.42 0-8 2-8 4.5V20h16v-1.5C20 16 16.42 14 12 14Z"/>
+                                </svg>
+                            </span>
+                            Profile
+                        </a>
+                        
+                        <a class="dd-item" href="/html/myresults.html" role="menuitem">
+                            <span class="dd-ico">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M4 19V5h2v14Zm4 0V9h2v10Zm4 0V13h2v6Zm4 0V7h2v12Z"/>
+                                </svg>
+                            </span>
+                            Mening natijalarim
+                        </a>
+                        
+                        <a class="dd-item" href="/html/saved.html" role="menuitem">
+                            <span class="dd-ico">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M6 2h12a2 2 0 0 1 2 2v18l-8-4-8 4V4a2 2 0 0 1 2-2Z"/>
+                                </svg>
+                            </span>
+                            Saqlanganlar
+                        </a>
+                        
+                        <div class="dd-sep"></div>
+                        
+                        <button class="dd-item danger" id="btnLogout" type="button" role="menuitem">
+                            <span class="dd-ico">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M10 17v-2h7v-6h-7V7l-5 5 5 5Zm9 4H12v-2h7V5h-7V3h7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2Z"/>
+                                </svg>
+                            </span>
+                            Chiqish
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header> 
+    <section class="topics-section">
+        <div class="container">
+            <h1 class="topics-h1">Bilimingizni sinovdan o’tkazadigan joy!</h1>
+            <div class="cards-maindf-wrapper">
+                <div class="topics-card">
+                    <h2 class="topics-title">Mavzular</h2>
+                    <div class="topics-list">
+                        <div class="topic-item active" data-topic="barchasi">
+                            <img src="../images/themetest/Barchasi.svg" alt="Barchasi" />
+                            <span>Barchasi</span>
+                        </div>
+                        <div class="topic-item" data-topic="tarix">
+                            <img src="../images/themetest/Tarix.svg" alt="Tarix" />
+                            <span>Tarix</span>
+                        </div>
+                        <div class="topic-item" data-topic="biologiya">
+                            <img src="../images/themetest/Biologiya.svg" alt="Biologiya" />
+                            <span>Biologiya</span>
+                        </div>
+                        <div class="topic-item" data-topic="matematika">
+                            <img
+                            src="../images/themetest/Matematika.svg"
+                            alt="Matematika"
+                            />
+                            <span>Matematika</span>
+                        </div>
+                        <div class="topic-item" data-topic="ona-tili">
+                            <img src="../images/themetest/Ona%20tili.svg" alt="Ona tili" />
+                            <span>Ona tili</span>
+                        </div>
+                        <div class="topic-item" data-topic="kimyo">
+                            <img src="../images/themetest/Kimyo.svg" alt="Kimyo" />
+                            <span>Kimyo</span>
+                        </div>
+                        <div class="topic-item" data-topic="fizika">
+                            <img src="../images/themetest/Fizika.svg" alt="Fizika" />
+                            <span>Fizika</span>
+                        </div>
+                        <div class="topic-item" data-topic="uzb-tarixi">
+                            <img
+                            src="../images/themetest/O'zbekisto....svg"
+                            alt="O'zbekiston tarixi"
+                            />
+                            <span>O'zbekiston tarixi</span>
+                        </div>
+                        <div class="topic-item" data-topic="geografiya">
+                            <img
+                            src="../images/themetest/Geografiya.svg"
+                            alt="Geografiya"
+                            />
+                            <span>Geografiya</span>
+                        </div>
+                        <div class="topic-item" data-topic="ingliz-tili">
+                            <img
+                            src="../images/themetest/Ingliz%20til....svg"
+                            alt="Ingliz tili"
+                            />
+                            <span>Ingliz tili</span>
+                        </div>
+                        <div class="topic-item" data-topic="rus-tili">
+                            <img src="../images/themetest/Rus%20tili.svg" alt="Rus tili" />
+                            <span>Rus tili</span>
+                        </div>
+                        <div class="topic-item" data-topic="informatika">
+                            <img
+                            src="../images/themetest/Informatik....svg"
+                            alt="Informatika"
+                            />
+                            <span>Informatika</span>
+                        </div>
+                        <div class="topic-item" data-topic="avto-test">
+                            <img
+                            src="../images/themetest/Avto%20test.svg"
+                            alt="Avto test"
+                            />
+                            <span>Avto test</span>
+                        </div>
+                        <div class="topic-item" data-topic="Prezident Maktabi">
+                            <img
+                            src="../images/themetest/Prezident%20....svg"
+                            alt="Prezident maktabi"
+                            />
+                            <span>Prezident maktabi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-wrapper">
+                    <div class="content-header">
+                        <h1 class="content-title">Barchasi</h1>
+                        <div class="search-container">
+                            <img
+                            src="../images/icons/searchicon.svg"
+                            alt="Qidiruv"
+                            class="search-icon"
+                            />
+                            <input
+                            type="text"
+                            placeholder="Qidiruv..."
+                            class="search-input"
+                            />
+                        </div>
+                    </div>
+                    
+                    <!-- test cards -->
+                    <div class="test-card-wrapper">
+                        <!-- cards s -->
+                        <div class="test-card">
+                            <div class="test-card-top-wrapper">
+                                <div class="test-card-top">
+                                    <div class="test-card-subject">Calculator</div>  
+                                    <svg class="test-bookmark-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.70898 7.5415C9.19232 8.08316 10.809 8.08316 12.2923 7.5415"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14.0176 1.6665H5.98424C4.20924 1.6665 2.76758 3.1165 2.76758 4.88316V16.6249C2.76758 18.1249 3.84258 18.7582 5.15924 18.0332L9.22591 15.7749C9.65924 15.5332 10.3592 15.5332 10.7842 15.7749L14.8509 18.0332C16.1676 18.7665 17.2426 18.1332 17.2426 16.6249V4.88316C17.2342 3.1165 15.7926 1.6665 14.0176 1.6665Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14.0176 1.6665H5.98424C4.20924 1.6665 2.76758 3.1165 2.76758 4.88316V16.6249C2.76758 18.1249 3.84258 18.7582 5.15924 18.0332L9.22591 15.7749C9.65924 15.5332 10.3592 15.5332 10.7842 15.7749L14.8509 18.0332C16.1676 18.7665 17.2426 18.1332 17.2426 16.6249V4.88316C17.2342 3.1165 15.7926 1.6665 14.0176 1.6665Z"  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    
+                                </div>
+                                <div class="test-card-title">Lorem ipsum dolor sit amet consectetur adipisicing.</div>
+                            </div>
+                            
+                            <div class="test-card-footer">
+                                <div class="test-card-stat">
+                                    <img src="../images/icons/staricon.svg" alt="Reyting" class="test-icon">
+                                    <span>4.67</span>
+                                </div>
+                                <div class="test-card-stat">
+                                    <img src="../images/icons/quantityicon.svg" alt="Test soni" class="test-icon">
+                                    <span>50 test</span>
+                                </div>
+                                <div class="test-card-stat">
+                                    <img src="../images/icons/viewsicon.svg" alt="Ko‘rilgan" class="test-icon">
+                                    <span>1307</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- cards f -->
+                    </div>
+                    <!-- test cards -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- AUTH MODAL -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" id="authClose" aria-label="Yopish">✕</button>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" type="button">Kirish</button>
+                <button class="auth-tab" id="tabRegister" type="button">Ro‘yxatdan o‘tish</button>
+            </div>
+            
+            <!-- LOGIN -->
+            <div class="auth-pane active" id="paneLogin">
+                <h3 class="auth-title" id="authTitle">Kirish</h3>
+                <p class="auth-sub">Email tasdiqlangan bo‘lishi kerak.</p>
+                
+                <form id="loginForm" class="auth-form">
+                    <input id="loginEmail" class="auth-input" type="email" placeholder="Email" required />
+                    <input id="loginPassword" class="auth-input" type="password" placeholder="Parol" required />
+                    <button class="auth-btn primary" type="submit">Kirish</button>
+                </form>
+                
+                <div class="auth-msg" id="loginMsg"></div>
+            </div>
+            
+            <!-- REGISTER -->
+            <div class="auth-pane" id="paneRegister">
+                <h3 class="auth-title">Ro‘yxatdan o‘tish</h3>
+                <p class="auth-sub">Emailingizga tasdiqlash havolasi yuboriladi.</p>
+                
+                <form id="registerForm" class="auth-form">
+                    <input id="regNickname" class="auth-input" type="text" placeholder="Nickname" required />
+                    <input id="regEmail" class="auth-input" type="email" placeholder="Email" required />
+                    <input id="regPassword" class="auth-input" type="password" placeholder="Parol (kamida 6 ta)" minlength="6" required />
+                    <button class="auth-btn primary" type="submit">Ro‘yxatdan o‘tish</button>
+                </form>
+                
+                <div class="auth-msg" id="regMsg"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Logout confirm modal -->
+    <div class="confirm-overlay" id="logoutOverlay" aria-hidden="true">
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+            <div class="confirm-head">
+                <h3 id="logoutTitle">Chiqib ketilsinmi?</h3>
+                <button class="confirm-x" id="logoutX" type="button" aria-label="Yopish">✕</button>
+            </div>
+            <p class="confirm-sub">Hisobingizdan chiqmoqchimisiz?</p>
+            
+            <div class="confirm-actions">
+                <button class="confirm-btn ghost" id="logoutCancel" type="button">Bekor qilish</button>
+                <button class="confirm-btn danger" id="logoutYes" type="button">Ha, chiqish</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+     <audio id="toast-sound" src="../sounds/inter.wav"></audio>
+    <!-- js -->
+    <script src="../js/main.js"></script>
+    <script src="../js/theme.js"></script>
+    <script type="module" src="../js/auth-modal.js"></script>
+    <!-- <script type="module" src="./js/user-menu.js"></script> -->
+</body>
+</html>

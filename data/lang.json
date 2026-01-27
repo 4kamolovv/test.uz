@@ -1,0 +1,74 @@
+{
+  "uz": {
+    "AuthRegSuccessTitle": "Ro‘yxatdan o‘tildi!",
+    "AuthRegSuccessDesc": "Emailingizga tasdiqlash havolasi yuborildi. Emailni ochib linkni bosing va keyin kirish qiling.",
+    "AuthRegErrorTitle": "Ro‘yxatdan o‘tishda xatolik",
+    "AuthRegErrorDesc": "Iltimos, ma’lumotlarni tekshirib qayta urinib ko‘ring.",
+
+    "AuthLoginSuccessTitle": "Kirish muvaffaqiyatli!",
+    "AuthLoginSuccessDesc": "Hisobingizga kirdingiz, salom",
+    "AuthLoginNotVerifiedTitle": "Email tasdiqlanmagan",
+    "AuthLoginNotVerifiedDesc": "Emailingizga yuborilgan tasdiqlash havolasini bosing va qayta kiring.",
+    "AuthLoginErrorTitle": "Kirishda xatolik",
+    "AuthLoginErrorDesc": "Email yoki parol noto‘g‘ri bo‘lishi mumkin.",
+
+    "AuthNickTakenTitle": "Nickname band",
+    "AuthNickTakenDesc": "Boshqa nickname tanlang.",
+    "AuthNickEmptyTitle": "Nickname kiritilmadi",
+    "AuthNickEmptyDesc": "Iltimos, nickname kiriting.",
+
+    "AuthWeakPasswordTitle": "Parol kuchsiz",
+    "AuthWeakPasswordDesc": "Parol kamida 6 ta belgidan iborat bo‘lsin.",
+    "AuthEmailInUseTitle": "Email band",
+    "AuthEmailInUseDesc": "Bu email bilan akkaunt bor. Kirish qiling yoki boshqa email ishlating.",
+    "AuthInvalidEmailTitle": "Email noto‘g‘ri",
+    "AuthInvalidEmailDesc": "Email formatini tekshirib ko‘ring.",
+
+    "AuthResetSentTitle": "Havola yuborildi",
+    "AuthResetSentDesc": "Emailingizga parolni tiklash havolasi yuborildi.",
+    "AuthVerifyResentTitle": "Qayta yuborildi",
+    "AuthVerifyResentDesc": "Tasdiqlash havolasi emailingizga qayta yuborildi.",
+    "AuthVerifyResentErrorTitle": "Xatolik",
+    "AuthVerifyResentErrorDesc": "Tasdiqlashni qayta yuborib bo‘lmadi. Keyinroq urinib ko‘ring.",
+    "AuthAlreadyVerifiedTitle": "Email tasdiqlangan",
+    "AuthAlreadyVerifiedDesc": "Hisobingiz allaqachon tasdiqlangan. Endi kirishingiz mumkin.",
+    "AuthTooManyReqTitle": "Juda ko‘p urinish",
+    "AuthTooManyReqDesc": "Biroz kutib qayta urinib ko‘ring."
+  },
+  "ru": {
+    "AuthRegSuccessTitle": "Регистрация завершена!",
+    "AuthRegSuccessDesc": "Мы отправили ссылку подтверждения на ваш Email. Откройте письмо, подтвердите и затем войдите.",
+    "AuthRegErrorTitle": "Ошибка регистрации",
+    "AuthRegErrorDesc": "Проверьте данные и попробуйте снова.",
+
+    "AuthLoginSuccessTitle": "Вход выполнен!",
+    "AuthLoginSuccessDesc": "Вы вошли в аккаунт, привет",
+    "AuthLoginNotVerifiedTitle": "Email не подтверждён",
+    "AuthLoginNotVerifiedDesc": "Подтвердите Email по ссылке в письме и войдите снова.",
+    "AuthLoginErrorTitle": "Ошибка входа",
+    "AuthLoginErrorDesc": "Возможно, неверный Email или пароль.",
+
+    "AuthNickTakenTitle": "Ник занят",
+    "AuthNickTakenDesc": "Выберите другой ник.",
+    "AuthNickEmptyTitle": "Ник не введён",
+    "AuthNickEmptyDesc": "Пожалуйста, введите ник.",
+
+    "AuthWeakPasswordTitle": "Слабый пароль",
+    "AuthWeakPasswordDesc": "Пароль должен быть минимум 6 символов.",
+    "AuthEmailInUseTitle": "Email уже используется",
+    "AuthEmailInUseDesc": "Аккаунт с этим Email уже существует. Войдите или используйте другой Email.",
+    "AuthInvalidEmailTitle": "Неверный Email",
+    "AuthInvalidEmailDesc": "Проверьте формат Email.",
+
+    "AuthResetSentTitle": "Ссылка отправлена",
+    "AuthResetSentDesc": "На вашу почту отправлена ссылка для сброса пароля.",
+    "AuthVerifyResentTitle": "Отправлено повторно",
+    "AuthVerifyResentDesc": "Ссылка подтверждения отправлена повторно.",
+    "AuthVerifyResentErrorTitle": "Ошибка",
+    "AuthVerifyResentErrorDesc": "Не удалось отправить повторно. Попробуйте позже.",
+    "AuthAlreadyVerifiedTitle": "Email подтверждён",
+    "AuthAlreadyVerifiedDesc": "Аккаунт уже подтверждён. Теперь можно войти.",
+    "AuthTooManyReqTitle": "Слишком много попыток",
+    "AuthTooManyReqDesc": "Подождите немного и попробуйте снова."
+  }
+}

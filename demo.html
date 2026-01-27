@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bosh sahifa</title>
+    <script>
+        (function () {
+            const theme = localStorage.getItem("theme");
+            if (theme) document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+    <link rel="site icon" type="png" href="./images/icons/logoiconsite.svg" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+    <div id="progress-bg"></div>
+    <div id="progress-bar"></div>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="./index.html" class="logo-wrapper">
+                <img id="logo-img" src="./images/image/logo_light.png" alt="Logo">
+            </a>
+            
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="./index.html" class="nav-link index-navlink">Bosh sahifa</a></li>
+                    <li class="nav-item"><a href="./html/themetest.html" class="nav-link theme-navlink">Mavzuli test</a></li>
+                    <li class="nav-item"><a href="./html/blocktests.html" class="nav-link">Blok testlar</a></li>
+                    <li class="nav-item"><a href="./html/rating.html" class="nav-link">Reyting</a></li>
+                    <li class="nav-item"><a href="./html/news.html" class="nav-link">Yangiliklar</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-actions">
+                <button id="theme-toggle" class="theme-toggle">🌙</button>
+                <button id="selectLang-uz" class="theme-toggle">uz</button>
+                <button id="selectLang-ru" class="theme-toggle">ru</button>
+                <!-- LOGIN BUTTON (auth-modal.js ishlatadi) -->
+                <button class="btn-login" type="button" id="openAuth">Kirish</button>
+            </div>
+        </div>
+    </header>
+    <main class="landing">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-left">
+                    <span class="badge">Online test platforma</span>
+                    
+                    <h1 class="hero-title">
+                        Bilimingizni <span class="hero-accent">tez</span> va <span class="hero-accent">qulay</span> sinovdan o‘tkazing
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Mavzuli testlar, blok testlar, reyting va natijalar — barchasi bitta joyda.
+                    </p>
+                    
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="./html/themetest.html">Mavzuli testni boshlash</a>
+                        <a class="btn-secondary" href="#how">Qanday ishlaydi?</a>
+                    </div>
+                    
+                    <div class="mini-stats">
+                        <div class="mini-stat">
+                            <b id="statTests">0</b>
+                            <span>Testlar</span>
+                        </div>
+                        <div class="mini-stat">
+                            <b id="statUsers">0</b>
+                            <span>Foydalanuvchilar</span>
+                        </div>
+                        <div class="mini-stat">
+                            <b id="statTopics">0</b>
+                            <span>Mavzular</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-right">
+                    <div class="hero-card">
+                        <div class="hero-card-top">
+                            <div>
+                                <div class="quiz-subject">Matematika</div>
+                                <div class="hero-card-title">Tenglamalar</div>
+                            </div>
+                            <div class="hero-card-badge">Demo</div>
+                        </div>
+                        
+                        <div class="hero-card-q">
+                            <p class="hero-q-title">Savol:</p>
+                            <p class="hero-q-text">2x + 6 = 14 bo‘lsa, x = ?</p>
+                        </div>
+                        
+                        <div class="hero-card-opts">
+                            <button class="hero-opt">a) 2</button>
+                            <button class="hero-opt is-right">b) 4</button>
+                            <button class="hero-opt">c) 6</button>
+                            <button class="hero-opt">d) 8</button>
+                        </div>
+                        
+                        <div class="hero-card-footer">
+                            <span class="hint">Va natijani darhol ko‘ring</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FEATURES -->
+        <section class="features" id="features">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Platforma imkoniyatlari</h2>
+                    <p class="section-subtitle">Tez, tushunarli va zamonaviy interfeys</p>
+                </div>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Mavzuli testlar</h3>
+                        <p>Fan va mavzu bo‘yicha test tanlang va bosqichma-bosqich yeching.</p>
+                        <a href="./html/themetest.html" class="feature-link">Ko‘rish →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🧩</div>
+                        <h3>Blok testlar</h3>
+                        <p>Imtihon formatidagi blok testlar bilan o‘zingizni sinang.</p>
+                        <a href="./html/blocktests.html" class="feature-link">Ko‘rish →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>Reyting</h3>
+                        <p>Eng yaxshi natijalar va faol foydalanuvchilar reytingini kuzating.</p>
+                        <a href="./html/rating.html" class="feature-link">Ko‘rish →</a>
+                    </div>
+                    
+                    <div class="feature-card">
+                        <div class="feature-icon">⏱️</div>
+                        <h3>Vaqt va progress</h3>
+                        <p>Timer, savollar progressi va natijalar oynasi bilan qulay tajriba.</p>
+                        <a href="./html/test.html" class="feature-link">Demo test →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- CATEGORIES -->
+        <section class="categories" id="cats">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Mashhur fanlar</h2>
+                    <p class="section-subtitle">Boshlash uchun birini tanlang</p>
+                </div>
+                
+                <div class="cat-grid">
+                    <a class="cat" href="./html/themetest.html">
+                        <span class="cat-emoji">🧮</span>
+                        <div>
+                            <b>Matematika</b>
+                            <p>tenglama, algebra, geometriya</p>
+                        </div>
+                    </a>
+                    <a class="cat" href="./html/themetest.html">
+                        <span class="cat-emoji">🧪</span>
+                        <div>
+                            <b>Kimyo</b>
+                            <p>reaksiyalar, formulalar</p>
+                        </div>
+                    </a>
+                    <a class="cat" href="./html/themetest.html">
+                        <span class="cat-emoji">🌍</span>
+                        <div>
+                            <b>Geografiya</b>
+                            <p>mamlakatlar, xaritalar</p>
+                        </div>
+                    </a>
+                    <a class="cat" href="./html/themetest.html">
+                        <span class="cat-emoji">📜</span>
+                        <div>
+                            <b>Tarix</b>
+                            <p>davrlar, voqealar</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- HOW IT WORKS -->
+        <section class="how" id="how">
+            <div class="container">
+                <div class="section-head">
+                    <h2 class="section-title">Qanday ishlaydi?</h2>
+                    <p class="section-subtitle">Boshlash uchun avval hisob yaratasiz</p>
+                </div>
+                
+                <div class="how-grid">
+                    <div class="how-step">
+                        <div class="how-num">1</div>
+                        <h3>Ro‘yxatdan o‘ting</h3>
+                        <p>Profil yarating — natijalar va reyting saqlanib boradi.</p>
+                    </div>
+                    
+                    <div class="how-step">
+                        <div class="how-num">2</div>
+                        <h3>Kirish qiling</h3>
+                        <p>Login orqali hisobingizga kiring va testlarni oching.</p>
+                    </div>
+                    
+                    <div class="how-step">
+                        <div class="how-num">3</div>
+                        <h3>Test tanlang va yeching</h3>
+                        <p>Mavzuli yoki blok testni tanlab, savollarga javob bering.</p>
+                    </div>
+                    
+                    <div class="how-step">
+                        <div class="how-num">4</div>
+                        <h3>Natijani oling</h3>
+                        <p>To‘g‘ri/xato va sarflangan vaqt bo‘yicha natijangiz chiqadi.</p>
+                    </div>
+                    
+                    <div class="how-step">
+                        <div class="how-num">5</div>
+                        <h3>Natijani ko‘ring</h3>
+                        <p>To‘g‘ri/xato va sarflangan vaqt bo‘yicha yakuniy natijangiz chiqadi.</p>
+                    </div>
+                    
+                    <div class="how-step">
+                        <div class="how-num">6</div>
+                        <h3>Natijalarni oshiring va Top reytingga chiqing</h3>
+                        <p>Qayta ishlang, xatolarni tahlil qiling — ballingiz oshib, Top reytinglarda ko‘tarilasiz.</p>
+                    </div>
+                </div>
+                <div class="how-note">
+                    <span class="how-note-badge">Eslatma</span>
+                    Test yechish uchun <b>ro‘yxatdan o‘tish</b> va <b>kirish</b> talab qilinadi.
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- AUTH MODAL -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" id="authClose" aria-label="Yopish">✕</button>
+            
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" type="button">Kirish</button>
+                <button class="auth-tab" id="tabRegister" type="button">Ro‘yxatdan o‘tish</button>
+            </div>
+            
+            <!-- LOGIN -->
+            <div class="auth-pane active" id="paneLogin">
+                <h3 class="auth-title" id="authTitle">Kirish</h3>
+                <p class="auth-sub">Email tasdiqlangan bo‘lishi kerak.</p>
+                
+                <form id="loginForm" class="auth-form">
+                    <input id="loginEmail" class="auth-input" type="email" placeholder="Email" required />
+                    <input id="loginPassword" class="auth-input" type="password" placeholder="Parol" required />
+                    <button class="auth-btn primary" type="submit">Kirish</button>
+                </form>
+                
+                <div class="auth-msg" id="loginMsg"></div>
+            </div>
+            
+            <!-- REGISTER -->
+            <div class="auth-pane" id="paneRegister">
+                <h3 class="auth-title">Ro‘yxatdan o‘tish</h3>
+                <p class="auth-sub">Emailingizga tasdiqlash havolasi yuboriladi.</p>
+                
+                <form id="registerForm" class="auth-form">
+                    <input id="regNickname" class="auth-input" type="text" placeholder="Nickname" required />
+                    <input id="regEmail" class="auth-input" type="email" placeholder="Email" required />
+                    <input id="regPassword" class="auth-input" type="password" placeholder="Parol (kamida 6 ta)" minlength="6" required />
+                    <button class="auth-btn primary" type="submit">Ro‘yxatdan o‘tish</button>
+                </form>
+                
+                <div class="auth-msg" id="regMsg"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Logout confirm modal -->
+    <div class="confirm-overlay" id="logoutOverlay" aria-hidden="true">
+        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+            <div class="confirm-head">
+                <h3 id="logoutTitle">Chiqib ketilsinmi?</h3>
+                <button class="confirm-x" id="logoutX" type="button" aria-label="Yopish">✕</button>
+            </div>
+            <p class="confirm-sub">Hisobingizdan chiqmoqchimisiz?</p>
+            
+            <div class="confirm-actions">
+                <button class="confirm-btn ghost" id="logoutCancel" type="button">Bekor qilish</button>
+                <button class="confirm-btn danger" id="logoutYes" type="button">Ha, chiqish</button>
+            </div>
+        </div>
+    </div>
+    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+    <script src="./js/main.js"></script>
+    <script src="./js/index.js"></script>
+    <script type="module" src="./js/auth-modal.js"></script>
+</body>
+</html>

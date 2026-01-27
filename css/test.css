@@ -1,0 +1,461 @@
+.quiz-layout {
+  display: flex;
+  gap: 20px;
+}
+/* ============================= LEFT PANEL (info + progress) ============================= */
+
+/* boshlandi| chapdagi info card */
+.quiz-info-card,
+.progress-card {
+  width: 270px;
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.progress-card {
+  margin-top: 15px;
+}
+
+.quiz-info-title {
+  margin-block: 5px;
+}
+
+.quiz-info-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.quiz-info-stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #333;
+}
+
+.quiz-info-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.quiz-info-text {
+  margin: 0;
+  color: var(--text-main);
+}
+/* tugadi| chapdagi info card */
+
+/* boshlandi| savollar progress bar */
+.progress-title {
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.progress-bar-track {
+  height: 12px;
+  background: #eee;
+  border: 2px solid #c4c4c4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: #00c853;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-bar-text {
+  text-align: right;
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #00c853;
+}
+/* tugadi| savollar progress bar */
+
+/* ============================= RIGHT MAIN QUIZ ============================= */
+
+/* boshlandi| test savol card */
+.quiz-container {
+  flex: 1;
+}
+
+.quiz-question-box {
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 12px 20px;
+  margin-bottom: 12px;
+}
+
+.quiz-question-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quiz-tmsb-wrap {
+  display: flex;
+  align-items: center;
+  column-gap: 7px;
+}
+
+.quiz-question-progress {
+  font-weight: bold;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.quiz-subject {
+  margin: 0;
+}
+
+.quiz-question-text {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--text-main);
+}
+/* tugadi| test savol card */
+
+/* boshlandi| variantlar va tugmalar */
+.quiz-options-box {
+  width: 100%;
+  background-color: var(--bg-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.quiz-options-pic {
+  display: none; /* JS orqali faollashadi */
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  margin-bottom: 15px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-label {
+  color: var(--text-main);
+}
+
+.quiz-variant {
+  color: var(--text-main);
+}
+
+.quiz-option {
+  padding: 14px 18px;
+  font-size: 15px;
+  border: 2px solid var(--bg-white);
+  background: var(--bg-gray);
+  border-radius: 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quiz-option.selected,
+.quiz-option:focus {
+  border: 2px solid #00c853;
+  background-color: var(--quiz-option-focus-bg);
+  outline: none;
+}
+
+/* tugadi| variantlar */
+
+/* boshlandi| tekshirish + yakunlash tugmalari */
+.quiz-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.btn-complete,
+.btn-check {
+  width: 128px;
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-complete {
+  background-color: var(--red-soft);
+  color: var(--red-main);
+  transition: all 0.2s ease;
+  font-size: 13.89px;
+  font-weight: 600;
+  outline: none;
+}
+
+.btn-complete:hover {
+  background-color: var(--red-main);
+  color: #fff;
+}
+
+.btn-check {
+  background-color: var(--green-dark);
+  color: #99a1af;
+  cursor: not-allowed;
+  font-size: 13.89px;
+  font-weight: 600;
+  outline: none;
+}
+
+.btn-check.active {
+  background-color: var(--green-dark);
+  color: #fff;
+  cursor: pointer;
+}
+/* tugadi| tekshirish + yakunlash */
+
+/* boshlandi| tog'ri / noto'g'ri javob chiqadigan joy */
+.answer-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #333;
+}
+
+.answer-status img {
+  width: 25px;
+  height: 25px;
+  object-fit: contain;
+}
+/* tugadi| tog'ri / noto'g'ri javob */
+
+.answerstatus-check-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.yakunlash-image {
+  width: 70px;
+  height: 70px;
+  color: #00b348;
+  color: #00c853;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-title {
+  margin: 16px 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.btn-cancel {
+  background-color: #f3f4f6;
+  color: gray;
+  border: none;
+  padding: 10px 52px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-ok {
+  background-color: #fb2c36;
+  color: #fff;
+  border: none;
+  padding: 10px 52px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* MODAL FAOL HOLATI */
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+/* .modal-box animatsiyasi (sizda bor) */
+.modal-box {
+  background: #fff;
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  transform-origin: center;
+  transform: scale(0.85);
+  opacity: 0;
+  animation: scaleFromCenter 0.35s ease forwards;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* animatsiya */
+@keyframes scaleFromCenter {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ======================= Yakuniy Natijalar Modal ======================= */
+.result-title-h {
+  display: flex;
+  justify-content: start;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.result-icon-main {
+  width: 140px;
+  height: 111px;
+  margin-bottom: 10px;
+}
+
+.result-user {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.result-summary {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+  margin-top: 20px;
+  background-color: #f3f4f6;
+  padding: 13px;
+  border-radius: 12px;
+  flex-wrap: wrap;
+}
+
+.result-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.result-icon-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.result-icon-small {
+  width: 20px;
+  height: 20px;
+}
+
+.result-stat b {
+  font-size: 19px;
+}
+
+.correct-text {
+  color: #00c853;
+}
+
+.wrong-text {
+  color: #f62b35;
+}
+
+.result-topic {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 5px;
+  background-color: #f3f4f6;
+  padding: 13px;
+  border-radius: 12px;
+}
+
+.result-time {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  background-color: #f3f4f6;
+  padding: 13px;
+  border-radius: 12px;
+}
+
+.quiz-time {
+  display: inline-block;
+  background-color: var(--bg-gray);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.back-tomain-page {
+  background-color: #f3f4f6;
+  border: 2px solid #f3f4f6;
+  color: gray;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 24px;
+}
+
+.btn-confirm {
+  background-color: #00c853;
+  border: 2px solid #00c853;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  outline: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 54px;
+}
