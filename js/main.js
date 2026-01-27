@@ -36,8 +36,8 @@ function applyTheme(theme) {
   if (logoImg) {
     logoImg.src =
       theme === "dark"
-        ? "/images/image/logo_dark.png"
-        : "/images/image/logo_light.png";
+        ? "images/image/logo_dark.png"
+        : "images/image/logo_light.png";
   }
 }
 
@@ -55,7 +55,7 @@ if (toggleBtn) {
 // Theme switcher>
 // ------------------------------------------------------------------------
 let langData = {};
-fetch("./data/lang.json")
+fetch("data/lang.json")
   .then((res) => res.json())
   .then((data) => {
     langData = data;
@@ -84,7 +84,7 @@ function setLanguage(lang) {
 }
 // Language switcher>
 // ------------------------------------------------------------------------
-const toastSound = new Audio("/sounds/inter.wav");
+const toastSound = new Audio("sounds/inter.wav");
 toastSound.volume = 1;
 // Toast sound>
 function showToast(type, titleKey, descKey = null) {
