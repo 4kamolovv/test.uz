@@ -55,7 +55,7 @@ if (toggleBtn) {
 // Theme switcher>
 // ------------------------------------------------------------------------
 let langData = {};
-fetch("/data/lang.json")
+fetch("./data/lang.json")
   .then((res) => res.json())
   .then((data) => {
     langData = data;
