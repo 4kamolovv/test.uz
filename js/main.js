@@ -118,8 +118,14 @@ function setLanguage(lang) {
 }
 // Language switcher>
 // ------------------------------------------------------------------------
-const toastSound = new Audio(`${basePath}/sounds/inter.wav`);
-toastSound.volume = 1;
+let toastSound = null;
+function getToastSound() {
+  if (!toastSound) {
+    toastSound = new Audio(`${basePath}/sounds/inter.wav`);
+    toastSound.volume = 1;
+  }
+  return toastSound;
+}
 // Toast sound>
 function showToast(type, titleKey, descKey = null) {
   const container = document.getElementById("toast-container");
@@ -170,8 +176,9 @@ function showToast(type, titleKey, descKey = null) {
 
   // Sound play (1 sound, only warning & error)
   if (type === "warning" || type === "error") {
-    toastSound.currentTime = 0;
-    toastSound.play().catch(() => {});
+    const sound = getToastSound();
+    sound.currentTime = 0;
+    sound.play().catch(() => {});
   }
 
   // toastSound.currentTime = 0;
