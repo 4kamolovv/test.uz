@@ -106,6 +106,9 @@ img {
   --modal-overlay: rgba(0, 0, 0, 0.45);
 }
 /* main styles> */
+.gren-navlink {
+  color: var(--green-hover);
+}
 .quiz-subject {
   display: inline-block;
   background-color: var(--bg-gray);
@@ -283,6 +286,18 @@ hr {
 .nav-link:hover {
   color: var(--green-hover);
 }
+.nav-link.gren-navlink {
+  color: var(--green-hover);
+}
+.nav-link.index-navlink {
+  color: var(--green-hover);
+}
+.nav-link.rating-navlink {
+  color: var(--green-dark);
+}
+.nav-link.theme-navlink {
+  color: var(--green-hover);
+}
 /* Actions */
 .header-actions {
   display: flex;
@@ -315,7 +330,7 @@ hr {
   position: fixed;
   inset: 0;
   display: none;
-  background: var(--modal-overlay);
+  background: rgba(0, 0, 0, 0.45);
   align-items: center;
   justify-content: center;
   z-index: 2000;
@@ -331,9 +346,9 @@ hr {
   max-width: 460px;
   background: var(--bg-white);
   border: 1px solid var(--bg-gray);
-  border-radius: var(--modal-radius);
-  box-shadow: var(--modal-shadow);
-  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-modal);
+  padding: 16px;
   position: relative;
   animation: authPop 0.18s ease-out forwards;
 }
@@ -586,7 +601,7 @@ html.auth-pending #userMenu {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: var(--modal-overlay);
+  background: rgba(0, 0, 0, 0.45);
   display: none;
   justify-content: center;
   align-items: center;
@@ -602,7 +617,7 @@ html.auth-pending #userMenu {
 .modal-box {
   background: var(--bg-white);
   padding: 24px;
-  border-radius: var(--modal-radius);
+  border-radius: var(--radius-lg);
   max-width: 400px;
   width: 100%;
   text-align: center;
@@ -610,7 +625,7 @@ html.auth-pending #userMenu {
   transform: scale(0.85);
   opacity: 0;
   animation: scaleFromCenter 0.35s ease forwards;
-  box-shadow: var(--modal-shadow);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .modal-title {
@@ -623,7 +638,6 @@ html.auth-pending #userMenu {
 .modal-desc {
   font-size: 14px;
   color: var(--text-gray);
-  
   margin-bottom: 20px;
 }
 
@@ -670,7 +684,7 @@ html.auth-pending #userMenu {
   display: none;
   align-items: center;
   justify-content: center;
-  background: var(--modal-overlay);
+  background: rgba(0, 0, 0, 0.45);
   z-index: 3000;
   padding: 16px;
 }
@@ -684,8 +698,8 @@ html.auth-pending #userMenu {
   background: var(--bg-white);
   color: var(--text-main);
   border: 1px solid var(--bg-gray);
-  border-radius: var(--modal-radius);
-  box-shadow: var(--modal-shadow);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   padding: 24px;
   text-align: center;
   position: relative;
@@ -786,7 +800,8 @@ html.auth-pending #userMenu {
   align-items: center;
   justify-content: center;
   padding: 18px;
-  background: var(--modal-overlay);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   z-index: 4000;
 }
 .settings-overlay.active {
@@ -799,8 +814,8 @@ html.auth-pending #userMenu {
   max-width: 92vw;
   background: var(--bg-white);
   border: 1px solid var(--bg-gray);
-  border-radius: var(--modal-radius);
-  box-shadow: var(--modal-shadow);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.35);
   overflow: hidden;
   display: block;
   animation: settingsPop 0.18s ease-out;

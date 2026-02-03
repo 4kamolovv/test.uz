@@ -33,8 +33,8 @@
     <div class="quiz-layout">
       <div>
         <div class="quiz-info-card">
-          <div class="quiz-subject" langIn="TestSubject">Matematika</div>
-          <div class="quiz-info-title" langIn="TestTopic">Tenglamalar</div>
+          <div class="quiz-subject" langIn="TestSubject"></div>
+          <div class="quiz-info-title" langIn="TestTopic"></div>
           <div class="quiz-info-footer">
             <div class="quiz-info-stat">
               <img
@@ -71,7 +71,7 @@
           <div class="progress-bar-track">
             <div class="progress-bar-fill" id="progress-fill"></div>
           </div>
-          <div class="progress-bar-text" id="progress-text">14/1</div>
+          <div class="progress-bar-text" id="progress-text"></div>
         </div>
       </div>
       
@@ -79,13 +79,13 @@
       <div class="quiz-container">
         <div class="quiz-question-box">
           <div class="quiz-question-header">
-            <span class="quiz-question-progress">14/1</span>
+            <span class="quiz-question-progress" id="progress-text"></span>
             <div class="quiz-tmsb-wrap">
               <div class="quiz-time" id="quizTime">00:00</div>
-              <div class="quiz-subject" langIn="TestSubject">Matematika</div>
+              <div class="quiz-subject" langIn="TestSubject"></div>
             </div>
           </div>
-          <div class="quiz-question-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam?</div>
+          <div class="quiz-question-text"></div>
         </div>
         
         <div class="quiz-options-box">
@@ -93,19 +93,19 @@
           
           <button class="quiz-option">
             <span class="quiz-label">a)</span>
-            <span class="quiz-variant">Lorem ipsum dolor sit amet consectetur.</span>
+            <span class="quiz-variant"></span>
           </button>
           <button class="quiz-option">
             <span class="quiz-label">b)</span>
-            <span class="quiz-variant">iusto dolorum officiis corporis incidunt? Minus.</span>
+            <span class="quiz-variant"></span>
           </button>
           <button class="quiz-option">
             <span class="quiz-label">c)</span>
-            <span class="quiz-variant">soluta delectus! Nulla neque atque quas, similique.</span>
+            <span class="quiz-variant"></span>
           </button>
           <button class="quiz-option">
             <span class="quiz-label">d)</span>
-            <span class="quiz-variant">ratione optio nemo fugiat minus placeat veniam.</span>
+            <span class="quiz-variant"></span>
           </button>
           
           <div class="quiz-controls">
@@ -121,7 +121,7 @@
   </div>
   
   <!-- MODAL: YAKUNLASHNI TASDIQLASH -->
-  <div class="modal-overlay ac" id="endModal">
+  <div class="modal-overlay" id="endModal">
     <div class="modal-box">
       <img
       class="yakunlash-image"
@@ -141,26 +141,7 @@
     </div>
   </div>
   
-  <div class="modal-overlay" id="endModal">
-    <div class="modal-box">
-      <img
-      class="yakunlash-image"
-      src="../images/icons/complateredicon.png"
-      alt="Warning icon"
-      langAlt="TestWarnAlt"
-      />
-      <h4 class="modal-title" langIn="LogoutTitle">Testni yakunlashni xohlaysizmi?</h4>
-      <p class="modal-desc" langIn="LogoutSub">
-        Hisobingizdan chiqmoqchimisiz?
-      </p>
-      <div class="modal-actions">
-        <button id="logoutCancel" type="button" langIn="LogoutCancel" class="btn-cancel" ></button>
-        <button  id="logoutYes" type="button" langIn="LogoutYes" class="btn-ok"></button>
-      </div>
-    </div>
-  </div>
-  
-  <div class="modal-overlay ac" id="resultModal">
+  <div class="modal-overlay" id="resultModal">
     <div class="modal-box result-modal-box">
       <h4 class="result-title-h" langIn="TestResultTitle">Yakuniy natijalar</h4>
       <img
@@ -213,7 +194,7 @@
       </div>
     </div>
   </div> 
-  <script src="../js/quiz.js" defer></script>
+  <script type="module" src="../js/quiz.js"></script>
   <script src="../js/main.js" defer></script>
   <script type="module" src="../js/auth-modal.js"></script>
 </body>

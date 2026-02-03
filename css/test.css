@@ -227,7 +227,7 @@
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: #333;
+  color: var(--text-main);
 }
 
 .answer-status img {
@@ -246,7 +246,6 @@
 
 /* modal umumiy stillar main.css ga ko'chirildi */
 
-/* ======================= Yakuniy Natijalar Modal ======================= */
 .result-title-h {
   display: flex;
   justify-content: start;

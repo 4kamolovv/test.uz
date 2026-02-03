@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rating</title>
+    <title>Blok testlar</title>
     <script>
         (function () {
             const theme = localStorage.getItem("theme");
             if (theme) document.documentElement.setAttribute("data-theme", theme);
         })();
     </script>
-    <link rel="site icon" href="../images/icons/logoiconsite.svg">
+    <link rel="site icon" type="png" href="../images/icons/logoiconsite.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/rating.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/themetest.css" />
 </head>
 <body>
     <div id="progress-bg"></div>
@@ -23,7 +23,7 @@
     <header class="main-header">
         <div class="header-container">
             <a href="../index.html" class="logo-wrapper">
-                <img id="logo-img" src="../images/image/logo_dark.png" alt="">
+                <img id="logo-img" src="../images/image/logo_dark.png" alt="Logo">
             </a>
             <nav class="nav">
                 <ul class="nav-list">
@@ -37,19 +37,16 @@
                         <a href="../html/blocktests.html" class="nav-link" langIn="NavBlockTests">Blok testlar</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../html/rating.html" class="nav-link gren-navlink" langIn="NavRating">Reyting</a>
+                        <a href="../html/rating.html" class="nav-link" langIn="NavRating">Reyting</a>
                     </li>
                     <li class="nav-item">
                         <a href="../html/news.html" class="nav-link" langIn="NavNews">Yangiliklar</a>
                     </li>
                 </ul>
             </nav>
-            <!-- Actions -->
-            <div class="header-actions">                
-                <!-- Login button (auth-modal.js ishlatadi) -->
+            <div class="header-actions">
                 <button class="btn-login" type="button" id="openAuth"></button>
                 
-                <!-- User menu -->
                 <div class="user-menu" id="userMenu" style="display:none;">
                     <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
                         <span class="user-name" id="userName">User</span>
@@ -98,7 +95,6 @@
                             <span langIn="MenuSaved">Saqlanganlar</span>
                         </a>
                         
-                        <!-- Settings -->
                         <a class="dd-item" href="" id="openSettings" role="menuitem">
                             <span class="dd-ico" aria-hidden="true">
                                 <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
@@ -135,192 +131,14 @@
             
         </div>
     </header>
-    <section class="toprating" id="toprating">
-        <div class="container">
-            <div class="section-head">
-                <h2 class="section-title" langIn="RatingTopTitle">Top reyting</h2>
-                <p class="section-subtitle" langIn="RatingTopSubtitle">Eng faol ishtirokchilar va eng yuqori natijalar</p>
-            </div>
-            
-            <div class="toprating-grid">
-                <!-- Left: рейтинг лист -->
-                <div class="toprating-card">
-                    <div class="toprating-card-head">
-                        <b>Haftalik Top 10</b>
-                        <a class="toprating-link" href="../html/rating.html">Barchasi →</a>
-                    </div>
-                    
-                    <div class="toprating-list">
-                        <!-- 1 -->
-                        <div class="toprating-item">
-                            <span class="rank">1</span>
-                            <div class="user">
-                                <b id="topNick1">—</b>
-                                <small id="topMeta1">—</small>
-                            </div>
-                            <span class="score" id="topScore1">0</span>
-                        </div>
-                        
-                        <!-- 2 -->
-                        <div class="toprating-item">
-                            <span class="rank">2</span>
-                            <div class="user">
-                                <b id="topNick2">—</b>
-                                <small id="topMeta2">—</small>
-                            </div>
-                            <span class="score" id="topScore2">0</span>
-                        </div>
-                        
-                        <!-- 3 -->
-                        <div class="toprating-item">
-                            <span class="rank">3</span>
-                            <div class="user">
-                                <b id="topNick3">—</b>
-                                <small id="topMeta3">—</small>
-                            </div>
-                            <span class="score" id="topScore3">0</span>
-                        </div>
-                        
-                        <!-- 4 -->
-                        <div class="toprating-item">
-                            <span class="rank">4</span>
-                            <div class="user">
-                                <b id="topNick4">—</b>
-                                <small id="topMeta4">—</small>
-                            </div>
-                            <span class="score" id="topScore4">0</span>
-                        </div>
-                        
-                        <!-- 5 -->
-                        <div class="toprating-item">
-                            <span class="rank">5</span>
-                            <div class="user">
-                                <b id="topNick5">—</b>
-                                <small id="topMeta5">—</small>
-                            </div>
-                            <span class="score" id="topScore5">0</span>
-                        </div>
-                        
-                        <!-- 6 -->
-                        <div class="toprating-item">
-                            <span class="rank">6</span>
-                            <div class="user">
-                                <b id="topNick6">—</b>
-                                <small id="topMeta6">—</small>
-                            </div>
-                            <span class="score" id="topScore6">0</span>
-                        </div>
-                        
-                        <!-- 7 -->
-                        <div class="toprating-item">
-                            <span class="rank">7</span>
-                            <div class="user">
-                                <b id="topNick7">—</b>
-                                <small id="topMeta7">—</small>
-                            </div>
-                            <span class="score" id="topScore7">0</span>
-                        </div>
-                        
-                        <!-- 8 -->
-                        <div class="toprating-item">
-                            <span class="rank">8</span>
-                            <div class="user">
-                                <b id="topNick8">—</b>
-                                <small id="topMeta8">—</small>
-                            </div>
-                            <span class="score" id="topScore8">0</span>
-                        </div>
-                        
-                        <!-- 9 -->
-                        <div class="toprating-item">
-                            <span class="rank">9</span>
-                            <div class="user">
-                                <b id="topNick9">—</b>
-                                <small id="topMeta9">—</small>
-                            </div>
-                            <span class="score" id="topScore9">0</span>
-                        </div>
-                        
-                        <!-- 10 -->
-                        <div class="toprating-item">
-                            <span class="rank">10</span>
-                            <div class="user">
-                                <b id="topNick10">—</b>
-                                <small id="topMeta10">—</small>
-                            </div>
-                            <span class="score" id="topScore10">0</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right: motivatsion kart -->
-                <!-- Right: sizning reytingingiz + CTA -->
-                <div class="toprating-cta">
-                    <div class="toprating-cta-card">
-                        <div class="cta-top">
-                            <h3 id="ratingCtaTitle">Reytingga chiqishni xohlaysizmi?</h3>
-                            <p id="ratingCtaDesc">
-                                Ko‘proq test yeching, xatolarni tahlil qiling — ballingiz oshib,
-                                <b>Top reytinglarda</b> yuqorilaysiz.
-                            </p>
-                            
-                            <div class="toprating-badges">
-                                <span class="topbadge">🎯 Natija saqlanadi</span>
-                                <span class="topbadge">⚡ Ball oshadi</span>
-                                <span class="topbadge">🏆 Reytingga chiqasiz</span>
-                            </div>
-                        </div>
-                        
-                        <!-- Sizning natijangiz -->
-                        <div class="my-score" id="myScoreBox">
-                            <div class="my-score-head">
-                                <b>Sizning natijangiz</b>
-                                <span class="my-rank-pill">#—</span>
-                            </div>
-                            
-                            <div class="my-score-user">
-                                <div class="my-avatar"></div>
-                                <div class="my-userinfo">
-                                    <b id="myUserName"></b>
-                                    <small>Bugungi ball: <span id="myTodayScore"></span></small>
-                                </div>
-                            </div>
-                            
-                            <div class="my-score-stats">
-                                <div class="stat">
-                                    <small>Jami ball</small>
-                                    <b id="myTotalScore"></b>
-                                </div>
-                                <div class="stat">
-                                    <small>Yechilgan test</small>
-                                    <b id="mySolved"></b>
-                                </div>
-                                <div class="stat">
-                                    <small>To‘g‘ri javob</small>
-                                    <b id="myCorrect"></b>
-                                </div>
-                            </div>
-                            
-                            <div class="my-progress">
-                                <div class="my-progress-text">
-                                    <small><b id="myProgressPercent">0%</b></small>
-                                </div>
-                                <div class="my-progress-track">
-                                    <div class="my-progress-fill" style="width:0%"></div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Button eng pastda -->
-                        <div class="toprating-actions">
-                            <a class="btn-primary" id="ratingCtaBtn" href="../html/themetest.html">Testlarni boshlash</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     
+    <main class="container">
+        <div class="content-header" style="margin-block:16px;">
+            <h1 class="content-title">Mening natijalarim</h1>
+        </div>
+        <div id="resultsEmpty" class="empty-state">Yuklanmoqda...</div>
+        <div class="test-card-wrapper" id="resultsCards"></div>
+    </main>
     
     <!-- SETTINGS MODAL -->
     <div class="settings-overlay" id="settingsOverlay">
@@ -369,50 +187,41 @@
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
             <button class="auth-close" id="authClose" aria-label="Yopish">✕</button>
-            
             <div class="auth-tabs">
                 <button class="auth-tab active" id="tabLogin" type="button" langIn="AuthTabLogin">Kirish</button>
                 <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Ro‘yxatdan o‘tish</button>
             </div>
-            
-            <!-- LOGIN -->
             <div class="auth-pane active" id="paneLogin">
                 <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin">Kirish</h3>
                 <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bo‘lishi kerak.</p>
-                
                 <form id="loginForm" class="auth-form">
                     <input id="loginEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
                     <input id="loginPassword" class="auth-input" type="password" placeholder="Parol" langPlaceholder="AuthPlaceholderPassword" required />
                     <button class="auth-btn primary" type="submit" langIn="AuthBtnLogin">Kirish</button>
                 </form>
-                
                 <div class="auth-msg" id="loginMsg"></div>
             </div>
-            
-            <!-- REGISTER -->
             <div class="auth-pane" id="paneRegister">
                 <h3 class="auth-title" langIn="AuthTitleRegister">Ro‘yxatdan o‘tish</h3>
                 <p class="auth-sub" langIn="AuthSubRegister">Emailingizga tasdiqlash havolasi yuboriladi.</p>
-                
                 <form id="registerForm" class="auth-form">
                     <input id="regNickname" class="auth-input" type="text" placeholder="Nickname" langPlaceholder="AuthPlaceholderNickname" required />
                     <input id="regEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
                     <input id="regPassword" class="auth-input" type="password" placeholder="Parol (kamida 6 ta)" langPlaceholder="AuthPlaceholderPasswordMin" minlength="6" required />
                     <button class="auth-btn primary" type="submit" langIn="AuthBtnRegister">Ro‘yxatdan o‘tish</button>
                 </form>
-                
                 <div class="auth-msg" id="regMsg"></div>
             </div>
         </div>
     </div>
-    <!-- Logout confirm modal -->
+    <!-- Logout modal -->
     <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
         <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
             <img
-                class="yakunlash-image"
-                src="../images/icons/complateredicon.png"
-                alt="Warning icon"
-                langAlt="TestWarnAlt"
+            class="yakunlash-image"
+            src="../images/icons/complateredicon.png"
+            alt="Warning icon"
+            langAlt="TestWarnAlt"
             />
             <h4 class="modal-title" id="logoutTitle" langIn="LogoutTitle">Chiqib ketilsinmi?</h4>
             <p class="modal-desc" langIn="LogoutSub">Hisobingizdan chiqmoqchimisiz?</p>
@@ -423,10 +232,11 @@
         </div>
     </div>
     
-    <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+    
+  
     <script src="../js/main.js" defer></script>
-    <script type="module" src="../js/toprating.js"></script>
     <script type="module" src="../js/auth-modal.js"></script>
+    <script type="module" src="../js/results.js"></script>
     <script src="../js/settings-modal.js" defer></script>
 </body>
 </html>

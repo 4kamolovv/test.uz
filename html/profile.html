@@ -1,11 +1,233 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Blok testlar</title>
+    <script>
+        (function () {
+            const theme = localStorage.getItem("theme");
+            if (theme) document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+    <link rel="site icon" type="png" href="../images/icons/logoiconsite.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
+    <div id="progress-bg"></div>
+    <div id="progress-bar"></div>
+    <header class="main-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-wrapper">
+                <img id="logo-img" src="../images/image/logo_dark.png" alt="Logo">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link" langIn="NavHome">Bosh sahifa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/themetest.html" class="nav-link" langIn="NavThemeTest">Mavzuli test</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/blocktests.html" class="nav-link" langIn="NavBlockTests">Blok testlar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/rating.html" class="nav-link gren-navlink" langIn="NavRating">Reyting</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/news.html" class="nav-link" langIn="NavNews">Yangiliklar</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-login" type="button" id="openAuth"></button>
+                
+                <div class="user-menu" id="userMenu" style="display:none;">
+                    <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                        <span class="user-name" id="userName">User</span>
+                        <span class="user-avatar" id="userAvatar">U</span>
+                        <span class="user-caret" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="userDropdown" role="menu" aria-label="User menu">
+                        <a class="dd-item" href="../html/profile.html" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                                    <path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            <span langIn="MenuProfile">Profil</span>
+                        </a>
+                        
+                        <a class="dd-item" href="../html/myresults.html" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 19V5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M8 19V11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M12 19V7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M16 19V14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M20 19V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            <span langIn="MenuResults">Mening natijalarim</span>
+                        </a>
+                        
+                        <a class="dd-item" href="../html/saved.html" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 3h12a2 2 0 0 1 2 2v16l-8-4-8 4V5a2 2 0 0 1 2-2Z"
+                                    fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                            <span langIn="MenuSaved">Saqlanganlar</span>
+                        </a>
+                        
+                        <a class="dd-item" href="" id="openSettings" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="3.2"></circle>
+                                    <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
+                                </svg>
+                            </span>
+                            <span langIn="MenuSettings">Sozlamalar</span>
+                        </a>
+                        
+                        <div class="dd-sep" role="separator"></div>
+                        
+                        <button class="dd-item danger" id="btnLogout" type="button" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M10 17v-2h8v-6h-8V7" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                    <path d="M14 12H3" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                    <path d="M6 9l-3 3 3 3" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M20 21H12a2 2 0 0 1-2-2v-3" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                    <path d="M10 8V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2"
+                                    fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            <span langIn="MenuLogout">Chiqish</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
     
+    <main class="container">
+        <!-- content here -->
+    </main>
+    
+    <!-- SETTINGS MODAL -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <div class="settings-main">
+                <div class="settings-title">
+                    <button class="settings-close" id="settingsClose" type="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 6l12 12M18 6L6 18"></path>
+                        </svg>
+                    </button>
+                    <span langIn="SettingsTitle">Sozlamalar</span>
+                </div>
+                <div class="settings-right">
+                    <div class="set-pane active" data-pane="general">
+                        <h2 langIn="SettingsGeneral">Umumiy</h2>
+                        <div class="set-row">
+                            <div class="meta">
+                                <b langIn="SettingsBgLabel">Fon</b>
+                                <span langIn="SettingsBgHint">Oq / Qora</span>
+                            </div>
+                            <select class="settings-select" id="setTheme">
+                                <option value="light" langIn="SettingsBgLight">Oq</option>
+                                <option value="dark" langIn="SettingsBgDark">Qora</option>
+                            </select>
+                        </div>
+                        <div class="set-row">
+                            <div class="meta">
+                                <b langIn="SettingsLangLabel">Til</b>
+                                <span langIn="SettingsLangHint">UZ / RU</span>
+                            </div>
+                            <select class="settings-select" id="setLang">
+                                <option value="uz" langIn="SettingsLangUz">UZ</option>
+                                <option value="ru" langIn="SettingsLangRu">RU</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-footer">
+                        <span langIn="SettingsVersion">Versiya: 1.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- AUTH MODAL -->
+    <div class="auth-overlay" id="authOverlay">
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+            <button class="auth-close" id="authClose" aria-label="Yopish">✕</button>
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" type="button" langIn="AuthTabLogin">Kirish</button>
+                <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Ro‘yxatdan o‘tish</button>
+            </div>
+            <div class="auth-pane active" id="paneLogin">
+                <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin">Kirish</h3>
+                <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bo‘lishi kerak.</p>
+                <form id="loginForm" class="auth-form">
+                    <input id="loginEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
+                    <input id="loginPassword" class="auth-input" type="password" placeholder="Parol" langPlaceholder="AuthPlaceholderPassword" required />
+                    <button class="auth-btn primary" type="submit" langIn="AuthBtnLogin">Kirish</button>
+                </form>
+                <div class="auth-msg" id="loginMsg"></div>
+            </div>
+            <div class="auth-pane" id="paneRegister">
+                <h3 class="auth-title" langIn="AuthTitleRegister">Ro‘yxatdan o‘tish</h3>
+                <p class="auth-sub" langIn="AuthSubRegister">Emailingizga tasdiqlash havolasi yuboriladi.</p>
+                <form id="registerForm" class="auth-form">
+                    <input id="regNickname" class="auth-input" type="text" placeholder="Nickname" langPlaceholder="AuthPlaceholderNickname" required />
+                    <input id="regEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
+                    <input id="regPassword" class="auth-input" type="password" placeholder="Parol (kamida 6 ta)" langPlaceholder="AuthPlaceholderPasswordMin" minlength="6" required />
+                    <button class="auth-btn primary" type="submit" langIn="AuthBtnRegister">Ro‘yxatdan o‘tish</button>
+                </form>
+                <div class="auth-msg" id="regMsg"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Logout modal -->
+    <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+            <img
+            class="yakunlash-image"
+            src="../images/icons/complateredicon.png"
+            alt="Warning icon"
+            langAlt="TestWarnAlt"
+            />
+            <h4 class="modal-title" id="logoutTitle" langIn="LogoutTitle">Chiqib ketilsinmi?</h4>
+            <p class="modal-desc" langIn="LogoutSub">Hisobingizdan chiqmoqchimisiz?</p>
+            <div class="modal-actions">
+                <button id="logoutCancel" type="button" langIn="LogoutCancel" class="btn-cancel">Bekor qilish</button>
+                <button id="logoutYes" type="button" langIn="LogoutYes" class="btn-ok">Ha, chiqish</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/main.js" defer></script>
+    <script type="module" src="../js/auth-modal.js"></script>
+    <script src="../js/settings-modal.js" defer></script>
 </body>
 </html>
