@@ -265,11 +265,12 @@
   margin: 16px 0 8px;
   font-size: 16px;
   font-weight: 600;
+  color: var(--text-main);
 }
 
 .modal-desc {
   font-size: 14px;
-  color: #666;
+  color: var(--text-gray);
   margin-bottom: 20px;
 }
 
@@ -280,8 +281,8 @@
 }
 
 .btn-cancel {
-  background-color: #f3f4f6;
-  color: gray;
+  background-color: var(--bg-gray);
+  color: var(--text-gray);
   border: none;
   padding: 10px 52px;
   border-radius: 8px;
@@ -317,7 +318,7 @@
 
 /* .modal-box animatsiyasi (sizda bor) */
 .modal-box {
-  background: #fff;
+  background: var(--bg-white);
   padding: 24px;
   border-radius: 12px;
   max-width: 400px;
@@ -368,7 +369,7 @@
   justify-content: space-around;
   gap: 10px;
   margin-top: 20px;
-  background-color: #f3f4f6;
+  background-color: var(--bg-gray);
   padding: 13px;
   border-radius: 12px;
   flex-wrap: wrap;
@@ -398,6 +399,11 @@
   font-size: 19px;
 }
 
+.result-stat {
+  margin: 0;
+  color: var(--text-main) !important;
+}
+
 .correct-text {
   color: #00c853;
 }
@@ -409,9 +415,9 @@
 .result-topic {
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-main);
   margin-top: 5px;
-  background-color: #f3f4f6;
+  background-color: var(--bg-gray);
   padding: 13px;
   border-radius: 12px;
 }
@@ -419,10 +425,10 @@
 .result-time {
   font-size: 14px;
   font-weight: 600;
-  color: #333;
+  color: var(--text-main);
   margin-top: 5px;
   margin-bottom: 20px;
-  background-color: #f3f4f6;
+  background-color: var(--bg-gray);
   padding: 13px;
   border-radius: 12px;
 }
@@ -437,9 +443,9 @@
 }
 
 .back-tomain-page {
-  background-color: #f3f4f6;
-  border: 2px solid #f3f4f6;
-  color: gray;
+  background-color: var(--bg-gray);
+  border: 2px solid var(--bg-gray);
+  color: var(--text-gray);
   border-radius: 12px;
   cursor: pointer;
   outline: none;

@@ -33,13 +33,95 @@
                 </ul>
             </nav>
             
-            <div class="header-actions">
-                <button id="theme-toggle" class="theme-toggle">🌙</button>
-                <button id="selectLang-uz" class="theme-toggle">uz</button>
-                <button id="selectLang-ru" class="theme-toggle">ru</button>
-                <!-- LOGIN BUTTON (auth-modal.js ishlatadi) -->
-                <button class="btn-login" type="button" id="openAuth">Kirish</button>
+            <div class="header-actions">                
+                <!-- Login button -->
+                <button class="btn-login" type="button" id="openAuth"></button>
+                
+                <!-- User menu -->
+                <div class="user-menu" id="userMenu" style="display:none;">
+                    <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
+                        <span class="user-name" id="userName">User</span>
+                        <span class="user-avatar" id="userAvatar">U</span>
+                        <span class="user-caret" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                    </button>
+                    
+                    <div class="user-dropdown" id="userDropdown" role="menu" aria-label="User menu">
+                        <a class="dd-item" href="/html/profile.html" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
+                                    <path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            Profil
+                        </a>
+                        
+                        <a class="dd-item" href="/html/myresults.html" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 19V5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M8 19V11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M12 19V7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M16 19V14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                    <path d="M20 19V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            Mening natijalarim
+                        </a>
+                        
+                        <a class="dd-item" href="/html/saved.html" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 3h12a2 2 0 0 1 2 2v16l-8-4-8 4V5a2 2 0 0 1 2-2Z"
+                                    fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linejoin="round"></path>
+                                </svg>
+                            </span>
+                            Saqlanganlar
+                        </a>
+                        
+                        <!-- Settings -->
+                        <a class="dd-item" href="" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="3.5"></circle>
+                                    <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
+                                </svg>
+                                
+                            </span>
+                            Sozlamalar
+                        </a>
+                        
+                        <div class="dd-sep" role="separator"></div>
+                        
+                        <button class="dd-item danger" id="btnLogout" type="button" role="menuitem">
+                            <span class="dd-ico" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M10 17v-2h8v-6h-8V7" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                    <path d="M14 12H3" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                    <path d="M6 9l-3 3 3 3" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M20 21H12a2 2 0 0 1-2-2v-3" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                    <path d="M10 8V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2"
+                                    fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round"></path>
+                                </svg>
+                            </span>
+                            Chiqish
+                        </button>
+                    </div>
+                </div>
             </div>
+            
         </div>
     </header>
     <main class="landing">
@@ -241,6 +323,50 @@
             </div>
         </section>
     </main>
+    
+    <!-- SETTINGS MODAL -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <div class="settings-main">
+                <div class="settings-title">
+                    <button class="settings-close" id="settingsClose" type="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 6l12 12M18 6L6 18"></path>
+                        </svg>
+                    </button>
+                    Sozlamalar
+                </div>
+                <div class="settings-right">
+                    <div class="set-pane active" data-pane="general">
+                        <h2>Umumiy</h2>
+                        <div class="set-row">
+                            <div class="meta">
+                                <b>Fon</b>
+                                <span>Oq / Qora</span>
+                            </div>
+                            <select class="settings-select" id="setTheme">
+                                <option value="light">Oq</option>
+                                <option value="dark">Qora</option>
+                            </select>
+                        </div>
+                        <div class="set-row">
+                            <div class="meta">
+                                <b>Til</b>
+                                <span>UZ / RU</span>
+                            </div>
+                            <select class="settings-select" id="setLang">
+                                <option value="uz">UZ</option>
+                                <option value="ru">RU</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-footer">
+                        Versiya: 1.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- AUTH MODAL -->
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
@@ -297,8 +423,10 @@
         </div>
     </div>
     <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+    <!-- js -->
     <script src="./js/main.js"></script>
     <script src="./js/index.js"></script>
     <script type="module" src="./js/auth-modal.js"></script>
+    <script src="./js/settings-modal.js"></script>
 </body>
 </html>

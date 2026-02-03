@@ -43,13 +43,9 @@
                 </ul>
             </nav>
             <!-- Actions -->
-            <div class="header-actions">
-                <button id="theme-toggle" class="theme-toggle">🌙</button>
-                <button id="selectLang-uz" class="theme-toggle">uz</button>
-                <button id="selectLang-ru" class="theme-toggle">ru</button>
-                
+            <div class="header-actions">                
                 <!-- Login button (auth-modal.js ishlatadi) -->
-                <button class="btn-login" type="button" id="openAuth">Kirish</button>
+                <button class="btn-login" type="button" id="openAuth"></button>
                 
                 <!-- User menu (login bo'lsa chiqadi) -->
                 <div class="user-menu" id="userMenu" style="display:none;">
@@ -294,6 +290,50 @@
         </div>
     </section>
     
+    
+    <!-- SETTINGS MODAL -->
+    <div class="settings-overlay" id="settingsOverlay">
+        <div class="settings-modal">
+            <div class="settings-main">
+                <div class="settings-title">
+                    <button class="settings-close" id="settingsClose" type="button">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 6l12 12M18 6L6 18"></path>
+                        </svg>
+                    </button>
+                    Sozlamalar
+                </div>
+                <div class="settings-right">
+                    <div class="set-pane active" data-pane="general">
+                        <h2>Umumiy</h2>
+                        <div class="set-row">
+                            <div class="meta">
+                                <b>Fon</b>
+                                <span>Oq / Qora</span>
+                            </div>
+                            <select class="settings-select" id="setTheme">
+                                <option value="light">Oq</option>
+                                <option value="dark">Qora</option>
+                            </select>
+                        </div>
+                        <div class="set-row">
+                            <div class="meta">
+                                <b>Til</b>
+                                <span>UZ / RU</span>
+                            </div>
+                            <select class="settings-select" id="setLang">
+                                <option value="uz">UZ</option>
+                                <option value="ru">RU</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="settings-footer">
+                        Versiya: 1.0
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- AUTH MODAL -->
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
@@ -354,6 +394,6 @@
     <script src="../js/main.js"></script>
     <script src="../js/toprating.js"></script>
     <script type="module" src="../js/auth-modal.js"></script>
-    <!-- <script type="module" src="./js/user-menu.js"></script> -->
+    <script src="./js/settings-modal.js"></script>
 </body>
 </html>

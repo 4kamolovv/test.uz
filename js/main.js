@@ -36,8 +36,8 @@ function applyTheme(theme) {
   if (logoImg) {
     logoImg.src =
       theme === "dark"
-        ? "../images/image/logo_dark.png"
-        : "../images/image/logo_light.png";
+        ? "/images/image/logo_dark.png"
+        : "/images/image/logo_light.png";
   }
 }
 
@@ -55,7 +55,7 @@ if (toggleBtn) {
 // Theme switcher>
 // ------------------------------------------------------------------------
 let langData = {};
-fetch("../data/lang.json")
+fetch("/data/lang.json")
   .then((res) => res.json())
   .then((data) => {
     langData = data;
@@ -84,7 +84,7 @@ function setLanguage(lang) {
 }
 // Language switcher>
 // ------------------------------------------------------------------------
-const toastSound = new Audio("../sounds/inter.wav");
+const toastSound = new Audio("/sounds/inter.wav");
 toastSound.volume = 1;
 // Toast sound>
 function showToast(type, titleKey, descKey = null) {
@@ -181,3 +181,18 @@ document.querySelectorAll("[warningToast]").forEach((btn) => {
 });
 // Toast>
 // ------------------------------------
+
+// ================= FIX: main.js -> globals for module scripts =================
+// Nega: auth-modal.js (type="module") main.js ichidagi funksiyalarni ko‘rmaydi.
+// Shuning uchun ularni window ga chiqaramiz.
+
+window.applyTheme = applyTheme;
+window.setLanguage = setLanguage;
+window.showToastRaw = showToast; // asl showToast
+window.langData = langData;      // hozircha bo‘sh, fetchdan keyin to‘ladi
+
+// notify OFF bo‘lsa toast umuman chiqmasin
+window.showToast = function (type, titleKey, descKey = null) {
+  if (localStorage.getItem("notify") === "off") return;
+  return window.showToastRaw(type, titleKey, descKey);
+};
