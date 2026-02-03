@@ -27,6 +27,7 @@ window.onload = function () {
 const toggleBtn = document.getElementById("theme-toggle");
 const logoImg = document.getElementById("logo-img");
 const root = document.documentElement;
+const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 
 function applyTheme(theme) {
   root.setAttribute("data-theme", theme);
@@ -36,8 +37,8 @@ function applyTheme(theme) {
   if (logoImg) {
     logoImg.src =
       theme === "dark"
-        ? "/images/image/logo_dark.png"
-        : "/images/image/logo_light.png";
+        ? `${basePath}/images/image/logo_dark.png`
+        : `${basePath}/images/image/logo_light.png`;
   }
 }
 
@@ -55,7 +56,7 @@ if (toggleBtn) {
 // Theme switcher>
 // ------------------------------------------------------------------------
 let langData = {};
-fetch("/data/lang.json")
+fetch(`${basePath}/data/lang.json`)
   .then((res) => res.json())
   .then((data) => {
     langData = data;
@@ -117,7 +118,7 @@ function setLanguage(lang) {
 }
 // Language switcher>
 // ------------------------------------------------------------------------
-const toastSound = new Audio("/sounds/inter.wav");
+const toastSound = new Audio(`${basePath}/sounds/inter.wav`);
 toastSound.volume = 1;
 // Toast sound>
 function showToast(type, titleKey, descKey = null) {
