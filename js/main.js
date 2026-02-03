@@ -59,6 +59,7 @@ fetch("/data/lang.json")
   .then((res) => res.json())
   .then((data) => {
     langData = data;
+    window.langData = data;
 
     const savedLang = localStorage.getItem("siteLang") || "uz";
     setLanguage(savedLang);
@@ -80,6 +81,38 @@ function setLanguage(lang) {
     if (langData[lang] && langData[lang][key]) {
       el.textContent = langData[lang][key];
     }
+  });
+
+  document.querySelectorAll("[langHtml]").forEach((el) => {
+    const key = el.getAttribute("langHtml");
+    if (langData[lang] && langData[lang][key]) {
+      el.innerHTML = langData[lang][key];
+    }
+  });
+
+  document.querySelectorAll("[langPlaceholder]").forEach((el) => {
+    const key = el.getAttribute("langPlaceholder");
+    if (langData[lang] && langData[lang][key]) {
+      el.setAttribute("placeholder", langData[lang][key]);
+    }
+  });
+
+  document.querySelectorAll("[langAlt]").forEach((el) => {
+    const key = el.getAttribute("langAlt");
+    if (langData[lang] && langData[lang][key]) {
+      el.setAttribute("alt", langData[lang][key]);
+    }
+  });
+
+  document.querySelectorAll("[langTitle]").forEach((el) => {
+    const key = el.getAttribute("langTitle");
+    if (langData[lang] && langData[lang][key]) {
+      el.setAttribute("title", langData[lang][key]);
+    }
+  });
+
+  document.querySelectorAll(".settings-select").forEach((el) => {
+    el.dispatchEvent(new Event("lang-update"));
   });
 }
 // Language switcher>

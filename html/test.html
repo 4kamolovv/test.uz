@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>test</title>
+  <title langIn="TestPageTitle">test</title>
   <script>
     (function () {
       const theme = localStorage.getItem("theme");
@@ -24,21 +24,22 @@
     <div class="backto-mainpage-wrapper">
       <div class="bck-pointer">
         <svg class="backto-mainpage-icon" width="800px" height="800px" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"/><path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"/></svg>
-        <h3 class="backto-mainpage-p">Orqaga qaytish</h3>
+        <h3 class="backto-mainpage-p" langIn="BackToMain">Orqaga qaytish</h3>
       </div>
     </div>
     
     <div class="quiz-layout">
       <div>
         <div class="quiz-info-card">
-          <div class="quiz-subject">Matematika</div>
-          <div class="quiz-info-title">Tenglamalar</div>
+          <div class="quiz-subject" langIn="TestSubject">Matematika</div>
+          <div class="quiz-info-title" langIn="TestTopic">Tenglamalar</div>
           <div class="quiz-info-footer">
             <div class="quiz-info-stat">
               <img
               class="quiz-info-icon"
               src="../images/icons/staricon.svg"
               alt="Reyting"
+              langAlt="RatingAlt"
               />
               <p class="quiz-info-text test-reviews">4.26</p>
             </div>
@@ -47,6 +48,7 @@
               class="quiz-info-icon"
               src="../images/icons/quantityicon.svg"
               alt="Test soni"
+              langAlt="TestCountAlt"
               />
               <p class="quiz-info-text test-amount">14</p>
             </div>
@@ -55,6 +57,7 @@
               class="quiz-info-icon"
               src="../images/icons/viewsicon.svg"
               alt="Ko‘rilgan"
+              langAlt="ViewsAlt"
               />
               <p class="quiz-info-text test-views">422</p>
             </div>
@@ -62,7 +65,7 @@
         </div>
         
         <div class="progress-card">
-          <h3 class="progress-title">Savollar</h3>
+          <h3 class="progress-title" langIn="TestQuestionsTitle">Savollar</h3>
           <div class="progress-bar-track">
             <div class="progress-bar-fill" id="progress-fill"></div>
           </div>
@@ -77,7 +80,7 @@
             <span class="quiz-question-progress">14/1</span>
             <div class="quiz-tmsb-wrap">
               <div class="quiz-time" id="quizTime">00:00</div>
-              <div class="quiz-subject">Matematika</div>
+              <div class="quiz-subject" langIn="TestSubject">Matematika</div>
             </div>
           </div>
           <div class="quiz-question-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam?</div>
@@ -104,10 +107,10 @@
           </button>
           
           <div class="quiz-controls">
-            <button class="btn-complete">Yakunlash</button>
+            <button class="btn-complete" langIn="TestFinishBtn">Yakunlash</button>
             <div class="answerstatus-check-wrapper">
               <div class="answer-status"></div>
-              <button class="btn-check">Tekshirish</button>
+              <button class="btn-check" langIn="TestCheckBtn">Tekshirish</button>
             </div>
           </div>
         </div>
@@ -122,26 +125,47 @@
       class="yakunlash-image"
       src="../images/icons/complateredicon.png"
       alt="Warning icon"
+      langAlt="TestWarnAlt"
       />
-      <h4 class="modal-title">Testni yakunlashni xohlaysizmi?</h4>
-      <p class="modal-desc">
+      <h4 class="modal-title" langIn="TestEndTitle">Testni yakunlashni xohlaysizmi?</h4>
+      <p class="modal-desc" langIn="TestEndDesc">
         Yakunlaganingizdan so‘ng javoblaringizni o‘zgartira olmaysiz. Davom
         etishni istaysizmi?
       </p>
       <div class="modal-actions">
-        <button id="cancelEnd" class="btn-cancel">Bekor qilish</button>
-        <button id="confirmEnd" class="btn-ok">Yakunlash</button>
+        <button id="cancelEnd" class="btn-cancel" langIn="TestCancelBtn">Bekor qilish</button>
+        <button id="confirmEnd" class="btn-ok" langIn="TestFinishBtn">Yakunlash</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal-overlay" id="endModal">
+    <div class="modal-box">
+      <img
+      class="yakunlash-image"
+      src="../images/icons/complateredicon.png"
+      alt="Warning icon"
+      langAlt="TestWarnAlt"
+      />
+      <h4 class="modal-title" langIn="LogoutTitle">Testni yakunlashni xohlaysizmi?</h4>
+      <p class="modal-desc" langIn="LogoutSub">
+        Hisobingizdan chiqmoqchimisiz?
+      </p>
+      <div class="modal-actions">
+        <button id="logoutCancel" type="button" langIn="LogoutCancel" class="btn-cancel" ></button>
+        <button  id="logoutYes" type="button" langIn="LogoutYes" class="btn-ok"></button>
       </div>
     </div>
   </div>
   
   <div class="modal-overlay ac" id="resultModal">
     <div class="modal-box result-modal-box">
-      <h4 class="result-title-h">Yakuniy natijalar</h4>
+      <h4 class="result-title-h" langIn="TestResultTitle">Yakuniy natijalar</h4>
       <img
       class="result-icon-main"
       src="../images/icons/happy-result.webp"
       alt="natija"
+      langAlt="TestResultAlt"
       />
       <h2 class="result-user" id="username">O'quvchi_8848756415</h2>
       <div class="result-summary">
@@ -154,7 +178,7 @@
             />
             <b id="totalCount">15</b>
           </div>
-          <span>Jami test</span>
+          <span langIn="TestTotalLabel">Jami test</span>
         </div>
         <div class="result-stat">
           <div class="result-icon-text">
@@ -165,7 +189,7 @@
             />
             <b class="correct-text" id="correctCount">0</b>
           </div>
-          <span>To‘g‘rilar</span>
+          <span langIn="TestCorrectLabel">To‘g‘rilar</span>
         </div>
         <div class="result-stat">
           <div class="result-icon-text">
@@ -176,14 +200,14 @@
             />
             <b class="wrong-text" id="wrongCount">0</b>
           </div>
-          <span>Xatolar</span>
+          <span langIn="TestWrongLabel">Xatolar</span>
         </div>
       </div>
-      <div class="result-topic" id="resultTopic">Fan nomi va mavzusi</div>
-      <div class="result-time" id="resultTime">qancha vaqit ketgani</div>
+      <div class="result-topic" id="resultTopic" langIn="TestResultTopic">Fan nomi va mavzusi</div>
+      <div class="result-time" id="resultTime" langIn="TestResultTime">qancha vaqit ketgani</div>
       <div class="result-actions">
-        <button class="back-tomain-page">Asosiy sahifaga</button>
-        <button id="restartBtn" class="btn-confirm">Qayta ishlash</button>
+        <button class="back-tomain-page" langIn="TestBackHome">Asosiy sahifaga</button>
+        <button id="restartBtn" class="btn-confirm" langIn="TestRestartBtn">Qayta ishlash</button>
       </div>
     </div>
   </div> 

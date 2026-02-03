@@ -59,6 +59,11 @@ function getInitial(nameOrEmail = "") {
   return s ? s[0].toUpperCase() : "U";
 }
 
+function t(key, fallback) {
+  const lang = localStorage.getItem("siteLang") || "uz";
+  return window.langData?.[lang]?.[key] || fallback;
+}
+
 /* ------------------ CSS inject (ixtiyoriy) ------------------ */
 function injectCSS() {
   if (document.getElementById("authModalCSS")) return;
@@ -254,6 +259,26 @@ function initAuthModal() {
     else openUserDropdown();
   }
 
+  /* --------- optimistic UI (cache) --------- */
+  function applyCachedAuthUI() {
+    const cachedLoggedIn = localStorage.getItem("authLoggedIn") === "true";
+    const cachedName = localStorage.getItem("authUserName") || "User";
+
+    if (cachedLoggedIn) {
+      openBtn.style.display = "none";
+      if (userMenu) userMenu.style.display = "inline-block";
+      if (userNameEl) userNameEl.textContent = cachedName;
+      if (userAvatarEl) userAvatarEl.textContent = getInitial(cachedName);
+    } else {
+      openBtn.style.display = "inline-block";
+      openBtn.textContent = t("AuthLoginBtn", "Kirish");
+      if (userMenu) userMenu.style.display = "none";
+      closeUserDropdown();
+    }
+  }
+
+  applyCachedAuthUI();
+
   userMenuBtn?.addEventListener("click", (e) => {
     e.stopPropagation();
     toggleUserDropdown();
@@ -314,12 +339,18 @@ function initAuthModal() {
 
       if (userNameEl) userNameEl.textContent = displayName;
       if (userAvatarEl) userAvatarEl.textContent = getInitial(displayName);
+
+      localStorage.setItem("authLoggedIn", "true");
+      localStorage.setItem("authUserName", displayName);
     } else {
       // kirmagan: login tugma ko‘rsat, user menu yashir
       openBtn.style.display = "inline-block";
-      openBtn.textContent = "Kirish";
+      openBtn.textContent = t("AuthLoginBtn", "Kirish");
       if (userMenu) userMenu.style.display = "none";
       closeUserDropdown();
+
+      localStorage.removeItem("authLoggedIn");
+      localStorage.removeItem("authUserName");
     }
   }
 

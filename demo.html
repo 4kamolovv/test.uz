@@ -34,10 +34,6 @@
             </nav>
             
             <div class="header-actions">
-                <!-- <button id="theme-toggle" class="theme-toggle">🌙</button>
-                <button id="selectLang-uz" class="theme-toggle">uz</button>
-                <button id="selectLang-ru" class="theme-toggle">ru</button> -->
-                
                 <!-- Login button -->
                 <button class="btn-login" type="button" id="openAuth"></button>
                 
@@ -93,8 +89,8 @@
                         <!-- Settings -->
                         <a class="dd-item" href="" id="openSettings" role="menuitem">
                             <span class="dd-ico" aria-hidden="true">
-                                <svg viewBox="0 0 24 24" aria-hidden="true">
-                                    <circle cx="12" cy="12" r="3.5"></circle>
+                                <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="3.2"></circle>
                                     <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
                                 </svg>
                             </span>
@@ -412,17 +408,19 @@
         </div>
     </div>
     <!-- Logout confirm modal -->
-    <div class="confirm-overlay" id="logoutOverlay" aria-hidden="true">
-        <div class="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
-            <div class="confirm-head">
-                <h3 id="logoutTitle">Chiqib ketilsinmi?</h3>
-                <button class="confirm-x" id="logoutX" type="button" aria-label="Yopish">✕</button>
-            </div>
-            <p class="confirm-sub">Hisobingizdan chiqmoqchimisiz?</p>
-            
-            <div class="confirm-actions">
-                <button class="confirm-btn ghost" id="logoutCancel" type="button">Bekor qilish</button>
-                <button class="confirm-btn danger" id="logoutYes" type="button">Ha, chiqish</button>
+    <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
+        <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
+            <img
+                class="yakunlash-image"
+                src="./images/icons/complateredicon.png"
+                alt="Warning icon"
+                langAlt="TestWarnAlt"
+            />
+            <h4 class="modal-title" id="logoutTitle" langIn="LogoutTitle">Chiqib ketilsinmi?</h4>
+            <p class="modal-desc" langIn="LogoutSub">Hisobingizdan chiqmoqchimisiz?</p>
+            <div class="modal-actions">
+                <button id="logoutCancel" type="button" langIn="LogoutCancel" class="btn-cancel">Bekor qilish</button>
+                <button id="logoutYes" type="button" langIn="LogoutYes" class="btn-ok">Ha, chiqish</button>
             </div>
         </div>
     </div>
