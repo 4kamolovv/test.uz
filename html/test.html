@@ -33,8 +33,8 @@
     <div class="quiz-layout">
       <div>
         <div class="quiz-info-card">
-          <div class="quiz-subject" langIn="TestSubject"></div>
-          <div class="quiz-info-title" langIn="TestTopic"></div>
+          <div class="quiz-subject" langIn="TestSubject" data-lang-skip></div>
+          <div class="quiz-info-title" langIn="TestTopic" data-lang-skip></div>
           <div class="quiz-info-footer">
             <div class="quiz-info-stat">
               <img
@@ -82,7 +82,7 @@
             <span class="quiz-question-progress" id="progress-text"></span>
             <div class="quiz-tmsb-wrap">
               <div class="quiz-time" id="quizTime">00:00</div>
-              <div class="quiz-subject" langIn="TestSubject"></div>
+              <div class="quiz-subject" langIn="TestSubject" data-lang-skip></div>
             </div>
           </div>
           <div class="quiz-question-text"></div>
@@ -186,8 +186,11 @@
           <span langIn="TestWrongLabel">Xatolar</span>
         </div>
       </div>
-      <div class="result-topic" id="resultTopic" langIn="TestResultTopic">Fan nomi va mavzusi</div>
-      <div class="result-time" id="resultTime" langIn="TestResultTime">qancha vaqit ketgani</div>
+      <div class="result-topic" id="resultTopic" langIn="TestResultTopic" data-lang-skip>Fan nomi va mavzusi</div>
+      <div class="result-time">
+        <span langIn="TestResultTime">qancha vaqt ketgani</span>
+        <span class="result-time-value" id="resultTime"></span>
+      </div>
       <div class="result-actions">
         <button class="back-tomain-page" langIn="TestBackHome">Asosiy sahifaga</button>
         <button id="restartBtn" class="btn-confirm" langIn="TestRestartBtn">Qayta ishlash</button>

@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/blocktests.css" />
 </head>
 <body>
     <div id="progress-bg"></div>
@@ -131,8 +132,33 @@
         </div>
     </header>
     
-    <main class="container">
-        <!-- content here -->
+    <main class="block-page">
+        <section class="block-hero container">
+            <div class="block-hero-text">
+                <h1 class="block-title">Blok testlar</h1>
+                <p class="block-subtitle">
+                    Fanlar bo'yicha blok testlarni tanlang va tezda boshlang.
+                </p>
+            </div>
+            <div class="block-search">
+                <img
+                    src="../images/icons/searchicon.svg"
+                    alt="Qidiruv"
+                    class="block-search-icon"
+                />
+                <input
+                    id="blockSearch"
+                    class="block-search-input"
+                    type="text"
+                    placeholder="Fan yoki mavzu qidiring..."
+                />
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="block-chips" id="blockChips"></div>
+            <div class="block-grid" id="blockGrid"></div>
+        </section>
     </main>
     
     <!-- SETTINGS MODAL -->
@@ -226,6 +252,7 @@
             </div>
         </div>
     </div>
+    <script src="../js/blocktests.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script type="module" src="../js/auth-modal.js"></script>
     <script src="../js/settings-modal.js" defer></script>

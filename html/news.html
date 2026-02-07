@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blok testlar</title>
+    <title>Yangiliklar</title>
     <script>
         (function () {
             const theme = localStorage.getItem("theme");
@@ -15,6 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="../css/style.css"/>
+    <link rel="stylesheet" href="../css/news.css" />
 </head>
 <body>
     <div id="progress-bg"></div>
@@ -131,8 +132,31 @@
         </div>
     </header>
     
-    <main class="container">
-        <!-- content here -->
+    <main class="news-page">
+        <section class="news-hero container">
+            <div class="news-hero-text">
+                <h1 class="news-title">Yangiliklar</h1>
+                <p class="news-subtitle">Platformadagi so‘nggi yangiliklar va e’lonlar.</p>
+            </div>
+            <div class="news-search">
+                <img
+                    src="../images/icons/searchicon.svg"
+                    alt="Qidiruv"
+                    class="news-search-icon"
+                />
+                <input
+                    id="newsSearch"
+                    class="news-search-input"
+                    type="text"
+                    placeholder="Yangilik qidiring..."
+                />
+            </div>
+        </section>
+
+        <section class="container">
+            <div class="news-filters" id="newsFilters"></div>
+            <div class="news-grid" id="newsGrid"></div>
+        </section>
     </main>
     
     <!-- SETTINGS MODAL -->
@@ -226,6 +250,7 @@
             </div>
         </div>
     </div>
+    <script src="../js/news.js" defer></script>
     <script src="../js/main.js" defer></script>
     <script type="module" src="../js/auth-modal.js"></script>
     <script src="../js/settings-modal.js" defer></script>

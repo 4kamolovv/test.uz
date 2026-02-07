@@ -227,6 +227,8 @@ function setAnswerStatus(isCorrect, playSound = true) {
     : `${basePath}/images/icons/incorrec.gif`;
   const text = isCorrect ? "To'g'ri javob" : "Notog'ri javob";
 
+  elements.answerStatus.classList.toggle("is-correct", isCorrect);
+  elements.answerStatus.classList.toggle("is-wrong", !isCorrect);
   elements.answerStatus.innerHTML = `
     <img src="${icon}" alt="${text}" />
     <span>${text}</span>
@@ -243,7 +245,9 @@ function setAnswerStatus(isCorrect, playSound = true) {
 }
 
 function clearAnswerStatus() {
-  if (elements.answerStatus) elements.answerStatus.innerHTML = "";
+  if (!elements.answerStatus) return;
+  elements.answerStatus.innerHTML = "";
+  elements.answerStatus.classList.remove("is-correct", "is-wrong");
 }
 
 function setCheckButtonState(text, active) {
@@ -259,7 +263,7 @@ function setOptionsDisabled(disabled) {
   });
 }
 
-function renderQuestion() {
+  function renderQuestion() {
   if (!session || session.items.length === 0) return;
 
   const item = session.items[session.currentIndex];
@@ -301,11 +305,21 @@ function renderQuestion() {
 
   elements.optionButtons.forEach((btn, index) => {
     btn.classList.toggle("selected", false);
+    btn.classList.toggle("is-correct", false);
+    btn.classList.toggle("is-wrong", false);
     btn.querySelector(".quiz-variant").textContent = item.options[index];
   });
 
   if (item.answered) {
     setAnswerStatus(item.wasCorrect, false);
+    elements.optionButtons.forEach((btn, index) => {
+      if (index === item.correctIndex) {
+        btn.classList.add("is-correct");
+      }
+      if (item.selectedIndex === index && !item.wasCorrect) {
+        btn.classList.add("is-wrong");
+      }
+    });
     if (session.currentIndex === session.items.length - 1) {
       setCheckButtonState("Natijalar", true);
     } else {
@@ -375,6 +389,7 @@ function handleCheckClick() {
   const isCorrect = currentSelectedIndex === item.correctIndex;
   item.answered = true;
   item.wasCorrect = isCorrect;
+  item.selectedIndex = currentSelectedIndex;
   if (isCorrect) session.correctCount += 1;
   else session.wrongCount += 1;
   session.score = session.correctCount * SCORE_CORRECT - session.wrongCount * SCORE_WRONG;
@@ -382,6 +397,10 @@ function handleCheckClick() {
   saveSession();
   setAnswerStatus(isCorrect);
   setOptionsDisabled(true);
+  elements.optionButtons.forEach((btn, index) => {
+    btn.classList.toggle("is-correct", index === item.correctIndex);
+    btn.classList.toggle("is-wrong", index === item.selectedIndex && !isCorrect);
+  });
 
   if (session.currentIndex === session.items.length - 1) {
     setCheckButtonState("Natijalar", true);

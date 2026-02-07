@@ -78,6 +78,7 @@ function setLanguage(lang) {
   localStorage.setItem("siteLang", lang);
 
   document.querySelectorAll("[langIn]").forEach((el) => {
+    if (el.hasAttribute("data-lang-skip")) return;
     const key = el.getAttribute("langIn");
     if (langData[lang] && langData[lang][key]) {
       el.textContent = langData[lang][key];
@@ -85,6 +86,7 @@ function setLanguage(lang) {
   });
 
   document.querySelectorAll("[langHtml]").forEach((el) => {
+    if (el.hasAttribute("data-lang-skip")) return;
     const key = el.getAttribute("langHtml");
     if (langData[lang] && langData[lang][key]) {
       el.innerHTML = langData[lang][key];
