@@ -435,7 +435,10 @@ hr {
 .auth-overlay {
   position: fixed;
   inset: 0;
-  display: none;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
   background: rgba(0, 0, 0, 0.45);
   align-items: center;
   justify-content: center;
@@ -444,7 +447,9 @@ hr {
 }
 
 .auth-overlay.active {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .auth-modal {
@@ -504,6 +509,19 @@ hr {
 .auth-tab.active {
   border-color: var(--green-dark);
   background: var(--bg-gray);
+}
+
+@media (max-width: 520px) {
+  .auth-modal {
+    max-width: 100%;
+    padding: 14px;
+  }
+  .auth-tabs {
+    grid-template-columns: 1fr;
+  }
+  .auth-tab {
+    height: 40px;
+  }
 }
 
 .auth-pane {
@@ -792,6 +810,21 @@ html.auth-pending #userMenu {
   padding: 10px 50px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+@media (max-width: 520px) {
+  .modal-box {
+    max-width: 100%;
+    padding: 18px;
+  }
+  .modal-actions {
+    flex-direction: column;
+  }
+  .btn-cancel,
+  .btn-ok {
+    width: 100%;
+    padding: 12px 16px;
+  }
 }
 
 .yakunlash-image {
@@ -1202,6 +1235,25 @@ html.auth-pending #userMenu {
   }
   .settings-select {
     min-width: 120px;
+  }
+}
+
+@media (max-width: 520px) {
+  .settings-modal {
+    max-width: 100%;
+  }
+  .settings-title {
+    font-size: 16px;
+  }
+  .settings-right {
+    padding: 12px;
+  }
+  .set-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .settings-select {
+    width: 100%;
   }
 }
 
