@@ -28,6 +28,7 @@ const toggleBtn = document.getElementById("theme-toggle");
 const logoImg = document.getElementById("logo-img");
 const root = document.documentElement;
 const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
+const navToggle = document.getElementById("navToggle");
 
 function applyTheme(theme) {
   root.setAttribute("data-theme", theme);
@@ -116,6 +117,20 @@ function setLanguage(lang) {
 
   document.querySelectorAll(".settings-select").forEach((el) => {
     el.dispatchEvent(new Event("lang-update"));
+  });
+}
+
+if (navToggle) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("nav-open");
+    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  });
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (!document.body.classList.contains("nav-open")) return;
+      document.body.classList.remove("nav-open");
+      navToggle.setAttribute("aria-expanded", "false");
+    });
   });
 }
 // Language switcher>

@@ -8,6 +8,8 @@
   const cardWrapper = document.querySelector(".test-card-wrapper");
   const contentTitle = document.querySelector(".content-title");
   const searchInput = document.querySelector(".search-input");
+  const topicToggle = document.getElementById("topicToggle");
+  const topicsPanel = document.getElementById("topicsPanel");
 
   let allTests = [];
 
@@ -205,6 +207,10 @@ async function initThemeTest() {
       const topicKey = item.dataset.topic || "barchasi";
       setActiveTopic(topicKey);
       buildCards(topicKey, searchInput?.value || "");
+      if (topicsPanel && topicToggle) {
+        topicsPanel.classList.remove("is-open");
+        topicToggle.setAttribute("aria-expanded", "false");
+      }
     });
   });
 
@@ -223,6 +229,13 @@ async function initThemeTest() {
       buildCards(topicKey, searchInput?.value || "");
     });
   });
+
+  if (topicToggle && topicsPanel) {
+    topicToggle.addEventListener("click", () => {
+      const isOpen = topicsPanel.classList.toggle("is-open");
+      topicToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+  }
 }
 
   document.addEventListener("DOMContentLoaded", initThemeTest);

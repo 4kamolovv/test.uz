@@ -270,6 +270,23 @@ hr {
   align-items: center;
   justify-content: space-between;
 }
+.nav-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: 1px solid var(--bg-gray);
+  background: var(--bg-white);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-main);
+}
+.nav-toggle-icon {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
 /* Navigation */
 .nav-list {
   display: flex;
@@ -389,19 +406,30 @@ hr {
   .logo-wrapper {
     margin-right: auto;
   }
+  .nav-toggle {
+    display: inline-flex;
+  }
   .nav {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow: visible;
+    width: 100%;
+    order: 3;
+    display: none;
   }
   .nav-list {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 10px 12px;
-    padding: 6px 2px;
-    white-space: nowrap;
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px;
+    background: var(--bg-white);
+    border: 1px solid var(--bg-gray);
+    border-radius: var(--radius-lg);
   }
   .nav-link {
-    font-size: 14px;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 10px;
+  }
+  .nav-link:hover {
+    background: var(--bg-gray);
   }
   .btn-login {
     padding: 7px 18px;
@@ -429,6 +457,10 @@ hr {
     height: 30px;
     font-size: 12px;
   }
+}
+
+body.nav-open .nav {
+  display: block;
 }
 
 /* ================= AUTH MODAL ================= */
