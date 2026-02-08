@@ -13,6 +13,11 @@ const topItems = Array.from({ length: 10 }, (_, i) => ({
   score: document.getElementById(`topScore${i + 1}`),
 }));
 
+function t(key, fallback) {
+  const lang = localStorage.getItem("siteLang") || "uz";
+  return window.langData?.[lang]?.[key] || fallback;
+}
+
 function setTopRow(index, data) {
   const row = topItems[index];
   if (!row) return;
@@ -25,7 +30,7 @@ function setTopRow(index, data) {
   }
 
   row.nick.textContent = data.displayName || "User";
-  row.meta.textContent = `Yechilgan: ${data.solved || 0}`;
+  row.meta.textContent = `${t("RatingSolvedPrefix", "Yechilgan")}: ${data.solved || 0}`;
   row.score.textContent = String(data.totalScore || 0);
 }
 

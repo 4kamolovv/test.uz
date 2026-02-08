@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rating</title>
+    <title langIn="PageRatingTitle">Rating</title>
     <script>
         (function () {
             const theme = localStorage.getItem("theme");
@@ -47,6 +47,12 @@
             <!-- Actions -->
             <div class="header-actions">                
                 <!-- Login button (auth-modal.js ishlatadi) -->
+                <button class="btn-settings-header" type="button" id="openSettingsGuest" data-open-settings langTitle="SettingsTitle" title="Sozlamalar" aria-label="Settings">
+                    <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="12" cy="12" r="3.2"></circle>
+                        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
+                    </svg>
+                </button>
                 <button class="btn-login" type="button" id="openAuth"></button>
                 
                 <!-- User menu -->
@@ -99,7 +105,7 @@
                         </a>
                         
                         <!-- Settings -->
-                        <a class="dd-item" href="" id="openSettings" role="menuitem">
+                        <a class="dd-item" href="" data-open-settings role="menuitem">
                             <span class="dd-ico" aria-hidden="true">
                                 <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
                                     <circle cx="12" cy="12" r="3.2"></circle>
@@ -146,8 +152,8 @@
                 <!-- Left: рейтинг лист -->
                 <div class="toprating-card">
                     <div class="toprating-card-head">
-                        <b>Haftalik Top 10</b>
-                        <a class="toprating-link" href="../html/rating.html">Barchasi →</a>
+                        <b langIn="RatingWeeklyTop">Haftalik Top 10</b>
+                        <a class="toprating-link" href="../html/rating.html" langIn="RatingAllLink">Barchasi -></a>
                     </div>
                     
                     <div class="toprating-list">
@@ -155,8 +161,8 @@
                         <div class="toprating-item">
                             <span class="rank">1</span>
                             <div class="user">
-                                <b id="topNick1">—</b>
-                                <small id="topMeta1">—</small>
+                                <b id="topNick1">'</b>
+                                <small id="topMeta1">'</small>
                             </div>
                             <span class="score" id="topScore1">0</span>
                         </div>
@@ -165,8 +171,8 @@
                         <div class="toprating-item">
                             <span class="rank">2</span>
                             <div class="user">
-                                <b id="topNick2">—</b>
-                                <small id="topMeta2">—</small>
+                                <b id="topNick2">'</b>
+                                <small id="topMeta2">'</small>
                             </div>
                             <span class="score" id="topScore2">0</span>
                         </div>
@@ -175,8 +181,8 @@
                         <div class="toprating-item">
                             <span class="rank">3</span>
                             <div class="user">
-                                <b id="topNick3">—</b>
-                                <small id="topMeta3">—</small>
+                                <b id="topNick3">'</b>
+                                <small id="topMeta3">'</small>
                             </div>
                             <span class="score" id="topScore3">0</span>
                         </div>
@@ -185,8 +191,8 @@
                         <div class="toprating-item">
                             <span class="rank">4</span>
                             <div class="user">
-                                <b id="topNick4">—</b>
-                                <small id="topMeta4">—</small>
+                                <b id="topNick4">'</b>
+                                <small id="topMeta4">'</small>
                             </div>
                             <span class="score" id="topScore4">0</span>
                         </div>
@@ -195,8 +201,8 @@
                         <div class="toprating-item">
                             <span class="rank">5</span>
                             <div class="user">
-                                <b id="topNick5">—</b>
-                                <small id="topMeta5">—</small>
+                                <b id="topNick5">'</b>
+                                <small id="topMeta5">'</small>
                             </div>
                             <span class="score" id="topScore5">0</span>
                         </div>
@@ -205,8 +211,8 @@
                         <div class="toprating-item">
                             <span class="rank">6</span>
                             <div class="user">
-                                <b id="topNick6">—</b>
-                                <small id="topMeta6">—</small>
+                                <b id="topNick6">'</b>
+                                <small id="topMeta6">'</small>
                             </div>
                             <span class="score" id="topScore6">0</span>
                         </div>
@@ -215,8 +221,8 @@
                         <div class="toprating-item">
                             <span class="rank">7</span>
                             <div class="user">
-                                <b id="topNick7">—</b>
-                                <small id="topMeta7">—</small>
+                                <b id="topNick7">'</b>
+                                <small id="topMeta7">'</small>
                             </div>
                             <span class="score" id="topScore7">0</span>
                         </div>
@@ -225,8 +231,8 @@
                         <div class="toprating-item">
                             <span class="rank">8</span>
                             <div class="user">
-                                <b id="topNick8">—</b>
-                                <small id="topMeta8">—</small>
+                                <b id="topNick8">'</b>
+                                <small id="topMeta8">'</small>
                             </div>
                             <span class="score" id="topScore8">0</span>
                         </div>
@@ -235,8 +241,8 @@
                         <div class="toprating-item">
                             <span class="rank">9</span>
                             <div class="user">
-                                <b id="topNick9">—</b>
-                                <small id="topMeta9">—</small>
+                                <b id="topNick9">'</b>
+                                <small id="topMeta9">'</small>
                             </div>
                             <span class="score" id="topScore9">0</span>
                         </div>
@@ -245,8 +251,8 @@
                         <div class="toprating-item">
                             <span class="rank">10</span>
                             <div class="user">
-                                <b id="topNick10">—</b>
-                                <small id="topMeta10">—</small>
+                                <b id="topNick10">'</b>
+                                <small id="topMeta10">'</small>
                             </div>
                             <span class="score" id="topScore10">0</span>
                         </div>
@@ -304,17 +310,17 @@
     <!-- AUTH MODAL -->
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
-            <button class="auth-close" id="authClose" aria-label="Yopish">✕</button>
+            <button class="auth-close" id="authClose" aria-label="Yopish">вњ•</button>
             
             <div class="auth-tabs">
                 <button class="auth-tab active" id="tabLogin" type="button" langIn="AuthTabLogin">Kirish</button>
-                <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Ro‘yxatdan o‘tish</button>
+                <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Ro'yxatdan o'tish</button>
             </div>
             
             <!-- LOGIN -->
             <div class="auth-pane active" id="paneLogin">
                 <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin">Kirish</h3>
-                <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bo‘lishi kerak.</p>
+                <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bo'lishi kerak.</p>
                 
                 <form id="loginForm" class="auth-form">
                     <input id="loginEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
@@ -327,14 +333,14 @@
             
             <!-- REGISTER -->
             <div class="auth-pane" id="paneRegister">
-                <h3 class="auth-title" langIn="AuthTitleRegister">Ro‘yxatdan o‘tish</h3>
+                <h3 class="auth-title" langIn="AuthTitleRegister">Ro'yxatdan o'tish</h3>
                 <p class="auth-sub" langIn="AuthSubRegister">Emailingizga tasdiqlash havolasi yuboriladi.</p>
                 
                 <form id="registerForm" class="auth-form">
                     <input id="regNickname" class="auth-input" type="text" placeholder="Nickname" langPlaceholder="AuthPlaceholderNickname" required />
                     <input id="regEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
                     <input id="regPassword" class="auth-input" type="password" placeholder="Parol (kamida 6 ta)" langPlaceholder="AuthPlaceholderPasswordMin" minlength="6" required />
-                    <button class="auth-btn primary" type="submit" langIn="AuthBtnRegister">Ro‘yxatdan o‘tish</button>
+                    <button class="auth-btn primary" type="submit" langIn="AuthBtnRegister">Ro'yxatdan o'tish</button>
                 </form>
                 
                 <div class="auth-msg" id="regMsg"></div>
@@ -366,3 +372,6 @@
     <script src="../js/settings-modal.js" defer></script>
 </body>
 </html>
+
+
+

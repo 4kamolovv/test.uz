@@ -117,6 +117,7 @@ function injectCSS() {
 /* ------------------ Init ------------------ */
 function initAuthModal() {
   const openBtn = document.getElementById("openAuth");
+  const guestSettingsBtn = document.getElementById("openSettingsGuest");
   if (!openBtn) return;
 
   injectCSS();
@@ -266,11 +267,13 @@ function initAuthModal() {
 
     if (cachedLoggedIn) {
       openBtn.style.display = "none";
+      if (guestSettingsBtn) guestSettingsBtn.style.display = "none";
       if (userMenu) userMenu.style.display = "inline-block";
       if (userNameEl) userNameEl.textContent = cachedName;
       if (userAvatarEl) userAvatarEl.textContent = getInitial(cachedName);
     } else {
       openBtn.style.display = "inline-block";
+      if (guestSettingsBtn) guestSettingsBtn.style.display = "inline-grid";
       openBtn.textContent = t("AuthLoginBtn", "Kirish");
       if (userMenu) userMenu.style.display = "none";
       closeUserDropdown();
@@ -331,6 +334,7 @@ function initAuthModal() {
     if (currentUser) {
       // kirgan: user menu ko‘rsat, login tugma yashir
       openBtn.style.display = "none";
+      if (guestSettingsBtn) guestSettingsBtn.style.display = "none";
       if (userMenu) userMenu.style.display = "inline-block";
 
       const displayName =
@@ -345,6 +349,7 @@ function initAuthModal() {
     } else {
       // kirmagan: login tugma ko‘rsat, user menu yashir
       openBtn.style.display = "inline-block";
+      if (guestSettingsBtn) guestSettingsBtn.style.display = "inline-grid";
       openBtn.textContent = t("AuthLoginBtn", "Kirish");
       if (userMenu) userMenu.style.display = "none";
       closeUserDropdown();

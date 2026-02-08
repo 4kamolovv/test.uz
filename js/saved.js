@@ -1,11 +1,6 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import {
-  collection,
-  deleteDoc,
-  doc,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { collection, deleteDoc, doc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 const SELECTION_KEY = "quizSelection";
@@ -15,6 +10,11 @@ const emptyState = document.getElementById("savedEmpty");
 const openAuthBtn = document.getElementById("openAuth");
 
 let currentUser = null;
+
+function t(key, fallback) {
+  const lang = localStorage.getItem("siteLang") || "uz";
+  return window.langData?.[lang]?.[key] || fallback;
+}
 
 function getKey(subject, topic) {
   return `${subject}|||${topic}`;
@@ -26,10 +26,11 @@ function getDocId(key) {
 
 function showLoginRequired() {
   openAuthBtn?.click();
+  const msg = t("SavedNeedLoginToast", "Saqlanganlarni ko'rish uchun tizimga kiring");
   if (typeof window.showToast === "function") {
-    window.showToast("warning", "Saqlanganlarni ko'rish uchun tizimga kiring");
+    window.showToast("warning", msg);
   } else {
-    alert("Saqlanganlarni ko'rish uchun tizimga kiring");
+    alert(msg);
   }
 }
 
@@ -44,7 +45,7 @@ function renderEmpty(text) {
 function renderCards(items) {
   if (!wrapper) return;
   if (!items.length) {
-    renderEmpty("Hozircha saqlangan testlar yo'q.");
+    renderEmpty(t("SavedEmpty", "Hozircha saqlangan testlar yo'q."));
     return;
   }
 
@@ -57,7 +58,7 @@ function renderCards(items) {
         <div class="test-card-top-wrapper">
           <div class="test-card-top">
             <div class="test-card-subject">${item.displaySubject || item.subject}</div>
-            <button class="test-bookmark-btn saved" type="button" aria-label="Saqlash">
+            <button class="test-bookmark-btn saved" type="button" aria-label="${t("SavedRemoveAria", "Saqlash")}">
               <svg class="test-bookmark-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.70898 7.5415C9.19232 8.08316 10.809 8.08316 12.2923 7.5415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M14.0176 1.6665H5.98424C4.20924 1.6665 2.76758 3.1165 2.76758 4.88316V16.6249C2.76758 18.1249 3.84258 18.7582 5.15924 18.0332L9.22591 15.7749C9.65924 15.5332 10.3592 15.5332 10.7842 15.7749L14.8509 18.0332C16.1676 18.7665 17.2426 18.1332 17.2426 16.6249V4.88316C17.2342 3.1165 15.7926 1.6665 14.0176 1.6665Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -69,8 +70,8 @@ function renderCards(items) {
         </div>
         <div class="test-card-footer">
           <div class="test-card-stat">
-            <img src="${basePath}/images/icons/quantityicon.svg" alt="Test soni" class="test-icon">
-            <span>${item.count || 0} test</span>
+            <img src="${basePath}/images/icons/quantityicon.svg" alt="${t("TestCountAlt", "Test soni")}" class="test-icon">
+            <span>${item.count || 0} ${t("SavedTestsCount", "test")}</span>
           </div>
         </div>
       </div>
@@ -135,10 +136,20 @@ function bindEvents() {
 onAuthStateChanged(auth, async (user) => {
   currentUser = user && user.emailVerified ? user : null;
   if (!currentUser) {
-    renderEmpty("Saqlanganlarni ko'rish uchun tizimga kiring.");
+    renderEmpty(t("SavedNeedLogin", "Saqlanganlarni ko'rish uchun tizimga kiring."));
     return;
   }
   await loadSaved();
+});
+
+document.querySelectorAll(".settings-select").forEach((el) => {
+  el.addEventListener("lang-update", () => {
+    if (!currentUser) {
+      renderEmpty(t("SavedNeedLogin", "Saqlanganlarni ko'rish uchun tizimga kiring."));
+      return;
+    }
+    loadSaved();
+  });
 });
 
 bindEvents();

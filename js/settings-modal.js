@@ -1,17 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const openBtn = document.getElementById("openSettings");
+  const openBtns = Array.from(document.querySelectorAll("[data-open-settings]"));
   const overlay = document.getElementById("settingsOverlay");
   const closeBtn = document.getElementById("settingsClose");
   const nav = document.getElementById("settingsNav");
   const themeSelect = document.getElementById("setTheme");
   const langSelect = document.getElementById("setLang");
 
-  if (!openBtn || !overlay || !closeBtn) return;
+  if (!openBtns.length || !overlay || !closeBtn) return;
 
   const open = () => overlay.classList.add("active");
   const close = () => overlay.classList.remove("active");
 
-  openBtn.addEventListener("click", (e) => { e.preventDefault(); open(); });
+  openBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      open();
+    });
+  });
   closeBtn.addEventListener("click", close);
 
   overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });

@@ -11,6 +11,11 @@
 
   let allTests = [];
 
+  function t(key, fallback) {
+    const lang = localStorage.getItem("siteLang") || "uz";
+    return window.langData?.[lang]?.[key] || fallback;
+  }
+
   function normalizeKey(value) {
     return String(value || "")
       .toLowerCase()
@@ -61,7 +66,7 @@
       <div class="test-card-top-wrapper">
         <div class="test-card-top">
           <div class="test-card-subject">${highlight(displaySubject, query)}</div>
-          <button class="test-bookmark-btn" type="button" aria-label="Saqlash">
+          <button class="test-bookmark-btn" type="button" aria-label="${t("ThemeBookmarkAria", "Saqlash")}">
             <svg class="test-bookmark-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M7.70898 7.5415C9.19232 8.08316 10.809 8.08316 12.2923 7.5415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M14.0176 1.6665H5.98424C4.20924 1.6665 2.76758 3.1165 2.76758 4.88316V16.6249C2.76758 18.1249 3.84258 18.7582 5.15924 18.0332L9.22591 15.7749C9.65924 15.5332 10.3592 15.5332 10.7842 15.7749L14.8509 18.0332C16.1676 18.7665 17.2426 18.1332 17.2426 16.6249V4.88316C17.2342 3.1165 15.7926 1.6665 14.0176 1.6665Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -73,15 +78,15 @@
       </div>
       <div class="test-card-footer">
         <div class="test-card-stat">
-          <img src="${basePath}/images/icons/staricon.svg" alt="Reyting" class="test-icon">
+          <img src="${basePath}/images/icons/staricon.svg" alt="${t("RatingAlt", "Reyting")}" class="test-icon">
           <span>4.5</span>
         </div>
         <div class="test-card-stat">
-          <img src="${basePath}/images/icons/quantityicon.svg" alt="Test soni" class="test-icon">
-          <span>${count} test</span>
+          <img src="${basePath}/images/icons/quantityicon.svg" alt="${t("TestCountAlt", "Test soni")}" class="test-icon">
+          <span>${count} ${t("SavedTestsCount", "test")}</span>
         </div>
         <div class="test-card-stat">
-          <img src="${basePath}/images/icons/viewsicon.svg" alt="Ko'rilgan" class="test-icon">
+          <img src="${basePath}/images/icons/viewsicon.svg" alt="${t("ViewsAlt", "Ko'rilgan")}" class="test-icon">
           <span>${count * 10}</span>
         </div>
       </div>
@@ -140,12 +145,12 @@
   if (contentTitle) {
     const activeItem =
       topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
-    const label = activeItem?.querySelector("span")?.textContent || "Barchasi";
+    const label = activeItem?.querySelector("span")?.textContent || t("ThemeAllTitle", "Barchasi");
     contentTitle.textContent = label;
   }
 
   if (cards.length === 0) {
-    cardWrapper.innerHTML = `<div class="empty-state">Hozircha testlar yo'q.</div>`;
+    cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeEmpty", "Hozircha testlar yo'q.")}</div>`;
     return;
   }
 
@@ -183,7 +188,7 @@ async function initThemeTest() {
   } catch (err) {
     console.error("Failed to load data.json:", err);
     if (cardWrapper) {
-      cardWrapper.innerHTML = `<div class="empty-state">Ma'lumot yuklanmadi.</div>`;
+      cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeLoadError", "Ma'lumot yuklanmadi.")}</div>`;
     }
     return;
   }
@@ -208,6 +213,15 @@ async function initThemeTest() {
       topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
     const topicKey = currentActive?.dataset?.topic || "barchasi";
     buildCards(topicKey, searchInput.value || "");
+  });
+
+  document.querySelectorAll(".settings-select").forEach((el) => {
+    el.addEventListener("lang-update", () => {
+      const currentActive =
+        topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
+      const topicKey = currentActive?.dataset?.topic || "barchasi";
+      buildCards(topicKey, searchInput?.value || "");
+    });
   });
 }
 
