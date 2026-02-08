@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blok testlar</title>
+    <title langIn="PageBlockTestsTitle">Blok testlar</title>
     <script>
         (function () {
             const theme = localStorage.getItem("theme");
@@ -135,8 +135,8 @@
     <main class="block-page">
         <section class="block-hero container">
             <div class="block-hero-text">
-                <h1 class="block-title">Blok testlar</h1>
-                <p class="block-subtitle">
+                <h1 class="block-title" langIn="BlockTitle">Blok testlar</h1>
+                <p class="block-subtitle" langIn="BlockSubtitle">
                     Fanlar bo'yicha blok testlarni tanlang va tezda boshlang.
                 </p>
             </div>
@@ -144,6 +144,7 @@
                 <img
                     src="../images/icons/searchicon.svg"
                     alt="Qidiruv"
+                    langAlt="SearchAlt"
                     class="block-search-icon"
                 />
                 <input
@@ -151,6 +152,7 @@
                     class="block-search-input"
                     type="text"
                     placeholder="Fan yoki mavzu qidiring..."
+                    langPlaceholder="BlockSearchPlaceholder"
                 />
             </div>
         </section>

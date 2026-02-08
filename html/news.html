@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yangiliklar</title>
+    <title langIn="PageNewsTitle">Yangiliklar</title>
     <script>
         (function () {
             const theme = localStorage.getItem("theme");
@@ -135,13 +135,14 @@
     <main class="news-page">
         <section class="news-hero container">
             <div class="news-hero-text">
-                <h1 class="news-title">Yangiliklar</h1>
-                <p class="news-subtitle">Platformadagi so‘nggi yangiliklar va e’lonlar.</p>
+                <h1 class="news-title" langIn="NewsTitle">Yangiliklar</h1>
+                <p class="news-subtitle" langIn="NewsSubtitle">Platformadagi so‘nggi yangiliklar va e’lonlar.</p>
             </div>
             <div class="news-search">
                 <img
                     src="../images/icons/searchicon.svg"
                     alt="Qidiruv"
+                    langAlt="SearchAlt"
                     class="news-search-icon"
                 />
                 <input
@@ -149,6 +150,7 @@
                     class="news-search-input"
                     type="text"
                     placeholder="Yangilik qidiring..."
+                    langPlaceholder="NewsSearchPlaceholder"
                 />
             </div>
         </section>
