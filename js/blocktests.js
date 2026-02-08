@@ -1,6 +1,6 @@
 (() => {
   const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
-  const DATA_URL = `${basePath}/data/data.json`;
+  const DATA_URL = "https://4kamolov.github.io/docs/data/data.json";
 
   const chipsEl = document.getElementById("blockChips");
   const gridEl = document.getElementById("blockGrid");

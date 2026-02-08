@@ -169,6 +169,11 @@
         "ProfileUntitledTest": "Nomsiz test",
         "ProfileScoreUnit": "ball",
         "ProfileLoadError": "Ma\u0027lumotlarni yuklashda xatolik yuz berdi.",
+        "ProfileUploadPhoto": "Rasm yuklash",
+        "ProfileAvatarSavedTitle": "Saqlandi",
+        "ProfileAvatarSavedDesc": "Rasm yangilandi",
+        "ProfileAvatarErrorTitle": "Xatolik",
+        "ProfileAvatarErrorDesc": "Rasm yuklanmadi",
         "ProfileToastErrorTitle": "Xatolik",
         "ProfileToastErrorDesc": "Profil ma\u0027lumotlari yuklanmadi",
         "TestPageTitle": "Test",
@@ -246,7 +251,9 @@
         "ThemeLoadError": "Ma\u0027lumot yuklanmadi.",
         "RatingWeeklyTop": "Haftalik Top 10",
         "RatingAllLink": "Barchasi →",
-        "RatingSolvedPrefix": "Yechilgan"
+        "RatingSolvedPrefix": "Yechilgan",
+        "RatingLevel": "Daraja",
+        "RatingAccuracy": "Aniqlik"
     },
     "ru": {
         "AuthRegSuccessTitle": "Регистрация завершена!",
@@ -418,6 +425,11 @@
         "ProfileUntitledTest": "Тест без названия",
         "ProfileScoreUnit": "балл",
         "ProfileLoadError": "Ошибка при загрузке данных.",
+        "ProfileUploadPhoto": "Загрузить фото",
+        "ProfileAvatarSavedTitle": "Сохранено",
+        "ProfileAvatarSavedDesc": "Фото обновлено",
+        "ProfileAvatarErrorTitle": "Ошибка",
+        "ProfileAvatarErrorDesc": "Фото не загружено",
         "ProfileToastErrorTitle": "Ошибка",
         "ProfileToastErrorDesc": "Данные профиля не загрузились",
         "TestPageTitle": "Тест",
@@ -495,6 +507,8 @@
         "ThemeLoadError": "Не удалось загрузить данные.",
         "RatingWeeklyTop": "Недельный Топ 10",
         "RatingAllLink": "Все →",
-        "RatingSolvedPrefix": "Решено"
+        "RatingSolvedPrefix": "Решено",
+        "RatingLevel": "Уровень",
+        "RatingAccuracy": "Точность"
     }
 }

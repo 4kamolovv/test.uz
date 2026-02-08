@@ -21,17 +21,63 @@ function t(key, fallback) {
 function setTopRow(index, data) {
   const row = topItems[index];
   if (!row) return;
+  const userWrap = row.nick?.parentElement;
+  let avatar = userWrap?.querySelector(".rating-avatar");
+  if (userWrap && !avatar) {
+    avatar = document.createElement("span");
+    avatar.className = "rating-avatar";
+    userWrap.insertBefore(avatar, row.nick);
+  }
 
   if (!data) {
     row.nick.textContent = "-";
     row.meta.textContent = "-";
     row.score.textContent = "0";
+    if (avatar) {
+      avatar.textContent = "-";
+      avatar.style.backgroundImage = "";
+    }
     return;
   }
 
+  const totalScore = Number(data.totalScore) || 0;
+  const solved = Number(data.solved) || 0;
+  const correct = Number(data.correct) || 0;
+  const wrong = Number(data.wrong) || 0;
+
+  const totalAnswers = correct + wrong;
+  const accuracy = totalAnswers > 0 ? Math.round((correct / totalAnswers) * 100) : 0;
+  const level = Math.floor(totalScore / 100) + 1;
+
   row.nick.textContent = data.displayName || "User";
-  row.meta.textContent = `${t("RatingSolvedPrefix", "Yechilgan")}: ${data.solved || 0}`;
-  row.score.textContent = String(data.totalScore || 0);
+  row.meta.innerHTML = `
+    <span class="rating-chip">
+      <img src="../images/icons/alltests.png" alt="${t("RatingSolvedPrefix", "Yechilgan")}" />
+      ${t("RatingSolvedPrefix", "Yechilgan")}: ${solved}
+    </span>
+    <span class="rating-chip">
+      <img src="../images/icons/xpicon.svg" alt="${t("RatingLevel", "Daraja")}" />
+      ${t("RatingLevel", "Daraja")}: ${level}
+    </span>
+    <span class="rating-chip">
+      <img src="../images/icons/correct.webp" alt="${t("RatingAccuracy", "Aniqlik")}" />
+      ${t("RatingAccuracy", "Aniqlik")}: ${accuracy}%
+    </span>
+  `;
+  row.score.textContent = String(totalScore);
+
+  if (avatar) {
+    const letter = row.nick.textContent.trim()[0]?.toUpperCase() || "U";
+    if (data.avatarUrl) {
+      avatar.textContent = "";
+      avatar.style.backgroundImage = `url("${data.avatarUrl}")`;
+      avatar.classList.add("has-photo");
+    } else {
+      avatar.textContent = letter;
+      avatar.style.backgroundImage = "";
+      avatar.classList.remove("has-photo");
+    }
+  }
 }
 
 async function loadTopTen() {

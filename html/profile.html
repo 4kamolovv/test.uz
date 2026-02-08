@@ -142,7 +142,11 @@
   <main class="profile-page container">
     <section class="profile-hero-card">
       <div class="profile-hero-left">
-        <div class="profile-avatar" id="profileAvatar">U</div>
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <input class="profile-avatar-input" id="profileAvatarInput" type="file" accept="image/*" hidden />
+          <button class="profile-avatar-btn" id="profileAvatarBtn" type="button" langIn="ProfileUploadPhoto">Rasm yuklash</button>
+        </div>
         <div class="profile-user-meta">
           <h1 class="profile-name" id="profileName" langIn="ProfileGuestName">Foydalanuvchi</h1>
           <p class="profile-email" id="profileEmail" langIn="ProfileEmailPrompt">Email: -</p>

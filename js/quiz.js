@@ -1,4 +1,4 @@
-﻿import { auth, db } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import {
   addDoc,
@@ -10,7 +10,7 @@ import {
 
 (() => {
   const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
-  const DATA_URL = `${basePath}/data/data.json`;
+  const DATA_URL = "https://4kamolov.github.io/docs/data/data.json";
 
   const SESSION_KEY = "quizSession";
   const SELECTION_KEY = "quizSelection";
@@ -354,7 +354,7 @@ import {
     if (elements.resultWrong)
       elements.resultWrong.textContent = String(session.wrongCount);
     if (elements.resultTopic)
-      elements.resultTopic.textContent = `${session.displaySubject || session.subject} вЂ” ${session.topic}`;
+      elements.resultTopic.textContent = `${session.displaySubject || session.subject} " ${session.topic}`;
     if (elements.resultTime) {
       const time = formatTime(session.elapsedMs);
       elements.resultTime.textContent = time;
@@ -631,4 +631,3 @@ import {
 
   document.addEventListener("DOMContentLoaded", initQuiz);
 })();
-

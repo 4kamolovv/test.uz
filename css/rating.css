@@ -62,16 +62,63 @@
   font-size: 12px;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+.rating-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.42));
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: var(--green-dark);
+  font-weight: 800;
+  font-size: 12px;
+  display: grid;
+  place-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  flex: 0 0 auto;
+}
+
+.rating-avatar.has-photo {
+  color: transparent;
+  text-indent: -999px;
+}
+
 .user b {
   display: block;
   color: var(--text-main);
-  font-size: 13px;
+  font-size: 15px;
+  white-space: nowrap;
 }
 
 .user small {
   color: var(--text-gray);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 12px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 6px 10px;
+  white-space: nowrap;
+}
+
+.rating-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rating-chip img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+  display: block;
 }
 
 .score {

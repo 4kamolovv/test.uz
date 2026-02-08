@@ -22,6 +22,13 @@
   gap: 14px;
 }
 
+.profile-avatar-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
 .profile-avatar {
   width: 74px;
   height: 74px;
@@ -33,6 +40,29 @@
   font-weight: 900;
   display: grid;
   place-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.profile-avatar.has-photo {
+  color: transparent;
+  text-indent: -999px;
+}
+
+.profile-avatar-btn {
+  border: none;
+  background: var(--bg-gray);
+  color: var(--text-main);
+  font-weight: 700;
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.profile-avatar-btn:hover {
+  filter: brightness(0.96);
 }
 
 .profile-name {
