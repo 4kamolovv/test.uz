@@ -1,4 +1,4 @@
-import { auth, db } from "./firebase.js";
+﻿import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 import {
   addDoc,
@@ -354,7 +354,7 @@ import {
     if (elements.resultWrong)
       elements.resultWrong.textContent = String(session.wrongCount);
     if (elements.resultTopic)
-      elements.resultTopic.textContent = `${session.displaySubject || session.subject} — ${session.topic}`;
+      elements.resultTopic.textContent = `${session.displaySubject || session.subject} вЂ” ${session.topic}`;
     if (elements.resultTime) {
       const time = formatTime(session.elapsedMs);
       elements.resultTime.textContent = time;
@@ -631,3 +631,4 @@ import {
 
   document.addEventListener("DOMContentLoaded", initQuiz);
 })();
+

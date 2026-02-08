@@ -1,4 +1,4 @@
-/* ============================= ST-HERO ============================= */
+﻿/* ============================= ST-HERO ============================= */
 /* Landing page styles (index) */
 
 .landing {
@@ -356,7 +356,7 @@
   gap: 18px;
 }
 
-/* Kartalar ichini “nafas” oldiramiz */
+/* Kartalar ichini вЂњnafasвЂќ oldiramiz */
 .feature-card {
   padding: 18px;
 }
@@ -367,7 +367,7 @@
   padding: 16px;
 }
 
-/* “Qanday ishlaydi” 4 qadam bo‘lgani uchun desktopda 2x2 */
+/* вЂњQanday ishlaydiвЂќ 4 qadam boвЂlgani uchun desktopda 2x2 */
 .how-grid {
   grid-template-columns: repeat(2, 1fr);
 }
@@ -472,3 +472,4 @@
     grid-template-columns: 1fr;
   }
 }
+

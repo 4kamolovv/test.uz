@@ -1,4 +1,4 @@
-// /js/auth.js
+﻿// /js/auth.js
 import { auth, db } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
@@ -25,7 +25,7 @@ export async function registerWithEmail({ email, password, nickname }) {
   const nick = normalizeNick(nickname);
 
   if (!nick) {
-    const e = new Error("Nickname bo‘sh");
+    const e = new Error("Nickname bosh");
     e.code = "nick/empty";
     throw e;
   }
@@ -34,7 +34,7 @@ export async function registerWithEmail({ email, password, nickname }) {
   const cred = await createUserWithEmailAndPassword(auth, email, password);
 
   try {
-    // 2) transaction: nicknames/{nick} bandmi yo‘qmi
+    // 2) transaction: nicknames/{nick} bandmi yoqmi
     const nickRef = doc(db, "nicknames", nick);
 
     await runTransaction(db, async (tx) => {
@@ -50,7 +50,7 @@ export async function registerWithEmail({ email, password, nickname }) {
       });
     });
 
-    // 3) displayName yozamiz (nick original ko‘rinishda chiqsin desang nickname’ni qo‘y)
+    // 3) displayName yozamiz (nick original korinishda chiqsin desang nickname'ni qoy)
     await updateProfile(cred.user, { displayName: nickname.trim() });
 
     // 4) email verification yuboramiz
@@ -61,7 +61,7 @@ export async function registerWithEmail({ email, password, nickname }) {
 
     return cred;
   } catch (err) {
-    // agar nick band bo‘lsa, yaratib qo‘yilgan userni tozalash kerak bo‘ladi
+    // agar nick band bolsa, yaratib qoyilgan userni tozalash kerak boladi
     // Client SDK bilan userni delete qilish mumkin:
     try {
       await cred.user.delete();
@@ -78,7 +78,7 @@ export async function loginWithEmail({ email, password }) {
 
 export async function resendVerification() {
   const user = auth.currentUser;
-  if (!user) throw new Error("User yo‘q. Avval login qiling.");
+  if (!user) throw new Error("User yoq. Avval login qiling.");
   await sendEmailVerification(user);
 }
 
@@ -89,3 +89,4 @@ export async function logout() {
 export function watchUser(cb) {
   return onAuthStateChanged(auth, cb);
 }
+

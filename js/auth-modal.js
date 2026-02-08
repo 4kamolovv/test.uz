@@ -1,4 +1,4 @@
-// /js/auth-modal.js
+﻿// /js/auth-modal.js
 import { loginWithEmail, registerWithEmail, logout, watchUser } from "./auth.js";
 
 /* ------------------ helpers ------------------ */
@@ -155,7 +155,7 @@ function initAuthModal() {
   const closeAuthModal = () => overlay?.classList.remove("active");
 
   openBtn.addEventListener("click", () => {
-    // faqat kirmagan bo‘lsa modal ochiladi
+    // faqat kirmagan boвЂlsa modal ochiladi
     if (!currentUser) openAuthModal();
   });
 
@@ -332,7 +332,7 @@ function initAuthModal() {
     currentUser = user && user.emailVerified ? user : null;
 
     if (currentUser) {
-      // kirgan: user menu ko‘rsat, login tugma yashir
+      // kirgan: user menu koвЂrsat, login tugma yashir
       openBtn.style.display = "none";
       if (guestSettingsBtn) guestSettingsBtn.style.display = "none";
       if (userMenu) userMenu.style.display = "inline-block";
@@ -347,7 +347,7 @@ function initAuthModal() {
       localStorage.setItem("authLoggedIn", "true");
       localStorage.setItem("authUserName", displayName);
     } else {
-      // kirmagan: login tugma ko‘rsat, user menu yashir
+      // kirmagan: login tugma koвЂrsat, user menu yashir
       openBtn.style.display = "inline-block";
       if (guestSettingsBtn) guestSettingsBtn.style.display = "inline-grid";
       openBtn.textContent = t("AuthLoginBtn", "Kirish");
@@ -363,3 +363,4 @@ function initAuthModal() {
 }
 
 document.addEventListener("DOMContentLoaded", initAuthModal);
+

@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
   const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
   const DATA_URL = `${basePath}/data/data.json`;
 
@@ -20,7 +20,7 @@
     return String(value || "")
       .toLowerCase()
       .trim()
-      .replace(/['’]/g, "")
+      .replace(/'/g, "")
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/^-+|-+$/g, "");
   }
@@ -227,3 +227,4 @@ async function initThemeTest() {
 
   document.addEventListener("DOMContentLoaded", initThemeTest);
 })();
+
