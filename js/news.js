@@ -1,86 +1,12 @@
 (() => {
-  const newsData = [
-    {
-      id: 1,
-      title: {
-        uz: "Yangi blok testlar to'plami qo'shildi",
-        ru: "Добавлен новый набор блочных тестов",
-      },
-      text: {
-        uz: "Matematika va Ona tili bo'yicha yangi blok testlar platformaga yuklandi.",
-        ru: "На платформу загружены новые блочные тесты по математике и родному языку.",
-      },
-      tag: { uz: "Yangilanish", ru: "Обновление" },
-      date: "2026-02-05",
-    },
-    {
-      id: 2,
-      title: {
-        uz: "Reyting tizimi yangilandi",
-        ru: "Система рейтинга обновлена",
-      },
-      text: {
-        uz: "Reyting hisoblash algoritmi soddalashtirildi va natijalar tezroq yangilanadi.",
-        ru: "Алгоритм подсчета рейтинга упрощен, результаты обновляются быстрее.",
-      },
-      tag: { uz: "Reyting", ru: "Рейтинг" },
-      date: "2026-02-02",
-    },
-    {
-      id: 3,
-      title: {
-        uz: "Profil sahifasi yangilandi",
-        ru: "Страница профиля обновлена",
-      },
-      text: {
-        uz: "Profil oynasiga statistikalar va faoliyat tarixi qo'shildi.",
-        ru: "В профиль добавлены статистика и история активности.",
-      },
-      tag: { uz: "Profil", ru: "Профиль" },
-      date: "2026-01-29",
-    },
-    {
-      id: 4,
-      title: { uz: "Qidiruv funksiyasi yaxshilandi", ru: "Улучшен поиск" },
-      text: {
-        uz: "Mavzular va testlar bo'yicha qidiruv yanada tez ishlaydi.",
-        ru: "Поиск по темам и тестам работает быстрее.",
-      },
-      tag: { uz: "Qidiruv", ru: "Поиск" },
-      date: "2026-01-25",
-    },
-    {
-      id: 5,
-      title: {
-        uz: "Testlarda timer ko'rsatildi",
-        ru: "В тестах добавлен таймер",
-      },
-      text: {
-        uz: "Har bir testda sarflangan vaqt avtomatik hisoblanadi.",
-        ru: "В каждом тесте потраченное время считается автоматически.",
-      },
-      tag: { uz: "Testlar", ru: "Тесты" },
-      date: "2026-01-20",
-    },
-    {
-      id: 6,
-      title: {
-        uz: "Yangi fanlar qo'shilishi rejalashtirilmoqda",
-        ru: "Планируется добавление новых предметов",
-      },
-      text: {
-        uz: "Kimyo va Fizika bo'yicha qo'shimcha savollar ustida ishlayapmiz.",
-        ru: "Мы готовим дополнительные вопросы по химии и физике.",
-      },
-      tag: { uz: "E'lon", ru: "Объявление" },
-      date: "2026-01-15",
-    },
-  ];
+  const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
+  const NEWS_URL = `${basePath}/data/news.json`;
 
   const filtersEl = document.getElementById("newsFilters");
   const gridEl = document.getElementById("newsGrid");
   const searchInput = document.getElementById("newsSearch");
 
+  let newsData = [];
   let activeTag = "__all__";
 
   function lang() {
@@ -168,7 +94,18 @@
     gridEl.innerHTML = filtered.map(cardHtml).join("");
   }
 
-  function init() {
+  async function loadNewsData() {
+    try {
+      const res = await fetch(NEWS_URL);
+      newsData = await res.json();
+    } catch (err) {
+      console.error("Failed to load news.json:", err);
+      newsData = [];
+    }
+  }
+
+  async function init() {
+    await loadNewsData();
     renderFilters();
     render();
   }

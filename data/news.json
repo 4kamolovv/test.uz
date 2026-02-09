@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "title": {
+      "uz": "Yangi blok testlar to'plami qo'shildi",
+      "ru": "Добавлен новый набор блочных тестов"
+    },
+    "text": {
+      "uz": "Matematika va Ona tili bo'yicha yangi blok testlar platformaga yuklandi.",
+      "ru": "На платформу загружены новые блочные тесты по математике и родному языку."
+    },
+    "tag": {
+      "uz": "Yangilanish",
+      "ru": "Обновление"
+    },
+    "date": "2026-02-05"
+  },
+  {
+    "id": 2,
+    "title": {
+      "uz": "Reyting tizimi yangilandi",
+      "ru": "Система рейтинга обновлена"
+    },
+    "text": {
+      "uz": "Reyting hisoblash algoritmi soddalashtirildi va natijalar tezroq yangilanadi.",
+      "ru": "Алгоритм подсчета рейтинга упрощен, результаты обновляются быстрее."
+    },
+    "tag": {
+      "uz": "Reyting",
+      "ru": "Рейтинг"
+    },
+    "date": "2026-02-02"
+  },
+  {
+    "id": 3,
+    "title": {
+      "uz": "Profil sahifasi yangilandi",
+      "ru": "Страница профиля обновлена"
+    },
+    "text": {
+      "uz": "Profil oynasiga statistikalar va faoliyat tarixi qo'shildi.",
+      "ru": "В профиль добавлены статистика и история активности."
+    },
+    "tag": {
+      "uz": "Profil",
+      "ru": "Профиль"
+    },
+    "date": "2026-01-29"
+  },
+  {
+    "id": 4,
+    "title": {
+      "uz": "Qidiruv funksiyasi yaxshilandi",
+      "ru": "Улучшен поиск"
+    },
+    "text": {
+      "uz": "Mavzular va testlar bo'yicha qidiruv yanada tez ishlaydi.",
+      "ru": "Поиск по темам и тестам работает быстрее."
+    },
+    "tag": {
+      "uz": "Qidiruv",
+      "ru": "Поиск"
+    },
+    "date": "2026-01-25"
+  },
+  {
+    "id": 5,
+    "title": {
+      "uz": "Testlarda timer ko'rsatildi",
+      "ru": "В тестах добавлен таймер"
+    },
+    "text": {
+      "uz": "Har bir testda sarflangan vaqt avtomatik hisoblanadi.",
+      "ru": "В каждом тесте потраченное время считается автоматически."
+    },
+    "tag": {
+      "uz": "Testlar",
+      "ru": "Тесты"
+    },
+    "date": "2026-01-20"
+  },
+  {
+    "id": 6,
+    "title": {
+      "uz": "Yangi fanlar qo'shilishi rejalashtirilmoqda",
+      "ru": "Планируется добавление новых предметов"
+    },
+    "text": {
+      "uz": "Kimyo va Fizika bo'yicha qo'shimcha savollar ustida ishlayapmiz.",
+      "ru": "Мы готовим дополнительные вопросы по химии и физике."
+    },
+    "tag": {
+      "uz": "E'lon",
+      "ru": "Объявление"
+    },
+    "date": "2026-01-15"
+  },
+  {
+    "id": 7,
+    "title": {
+      "uz": "Mobil ko'rinish yaxshilandi",
+      "ru": "Улучшена мобильная версия"
+    },
+    "text": {
+      "uz": "Navigatsiya, qidiruv va kartalar mobil qurilmalarda yanada qulay bo'ldi.",
+      "ru": "Навигация, поиск и карточки стали удобнее на мобильных устройствах."
+    },
+    "tag": {
+      "uz": "Interfeys",
+      "ru": "Интерфейс"
+    },
+    "date": "2026-02-08"
+  },
+  {
+    "id": 8,
+    "title": {
+      "uz": "Saqlanganlar va natijalar qidiruvi qo'shildi",
+      "ru": "Добавлен поиск в сохраненных и результатах"
+    },
+    "text": {
+      "uz": "Endi Saqlanganlar va Mening natijalarim sahifalarida fan hamda mavzu bo'yicha qidirish mumkin.",
+      "ru": "Теперь на страницах «Сохраненные» и «Мои результаты» доступен поиск по предмету и теме."
+    },
+    "tag": {
+      "uz": "Qidiruv",
+      "ru": "Поиск"
+    },
+    "date": "2026-02-09"
+  }
+]
