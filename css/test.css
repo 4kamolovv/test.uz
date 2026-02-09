@@ -328,7 +328,9 @@
     flex-direction: column;
     align-items: stretch;
   }
-  .btn-complete,
+  .btn-complete {
+    display: none; 
+  }
   .btn-check {
     width: 100%;
   }
