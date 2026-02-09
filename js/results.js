@@ -6,8 +6,10 @@ const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 const wrapper = document.getElementById("resultsCards");
 const emptyState = document.getElementById("resultsEmpty");
 const openAuthBtn = document.getElementById("openAuth");
+const searchInput = document.getElementById("resultsSearch");
 
 let currentUser = null;
+let allResults = [];
 
 function t(key, fallback) {
   const lang = localStorage.getItem("siteLang") || "uz";
@@ -41,7 +43,25 @@ function renderEmpty(text) {
   if (wrapper) wrapper.innerHTML = "";
 }
 
-function renderCards(items) {
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function highlight(text, query) {
+  const safeText = escapeHtml(text);
+  const q = String(query || "").trim();
+  if (!q) return safeText;
+  const safeQuery = escapeHtml(q);
+  const regex = new RegExp(safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  return safeText.replace(regex, (match) => `<mark>${match}</mark>`);
+}
+
+function renderCards(items, query = "") {
   if (!wrapper) return;
   if (!items.length) {
     renderEmpty(t("ResultsEmpty", "Hozircha natijalar yo'q."));
@@ -64,11 +84,11 @@ function renderCards(items) {
         <div class="test-card result-card">
           <div class="test-card-top-wrapper">
             <div class="test-card-top">
-              <div class="test-card-subject">${subject}</div>
+              <div class="test-card-subject">${highlight(subject, query)}</div>
             </div>
             <div class="result-header">
               <div class="result-title-row">
-                <div class="test-card-title">${topic}</div>
+                <div class="test-card-title">${highlight(topic, query)}</div>
               </div>
               <div class="result-meta-row">
                 <div class="result-row">
@@ -102,6 +122,22 @@ function renderCards(items) {
     .join("");
 }
 
+function applyResultsFilter() {
+  const query = (searchInput?.value || "").trim().toLowerCase();
+  if (!query) {
+    renderCards(allResults, "");
+    return;
+  }
+
+  const filtered = allResults.filter((item) => {
+    const subject = String(item.displaySubject || item.subject || "").toLowerCase();
+    const topic = String(item.topic || "").toLowerCase();
+    return subject.includes(query) || topic.includes(query);
+  });
+
+  renderCards(filtered, query);
+}
+
 async function loadResults() {
   if (!currentUser) return;
   const snap = await getDocs(collection(db, "users", currentUser.uid, "results"));
@@ -117,7 +153,8 @@ async function loadResults() {
     return bTime - aTime;
   });
 
-  renderCards(items);
+  allResults = items;
+  applyResultsFilter();
 }
 
 onAuthStateChanged(auth, async (user) => {
@@ -139,3 +176,5 @@ document.querySelectorAll(".settings-select").forEach((el) => {
     loadResults();
   });
 });
+
+searchInput?.addEventListener("input", applyResultsFilter);

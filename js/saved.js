@@ -8,8 +8,10 @@ const SELECTION_KEY = "quizSelection";
 const wrapper = document.getElementById("savedCards");
 const emptyState = document.getElementById("savedEmpty");
 const openAuthBtn = document.getElementById("openAuth");
+const searchInput = document.getElementById("savedSearch");
 
 let currentUser = null;
+let allSavedItems = [];
 
 function t(key, fallback) {
   const lang = localStorage.getItem("siteLang") || "uz";
@@ -42,7 +44,25 @@ function renderEmpty(text) {
   if (wrapper) wrapper.innerHTML = "";
 }
 
-function renderCards(items) {
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function highlight(text, query) {
+  const safeText = escapeHtml(text);
+  const q = String(query || "").trim();
+  if (!q) return safeText;
+  const safeQuery = escapeHtml(q);
+  const regex = new RegExp(safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  return safeText.replace(regex, (match) => `<mark>${match}</mark>`);
+}
+
+function renderCards(items, query = "") {
   if (!wrapper) return;
   if (!items.length) {
     renderEmpty(t("SavedEmpty", "Hozircha saqlangan testlar yo'q."));
@@ -57,7 +77,7 @@ function renderCards(items) {
       <div class="test-card" data-subject="${item.subject}" data-topic="${item.topic}" data-count="${item.count || 0}" data-display-subject="${item.displaySubject || item.subject}">
         <div class="test-card-top-wrapper">
           <div class="test-card-top">
-            <div class="test-card-subject">${item.displaySubject || item.subject}</div>
+            <div class="test-card-subject">${highlight(item.displaySubject || item.subject, query)}</div>
             <button class="test-bookmark-btn saved" type="button" aria-label="${t("SavedRemoveAria", "Saqlash")}">
               <svg class="test-bookmark-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7.70898 7.5415C9.19232 8.08316 10.809 8.08316 12.2923 7.5415" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -66,7 +86,7 @@ function renderCards(items) {
               </svg>
             </button>
           </div>
-          <div class="test-card-title">${item.topic}</div>
+          <div class="test-card-title">${highlight(item.topic, query)}</div>
         </div>
         <div class="test-card-footer">
           <div class="test-card-stat">
@@ -80,6 +100,22 @@ function renderCards(items) {
     .join("");
 }
 
+function applySavedFilter() {
+  const query = (searchInput?.value || "").trim().toLowerCase();
+  if (!query) {
+    renderCards(allSavedItems, "");
+    return;
+  }
+
+  const filtered = allSavedItems.filter((item) => {
+    const subject = String(item.displaySubject || item.subject || "").toLowerCase();
+    const topic = String(item.topic || "").toLowerCase();
+    return subject.includes(query) || topic.includes(query);
+  });
+
+  renderCards(filtered, query);
+}
+
 async function loadSaved() {
   if (!currentUser) return;
   const snap = await getDocs(collection(db, "users", currentUser.uid, "savedTests"));
@@ -88,7 +124,8 @@ async function loadSaved() {
     const data = docSnap.data();
     if (data?.subject && data?.topic) items.push(data);
   });
-  renderCards(items);
+  allSavedItems = items;
+  applySavedFilter();
 }
 
 function bindEvents() {
@@ -153,3 +190,4 @@ document.querySelectorAll(".settings-select").forEach((el) => {
 });
 
 bindEvents();
+searchInput?.addEventListener("input", applySavedFilter);

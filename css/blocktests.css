@@ -27,29 +27,38 @@
 .block-search {
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--bg-white);
-  border: 1px solid var(--bg-gray);
-  border-radius: 14px;
-  padding: 10px 12px;
-  min-width: 260px;
-  box-shadow: var(--shadow-soft);
+  width: 260px;
+  height: 38px;
+  gap: 8px;
+  background-color: var(--bg-gray);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0 10px;
+  transition: all 0.25s ease;
+  overflow: hidden;
 }
 
 .block-search-icon {
   width: 18px;
   height: 18px;
-  opacity: 0.7;
+  user-select: none;
 }
 
 .block-search-input {
+  user-select: none;
+  flex: 1;
+  width: 100%;
+  min-width: 0;
   border: none;
   outline: none;
-  background: transparent;
-  width: 100%;
+  background-color: var(--bg-gray);
   color: var(--text-main);
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+}
+
+.block-search:focus-within {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 0.13rem var(--color-blue);
 }
 
 .block-chips {
@@ -193,6 +202,9 @@
   .block-hero {
     flex-direction: column;
     align-items: stretch;
+  }
+  .block-search {
+    width: 100%;
   }
   .block-grid {
     grid-template-columns: repeat(2, 1fr);

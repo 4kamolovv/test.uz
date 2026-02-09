@@ -261,7 +261,7 @@ mark {
 .result-card {
   height: auto;
   gap: 10px;
-  width: 100%;
+  width: 100% !important;
 }
 
 .result-rows {
@@ -417,5 +417,83 @@ mark {
   .test-card-wrapper {
     grid-template-columns: 1fr;
     gap: 12px;
+  }
+}
+
+@media (min-width: 981px) {
+  #resultsCards.test-card-wrapper {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  #resultsCards .result-card {
+    height: auto;
+    padding: 14px 16px;
+  }
+
+  #resultsCards .test-card-top-wrapper {
+    display: grid;
+    grid-template-columns: minmax(210px, 260px) 1fr;
+    align-items: center;
+    gap: 16px;
+  }
+
+  #resultsCards .result-header {
+    margin: 0;
+  }
+
+  #resultsCards .result-title-row {
+    justify-content: flex-start;
+    margin-bottom: 8px;
+  }
+
+  #resultsCards .test-card-title {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1100px) {
+  #resultsCards .result-header {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  #resultsCards .result-title-row {
+    width: 100%;
+    justify-content: flex-start;
+    margin: 0;
+  }
+
+  #resultsCards .result-meta-row {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1251px) {
+  #resultsCards .result-header {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: nowrap;
+  }
+
+  #resultsCards .result-title-row {
+    margin: 0;
+    min-width: 0;
+  }
+
+  #resultsCards .result-meta-row {
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap;
   }
 }
