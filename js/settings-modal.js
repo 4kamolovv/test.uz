@@ -103,12 +103,25 @@ document.addEventListener("DOMContentLoaded", () => {
   enhanceSelect(langSelect);
 
   if (themeSelect) {
+    const forcedTheme = document.documentElement.getAttribute("data-force-theme");
     const storedTheme = localStorage.getItem("theme") || "light";
     const savedTheme = storedTheme === "dark" ? "dark" : "light";
-    themeSelect.value = savedTheme;
+    const pageTheme =
+      forcedTheme === "dark" || forcedTheme === "light"
+        ? forcedTheme
+        : savedTheme;
+    themeSelect.value = pageTheme;
     if (storedTheme !== savedTheme) localStorage.setItem("theme", savedTheme);
     themeSelect.dispatchEvent(new Event("change", { bubbles: true }));
+    if (forcedTheme === "dark" || forcedTheme === "light") {
+      themeSelect.disabled = true;
+    }
     themeSelect.addEventListener("change", () => {
+      if (forcedTheme === "dark" || forcedTheme === "light") {
+        themeSelect.value = forcedTheme;
+        if (typeof window.applyTheme === "function") window.applyTheme(forcedTheme);
+        return;
+      }
       const theme = themeSelect.value === "dark" ? "dark" : "light";
       localStorage.setItem("theme", theme);
       if (typeof window.applyTheme === "function") window.applyTheme(theme);

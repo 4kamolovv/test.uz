@@ -27,17 +27,27 @@ window.onload = function () {
 const toggleBtn = document.getElementById("theme-toggle");
 const logoImg = document.getElementById("logo-img");
 const root = document.documentElement;
+const forcedTheme = root.getAttribute("data-force-theme");
 const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 const navToggle = document.getElementById("navToggle");
 
 function applyTheme(theme) {
-  root.setAttribute("data-theme", theme);
+  const resolvedTheme =
+    forcedTheme === "dark" || forcedTheme === "light"
+      ? forcedTheme
+      : theme === "dark"
+      ? "dark"
+      : "light";
 
-  if (toggleBtn) toggleBtn.textContent = theme === "dark" ? "LIGHT" : "DARK";
+  root.setAttribute("data-theme", resolvedTheme);
+
+  if (toggleBtn) {
+    toggleBtn.textContent = resolvedTheme === "dark" ? "LIGHT" : "DARK";
+  }
 
   if (logoImg) {
     logoImg.src =
-      theme === "dark"
+      resolvedTheme === "dark"
         ? `${basePath}/images/image/logo_dark.png`
         : `${basePath}/images/image/logo_light.png`;
   }
@@ -47,6 +57,10 @@ applyTheme(localStorage.getItem("theme") || "light");
 
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {
+    if (forcedTheme === "dark" || forcedTheme === "light") {
+      applyTheme(forcedTheme);
+      return;
+    }
     const isDark = root.getAttribute("data-theme") === "dark";
     const next = isDark ? "light" : "dark";
     localStorage.setItem("theme", next);
