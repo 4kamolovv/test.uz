@@ -1,13 +1,14 @@
 .topics-h1 {
-  font-style: 24px;
+  font-size: clamp(24px, 2.6vw, 40px);
+  line-height: 1.15;
   font-weight: 700;
+  margin: 12px 0 14px;
 }
 
 .cards-maindf-wrapper {
   display: flex;
   gap: 16px;
   align-items: flex-start;
-  flex-wrap: wrap;
 }
 
 .topics-card {
@@ -15,7 +16,7 @@
   height: auto;
   background: var(--bg-white);
   border-radius: 15px;
-  padding: 18px 16px;
+  padding: 14px 12px;
   box-shadow: 6px 6px 60px rgba(0, 0, 0, 0.05);
 }
 
@@ -36,7 +37,7 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
+  padding: 9px 10px;
   border-radius: var(--radius-md);
   cursor: pointer;
   background-color: transparent;
@@ -66,24 +67,27 @@
 }
 
 .search-container {
-  width: 240px;
-  height: 36px;
+  width: 260px;
+  height: 38px;
   display: flex;
   align-items: center;
   background-color: var(--bg-gray);
-  border: none;
-  border-radius: 12px;
-  padding: 0 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 0 10px;
   gap: 8px;
   transition: all 0.25s ease;
+  overflow: hidden;
 }
 
 .search-input {
   user-select: none;
   flex: 1;
+  width: 100%;
+  min-width: 0;
   border: none;
   outline: none;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-main);
   background-color: var(--bg-gray);
 }
@@ -99,18 +103,47 @@
   user-select: none;
 }
 
+.topic-toggle {
+  width: 56px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--bg-gray);
+  background: var(--bg-white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-main);
+  cursor: pointer;
+  padding: 0;
+  display: none;
+}
+
+.topic-toggle:hover {
+  background: var(--bg-gray);
+}
+
+.topic-toggle-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.topic-toggle-icon rect {
+  fill: currentColor;
+}
+
 /* card */
 .content-wrapper {
   flex: 1;
+  min-width: 0;
 }
 
 .content-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 12px;
   background-color: var(--bg-white);
-  padding: 4px 16px;
+  padding: 10px 14px;
   border-radius: 15px;
   gap: 12px;
 }
@@ -121,20 +154,27 @@
   color: var(--text-main);
 }
 
+.content-tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
 /* test card */
 .test-card-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 16px;
+  gap: 14px;
 }
 
 .test-card {
   width: 100%;
-  height: 168px;
+  height: 158px;
   background-color: var(--bg-white);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  padding: 16px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -184,7 +224,7 @@
 }
 
 .test-card-title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-main);
   margin-top: 8px;
@@ -200,7 +240,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-main);
   cursor: pointer;
 }
@@ -294,4 +334,88 @@ mark {
   width: 16px;
   height: 16px;
   object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .topics-h1 {
+    font-size: 32px;
+    line-height: 1.12;
+  }
+
+  .cards-maindf-wrapper {
+    display: block;
+  }
+
+  .topics-card {
+    width: 100%;
+    margin-bottom: 12px;
+    display: none;
+  }
+
+  .topics-card.is-open {
+    display: block;
+  }
+
+  .topic-toggle {
+    display: inline-flex;
+    width: 48px;
+    height: 44px;
+    flex: 0 0 48px;
+  }
+
+  .content-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .content-title {
+    width: 100%;
+    margin: 0;
+  }
+
+  .content-tools {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .search-container {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+    max-width: none;
+    height: 40px;
+  }
+
+  .test-card-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .topics-h1 {
+    font-size: 26px;
+    margin: 10px 0 12px;
+  }
+
+  .topics-card {
+    padding: 12px 10px;
+  }
+
+  .content-header {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+
+  .content-title {
+    font-size: 18px;
+  }
+
+  .test-card-wrapper {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
 }
