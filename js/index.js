@@ -9,6 +9,7 @@ const statUsers = document.getElementById("statUsers");
 const statTopics = document.getElementById("statTopics");
 
 const DATA_URL = "https://4kamolov.github.io/docs/data/data.json";
+const USERS_COUNT_CACHE_KEY = "homepageUsersCount";
 
 function formatNumber(value) {
   return Number(value || 0).toLocaleString("en-US");
@@ -21,6 +22,18 @@ function setStat(el, value) {
     return;
   }
   el.textContent = formatNumber(value);
+}
+
+function loadCachedUsersCount() {
+  const raw = localStorage.getItem(USERS_COUNT_CACHE_KEY);
+  const num = Number(raw);
+  return Number.isFinite(num) && num >= 0 ? num : null;
+}
+
+function saveCachedUsersCount(value) {
+  const num = Number(value);
+  if (!Number.isFinite(num) || num < 0) return;
+  localStorage.setItem(USERS_COUNT_CACHE_KEY, String(num));
 }
 
 async function loadDataStats() {
@@ -48,11 +61,12 @@ function canReadUsersCount() {
 async function loadStats() {
   try {
     const { tests, topics } = await loadDataStats();
-    let users = null;
+    let users = loadCachedUsersCount();
 
     if (canReadUsersCount()) {
       try {
         users = await loadRegisteredUsersCount();
+        saveCachedUsersCount(users);
       } catch (err) {
         const code = String(err?.code || "");
         const msg = String(err?.message || "");
