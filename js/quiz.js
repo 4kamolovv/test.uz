@@ -333,6 +333,12 @@ import {
     const question = getQuestionById(item.id);
     if (!question) return;
 
+    // const correctOptionLetter = String.fromCharCode(97 + item.correctIndex);
+    // console.log(
+    //   ``,
+    //   correctOptionLetter,
+    // );
+
     updateProgressUI();
 
     elements.quizSubjectEls.forEach((el) => {
