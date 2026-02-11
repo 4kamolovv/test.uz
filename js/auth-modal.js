@@ -1,4 +1,9 @@
-﻿import { loginWithEmail, registerWithEmail, logout, watchUser } from "./auth.js";
+﻿import {
+  loginWithEmail,
+  registerWithEmail,
+  logout,
+  watchUser,
+} from "./auth.js";
 
 function ensureToastContainer() {
   if (!document.getElementById("toast-container")) {
@@ -46,7 +51,10 @@ function mapLoginError(err) {
   if (code.includes("auth/invalid-email"))
     return ["warning", "AuthInvalidEmailTitle", "AuthInvalidEmailDesc"];
 
-  if (code.includes("auth/user-not-found") || code.includes("auth/wrong-password"))
+  if (
+    code.includes("auth/user-not-found") ||
+    code.includes("auth/wrong-password")
+  )
     return ["error", "AuthLoginErrorTitle", "AuthLoginErrorDesc"];
 
   return ["error", "AuthLoginErrorTitle", "AuthLoginErrorDesc"];
@@ -90,7 +98,8 @@ function setSubmitLoading(form, isLoading, loadingText = "Yuklanmoqda...") {
 
   submitBtn.classList.remove("is-loading");
   submitBtn.disabled = false;
-  submitBtn.textContent = submitBtn.dataset.originalText || submitBtn.textContent;
+  submitBtn.textContent =
+    submitBtn.dataset.originalText || submitBtn.textContent;
   form.removeAttribute("aria-busy");
 
   controls.forEach((el) => {
@@ -180,14 +189,12 @@ function initAuthModal() {
 
   let currentUser = null;
 
-  
   const openAuthModal = () => overlay?.classList.add("active");
   const closeAuthModal = () => overlay?.classList.remove("active");
 
   openBtn.addEventListener("click", () => {
     if (!currentUser) openAuthModal();
   });
-                
 
   closeBtn?.addEventListener("click", closeAuthModal);
 
@@ -203,7 +210,6 @@ function initAuthModal() {
     }
   });
 
-  
   function setTab(which) {
     const isLogin = which === "login";
     tabLogin?.classList.toggle("active", isLogin);
@@ -215,7 +221,6 @@ function initAuthModal() {
   tabLogin?.addEventListener("click", () => setTab("login"));
   tabRegister?.addEventListener("click", () => setTab("register"));
 
-  
   registerForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -223,7 +228,8 @@ function initAuthModal() {
     const email = document.getElementById("regEmail")?.value.trim();
     const password = document.getElementById("regPassword")?.value;
     const lang = localStorage.getItem("siteLang") || "uz";
-    const loadingText = window.langData?.[lang]?.AuthLoading || "Yuklanmoqda...";
+    const loadingText =
+      window.langData?.[lang]?.AuthLoading || "Yuklanmoqda...";
 
     setSubmitLoading(registerForm, true, loadingText);
 
@@ -240,14 +246,14 @@ function initAuthModal() {
     }
   });
 
-  
   loginForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const email = document.getElementById("loginEmail")?.value.trim();
     const password = document.getElementById("loginPassword")?.value;
     const lang = localStorage.getItem("siteLang") || "uz";
-    const loadingText = window.langData?.[lang]?.AuthLoading || "Yuklanmoqda...";
+    const loadingText =
+      window.langData?.[lang]?.AuthLoading || "Yuklanmoqda...";
 
     setSubmitLoading(loginForm, true, loadingText);
 
@@ -259,8 +265,10 @@ function initAuthModal() {
         const lang = localStorage.getItem("siteLang") || "uz";
         window.showToast?.(
           "warning",
-          window.langData?.[lang]?.AuthLoginNotVerifiedTitle || "Email tasdiqlanmagan",
-          window.langData?.[lang]?.AuthLoginNotVerifiedDesc || "Emailni tasdiqlang va qayta kiring"
+          window.langData?.[lang]?.AuthLoginNotVerifiedTitle ||
+            "Email tasdiqlanmagan",
+          window.langData?.[lang]?.AuthLoginNotVerifiedDesc ||
+            "Emailni tasdiqlang va qayta kiring",
         );
         return;
       }
@@ -271,7 +279,7 @@ function initAuthModal() {
       window.showToast?.(
         "success",
         window.langData?.[lang]?.AuthLoginSuccessTitle || "Muvaffaqiyatli",
-        `${window.langData?.[lang]?.AuthLoginSuccessDesc || "Xush kelibsiz,"} ${nickname}`
+        `${window.langData?.[lang]?.AuthLoginSuccessDesc || "Xush kelibsiz,"} ${nickname}`,
       );
 
       loginForm.reset();
@@ -284,7 +292,6 @@ function initAuthModal() {
     }
   });
 
-  
   function openUserDropdown() {
     if (!userDropdown) return;
     userDropdown.classList.add("open");
@@ -302,7 +309,6 @@ function initAuthModal() {
     else openUserDropdown();
   }
 
-  
   function applyCachedAuthUI() {
     const cachedLoggedIn = localStorage.getItem("authLoggedIn") === "true";
     const cachedName = localStorage.getItem("authUserName") || guestLabel();
@@ -338,7 +344,6 @@ function initAuthModal() {
     if (!userMenu.contains(e.target)) closeUserDropdown();
   });
 
-  
   function openLogoutConfirm() {
     if (!logoutOverlay) return;
     logoutOverlay.classList.add("active");
@@ -372,7 +377,6 @@ function initAuthModal() {
     }
   });
 
-  
   function setAuthUI(user) {
     currentUser = user && user.emailVerified ? user : null;
 

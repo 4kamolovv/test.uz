@@ -10,11 +10,10 @@ const firebaseConfig = {
   storageBucket: "login-f3dac.firebasestorage.app",
   messagingSenderId: "258979847774",
   appId: "1:258979847774:web:704aa42eaae376bd541ecf",
-  measurementId: "G-T0HF7NK32M"
+  measurementId: "G-T0HF7NK32M",
 };
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
-

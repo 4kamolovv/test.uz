@@ -34,8 +34,8 @@ function applyTheme(theme) {
     forcedTheme === "dark" || forcedTheme === "light"
       ? forcedTheme
       : theme === "dark"
-      ? "dark"
-      : "light";
+        ? "dark"
+        : "light";
 
   root.setAttribute("data-theme", resolvedTheme);
 
@@ -218,12 +218,12 @@ function removeToast(toast) {
 }
 document.querySelectorAll("[successToast]").forEach((btn) => {
   btn.addEventListener("click", () =>
-    showToast("success", btn.getAttribute("successToast"))
+    showToast("success", btn.getAttribute("successToast")),
   );
 });
 document.querySelectorAll("[errorToast]").forEach((btn) => {
   btn.addEventListener("click", () =>
-    showToast("error", btn.getAttribute("errorToast"))
+    showToast("error", btn.getAttribute("errorToast")),
   );
 });
 document.querySelectorAll("[warningToast]").forEach((btn) => {
@@ -231,8 +231,8 @@ document.querySelectorAll("[warningToast]").forEach((btn) => {
     showToast(
       "warning",
       btn.getAttribute("warningToast"),
-      btn.getAttribute("descToast")
-    )
+      btn.getAttribute("descToast"),
+    ),
   );
 });
 //Toast>
@@ -242,6 +242,5 @@ window.setLanguage = setLanguage;
 window.showToastRaw = showToast;
 window.langData = langData;
 window.showToast = function (type, titleKey, descKey = null) {
-  if (localStorage.getItem("notify") === "off") return;
   return window.showToastRaw(type, titleKey, descKey);
 };

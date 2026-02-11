@@ -1,6 +1,9 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {
+  collection,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 const wrapper = document.getElementById("resultsCards");
@@ -27,7 +30,10 @@ function formatTime(ms) {
 
 function showLoginRequired() {
   openAuthBtn?.click();
-  const msg = t("ResultsNeedLoginToast", "Natijalarni ko'rish uchun tizimga kiring");
+  const msg = t(
+    "ResultsNeedLoginToast",
+    "Natijalarni ko'rish uchun tizimga kiring",
+  );
   if (typeof window.showToast === "function") {
     window.showToast("warning", msg);
   } else {
@@ -57,7 +63,10 @@ function highlight(text, query) {
   const q = String(query || "").trim();
   if (!q) return safeText;
   const safeQuery = escapeHtml(q);
-  const regex = new RegExp(safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  const regex = new RegExp(
+    safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+    "gi",
+  );
   return safeText.replace(regex, (match) => `<mark>${match}</mark>`);
 }
 
@@ -130,7 +139,9 @@ function applyResultsFilter() {
   }
 
   const filtered = allResults.filter((item) => {
-    const subject = String(item.displaySubject || item.subject || "").toLowerCase();
+    const subject = String(
+      item.displaySubject || item.subject || "",
+    ).toLowerCase();
     const topic = String(item.topic || "").toLowerCase();
     return subject.includes(query) || topic.includes(query);
   });
@@ -140,7 +151,9 @@ function applyResultsFilter() {
 
 async function loadResults() {
   if (!currentUser) return;
-  const snap = await getDocs(collection(db, "users", currentUser.uid, "results"));
+  const snap = await getDocs(
+    collection(db, "users", currentUser.uid, "results"),
+  );
   const items = [];
   snap.forEach((docSnap) => {
     const data = docSnap.data();
@@ -160,7 +173,9 @@ async function loadResults() {
 onAuthStateChanged(auth, async (user) => {
   currentUser = user && user.emailVerified ? user : null;
   if (!currentUser) {
-    renderEmpty(t("ResultsNeedLogin", "Natijalarni ko'rish uchun tizimga kiring."));
+    renderEmpty(
+      t("ResultsNeedLogin", "Natijalarni ko'rish uchun tizimga kiring."),
+    );
     showLoginRequired();
     return;
   }
@@ -170,7 +185,9 @@ onAuthStateChanged(auth, async (user) => {
 document.querySelectorAll(".settings-select").forEach((el) => {
   el.addEventListener("lang-update", () => {
     if (!currentUser) {
-      renderEmpty(t("ResultsNeedLogin", "Natijalarni ko'rish uchun tizimga kiring."));
+      renderEmpty(
+        t("ResultsNeedLogin", "Natijalarni ko'rish uchun tizimga kiring."),
+      );
       return;
     }
     loadResults();

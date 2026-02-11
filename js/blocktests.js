@@ -82,7 +82,9 @@
     });
 
     return Array.from(map.values()).map((entry) => {
-      const topicsSorted = Array.from(entry.topics.entries()).sort((a, b) => b[1] - a[1]);
+      const topicsSorted = Array.from(entry.topics.entries()).sort(
+        (a, b) => b[1] - a[1],
+      );
       const primaryTopic = topicsSorted[0]?.[0] || "Mavzu";
       return {
         subject: entry.subject,
@@ -104,8 +106,8 @@
       .map(
         (s) =>
           `<button class="block-chip${s.value === activeSubject ? " active" : ""}" data-subject="${escapeHtml(
-            s.value
-          )}" type="button">${escapeHtml(s.label)}</button>`
+            s.value,
+          )}" type="button">${escapeHtml(s.label)}</button>`,
       )
       .join("");
 
@@ -122,7 +124,7 @@
       .map((topic) => `<span class="block-topic">${escapeHtml(topic)}</span>`)
       .join("");
     const startUrl = `./test.html?subject=${encodeURIComponent(
-      block.subject
+      block.subject,
     )}&topic=${encodeURIComponent(block.primaryTopic)}`;
 
     return `
@@ -154,10 +156,13 @@
     if (!gridEl) return;
     const query = (searchInput?.value || "").trim().toLowerCase();
     const filtered = blocks.filter((block) => {
-      const subjectMatch = activeSubject === "__all__" || block.subject === activeSubject;
+      const subjectMatch =
+        activeSubject === "__all__" || block.subject === activeSubject;
       if (!subjectMatch) return false;
       if (!query) return true;
-      const topicMatch = block.topTopics.some((topic) => topic.toLowerCase().includes(query));
+      const topicMatch = block.topTopics.some((topic) =>
+        topic.toLowerCase().includes(query),
+      );
       return block.subject.toLowerCase().includes(query) || topicMatch;
     });
 
@@ -185,13 +190,17 @@
           if (!existing.has(block.subject)) blocks.push(block);
         });
       }
-      const subjects = blocks.map((b) => b.subject).sort((a, b) => a.localeCompare(b));
+      const subjects = blocks
+        .map((b) => b.subject)
+        .sort((a, b) => a.localeCompare(b));
       renderChips(subjects);
       render();
     } catch (err) {
       console.error("Failed to load data.json:", err);
       blocks = DEMO_BLOCKS.slice();
-      const subjects = blocks.map((b) => b.subject).sort((a, b) => a.localeCompare(b));
+      const subjects = blocks
+        .map((b) => b.subject)
+        .sort((a, b) => a.localeCompare(b));
       renderChips(subjects);
       render();
     }
@@ -200,7 +209,9 @@
   searchInput?.addEventListener("input", render);
   document.querySelectorAll(".settings-select").forEach((el) => {
     el.addEventListener("lang-update", () => {
-      const subjects = blocks.map((b) => b.subject).sort((a, b) => a.localeCompare(b));
+      const subjects = blocks
+        .map((b) => b.subject)
+        .sort((a, b) => a.localeCompare(b));
       renderChips(subjects);
       render();
     });

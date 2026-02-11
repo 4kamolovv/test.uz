@@ -46,10 +46,12 @@ function setTopRow(index, data) {
   const wrong = Number(data.wrong) || 0;
 
   const totalAnswers = correct + wrong;
-  const accuracy = totalAnswers > 0 ? Math.round((correct / totalAnswers) * 100) : 0;
+  const accuracy =
+    totalAnswers > 0 ? Math.round((correct / totalAnswers) * 100) : 0;
   const level = Math.floor(totalScore / 100) + 1;
 
-  const displayName = (data.displayName || "").trim() || t("GuestUser", "Mehmon (Guest)");
+  const displayName =
+    (data.displayName || "").trim() || t("GuestUser", "Mehmon (Guest)");
   row.nick.textContent = displayName;
   row.meta.innerHTML = `
     <span class="rating-chip">
@@ -99,7 +101,7 @@ async function loadTopTen() {
   const q = query(
     collection(db, "leaderboard"),
     orderBy("totalScore", "desc"),
-    limit(10)
+    limit(10),
   );
 
   const snap = await getDocs(q);

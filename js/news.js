@@ -9,7 +9,9 @@
     {
       id: 1,
       title: { uz: "Yangi mavzuli testlar qo'shildi" },
-      text: { uz: "Matematika, fizika va ona tili bo'yicha yangi savollar yuklandi." },
+      text: {
+        uz: "Matematika, fizika va ona tili bo'yicha yangi savollar yuklandi.",
+      },
       tag: { uz: "Yangilanish" },
       date: "2026-02-10",
     },
@@ -37,14 +39,18 @@
     {
       id: 5,
       title: { uz: "Blok testlar soni kengaytirildi" },
-      text: { uz: "Bir nechta fanlar bo'yicha yangi blok test kartochkalari qo'shildi." },
+      text: {
+        uz: "Bir nechta fanlar bo'yicha yangi blok test kartochkalari qo'shildi.",
+      },
       tag: { uz: "Testlar" },
       date: "2026-02-02",
     },
     {
       id: 6,
       title: { uz: "Demo test sahifasi boyitildi" },
-      text: { uz: "Savol, variantlar va progress ko'rinishi aniqroq ko'rsatila boshladi." },
+      text: {
+        uz: "Savol, variantlar va progress ko'rinishi aniqroq ko'rsatila boshladi.",
+      },
       tag: { uz: "Interfeys" },
       date: "2026-02-01",
     },

@@ -5,13 +5,13 @@ import {
   sendEmailVerification,
   signOut,
   onAuthStateChanged,
-  updateProfile
+  updateProfile,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
 
 import {
   doc,
   runTransaction,
-  serverTimestamp
+  serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 function normalizeNick(nick) {
   return (nick || "").trim().toLowerCase();
@@ -38,7 +38,7 @@ export async function registerWithEmail({ email, password, nickname }) {
       }
       tx.set(nickRef, {
         uid: cred.user.uid,
-        createdAt: serverTimestamp()
+        createdAt: serverTimestamp(),
       });
     });
     await updateProfile(cred.user, { displayName: nickname.trim() });
@@ -73,5 +73,3 @@ export async function logout() {
 export function watchUser(cb) {
   return onAuthStateChanged(auth, cb);
 }
-
-

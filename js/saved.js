@@ -1,6 +1,11 @@
 import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { collection, deleteDoc, doc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+} from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
 
 const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 const SELECTION_KEY = "quizSelection";
@@ -28,7 +33,10 @@ function getDocId(key) {
 
 function showLoginRequired() {
   openAuthBtn?.click();
-  const msg = t("SavedNeedLoginToast", "Saqlanganlarni ko'rish uchun tizimga kiring");
+  const msg = t(
+    "SavedNeedLoginToast",
+    "Saqlanganlarni ko'rish uchun tizimga kiring",
+  );
   if (typeof window.showToast === "function") {
     window.showToast("warning", msg);
   } else {
@@ -58,7 +66,10 @@ function highlight(text, query) {
   const q = String(query || "").trim();
   if (!q) return safeText;
   const safeQuery = escapeHtml(q);
-  const regex = new RegExp(safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  const regex = new RegExp(
+    safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+    "gi",
+  );
   return safeText.replace(regex, (match) => `<mark>${match}</mark>`);
 }
 
@@ -95,7 +106,7 @@ function renderCards(items, query = "") {
           </div>
         </div>
       </div>
-    `
+    `,
     )
     .join("");
 }
@@ -108,7 +119,9 @@ function applySavedFilter() {
   }
 
   const filtered = allSavedItems.filter((item) => {
-    const subject = String(item.displaySubject || item.subject || "").toLowerCase();
+    const subject = String(
+      item.displaySubject || item.subject || "",
+    ).toLowerCase();
     const topic = String(item.topic || "").toLowerCase();
     return subject.includes(query) || topic.includes(query);
   });
@@ -118,7 +131,9 @@ function applySavedFilter() {
 
 async function loadSaved() {
   if (!currentUser) return;
-  const snap = await getDocs(collection(db, "users", currentUser.uid, "savedTests"));
+  const snap = await getDocs(
+    collection(db, "users", currentUser.uid, "savedTests"),
+  );
   const items = [];
   snap.forEach((docSnap) => {
     const data = docSnap.data();
@@ -148,7 +163,13 @@ function bindEvents() {
       const subject = card.getAttribute("data-subject") || "";
       const topic = card.getAttribute("data-topic") || "";
       const key = getKey(subject, topic);
-      const ref = doc(db, "users", currentUser.uid, "savedTests", getDocId(key));
+      const ref = doc(
+        db,
+        "users",
+        currentUser.uid,
+        "savedTests",
+        getDocId(key),
+      );
 
       deleteDoc(ref)
         .then(() => loadSaved())
@@ -173,7 +194,9 @@ function bindEvents() {
 onAuthStateChanged(auth, async (user) => {
   currentUser = user && user.emailVerified ? user : null;
   if (!currentUser) {
-    renderEmpty(t("SavedNeedLogin", "Saqlanganlarni ko'rish uchun tizimga kiring."));
+    renderEmpty(
+      t("SavedNeedLogin", "Saqlanganlarni ko'rish uchun tizimga kiring."),
+    );
     return;
   }
   await loadSaved();
@@ -182,7 +205,9 @@ onAuthStateChanged(auth, async (user) => {
 document.querySelectorAll(".settings-select").forEach((el) => {
   el.addEventListener("lang-update", () => {
     if (!currentUser) {
-      renderEmpty(t("SavedNeedLogin", "Saqlanganlarni ko'rish uchun tizimga kiring."));
+      renderEmpty(
+        t("SavedNeedLogin", "Saqlanganlarni ko'rish uchun tizimga kiring."),
+      );
       return;
     }
     loadSaved();

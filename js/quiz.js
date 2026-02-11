@@ -399,7 +399,9 @@ import {
     saveSession();
 
     if (elements.resultUsername) {
-      const name = localStorage.getItem("authUserName") || t("GuestUser", "Mehmon (Guest)");
+      const name =
+        localStorage.getItem("authUserName") ||
+        t("GuestUser", "Mehmon (Guest)");
       elements.resultUsername.textContent = name;
     }
     if (elements.resultTotal)

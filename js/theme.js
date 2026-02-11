@@ -49,7 +49,10 @@
     const q = query.trim();
     if (!q) return safeText;
     const safeQuery = escapeHtml(q);
-    const regex = new RegExp(safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+    const regex = new RegExp(
+      safeQuery.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
+      "gi",
+    );
     return safeText.replace(regex, (match) => `<mark>${match}</mark>`);
   }
 
@@ -103,140 +106,149 @@
     const filtered =
       normalizedTopic === "barchasi"
         ? allTests.slice()
-        : allTests.filter(
-            (t) => normalizeKey(t.subject) === normalizedTopic
-          );
+        : allTests.filter((t) => normalizeKey(t.subject) === normalizedTopic);
 
-  const subjectLabelMap = new Map(
-    topicItems.map((item) => [
-      normalizeKey(item.dataset.topic),
-      item.querySelector("span")?.textContent || item.dataset.topic,
-    ])
-  );
-
-  const topicMap = new Map();
-  for (const test of filtered) {
-    const key = `${test.subject}|||${test.topic}`;
-    if (!topicMap.has(key)) {
-      const displaySubject =
-        subjectLabelMap.get(normalizeKey(test.subject)) || test.subject;
-      topicMap.set(key, {
-        subject: test.subject,
-        displaySubject,
-        topic: test.topic,
-        count: 0,
-      });
-    }
-    topicMap.get(key).count += 1;
-  }
-
-  let cards = Array.from(topicMap.values()).sort((a, b) => {
-    if (a.subject !== b.subject) return a.subject.localeCompare(b.subject);
-    return a.topic.localeCompare(b.topic);
-  });
-
-  const q = query.trim().toLowerCase();
-  if (q) {
-    cards = cards.filter(
-      (c) =>
-        c.subject.toLowerCase().includes(q) ||
-        c.topic.toLowerCase().includes(q)
+    const subjectLabelMap = new Map(
+      topicItems.map((item) => [
+        normalizeKey(item.dataset.topic),
+        item.querySelector("span")?.textContent || item.dataset.topic,
+      ]),
     );
-  }
 
-  if (contentTitle) {
-    const activeItem =
-      topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
-    const label = activeItem?.querySelector("span")?.textContent || t("ThemeAllTitle", "Barchasi");
-    contentTitle.textContent = label;
-  }
-
-  if (cards.length === 0) {
-    cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeEmpty", "Hozircha testlar yo'q.")}</div>`;
-    return;
-  }
-
-  cards = shuffle(cards);
-  cardWrapper.innerHTML = cards.map((card) => toCardHtml(card, q)).join("");
-  document.dispatchEvent(
-    new CustomEvent("cards-rendered", { detail: { cards } })
-  );
-
-  cardWrapper.querySelectorAll(".test-card").forEach((card) => {
-    card.addEventListener("click", (event) => {
-      if (event.target.closest(".test-bookmark-btn")) return;
-      const subject = card.getAttribute("data-subject");
-      const topic = card.getAttribute("data-topic");
-      const displaySubject =
-        card.querySelector(".test-card-subject")?.textContent || subject;
-      if (!subject || !topic) return;
-
-      const selection = { subject, topic, displaySubject, startedAt: Date.now() };
-      localStorage.setItem(SELECTION_KEY, JSON.stringify(selection));
-
-      const params = new URLSearchParams({
-        subject,
-        topic,
-      });
-      window.location.href = `./test.html?${params.toString()}`;
-    });
-  });
-}
-
-async function initThemeTest() {
-  try {
-    const res = await fetch(DATA_URL);
-    allTests = await res.json();
-  } catch (err) {
-    console.error("Failed to load data.json:", err);
-    if (cardWrapper) {
-      cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeLoadError", "Ma'lumot yuklanmadi.")}</div>`;
-    }
-    return;
-  }
-
-  const activeItem =
-    topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
-
-  const activeKey = activeItem?.dataset?.topic || "barchasi";
-  setActiveTopic(activeKey);
-  buildCards(activeKey, searchInput?.value || "");
-
-  topicItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      const topicKey = item.dataset.topic || "barchasi";
-      setActiveTopic(topicKey);
-      buildCards(topicKey, searchInput?.value || "");
-      if (topicsPanel && topicToggle) {
-        topicsPanel.classList.remove("is-open");
-        topicToggle.setAttribute("aria-expanded", "false");
+    const topicMap = new Map();
+    for (const test of filtered) {
+      const key = `${test.subject}|||${test.topic}`;
+      if (!topicMap.has(key)) {
+        const displaySubject =
+          subjectLabelMap.get(normalizeKey(test.subject)) || test.subject;
+        topicMap.set(key, {
+          subject: test.subject,
+          displaySubject,
+          topic: test.topic,
+          count: 0,
+        });
       }
+      topicMap.get(key).count += 1;
+    }
+
+    let cards = Array.from(topicMap.values()).sort((a, b) => {
+      if (a.subject !== b.subject) return a.subject.localeCompare(b.subject);
+      return a.topic.localeCompare(b.topic);
     });
-  });
 
-  searchInput?.addEventListener("input", () => {
-    const currentActive =
-      topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
-    const topicKey = currentActive?.dataset?.topic || "barchasi";
-    buildCards(topicKey, searchInput.value || "");
-  });
+    const q = query.trim().toLowerCase();
+    if (q) {
+      cards = cards.filter(
+        (c) =>
+          c.subject.toLowerCase().includes(q) ||
+          c.topic.toLowerCase().includes(q),
+      );
+    }
 
-  document.querySelectorAll(".settings-select").forEach((el) => {
-    el.addEventListener("lang-update", () => {
-      const currentActive =
-        topicItems.find((item) => item.classList.contains("active")) || topicItems[0];
-      const topicKey = currentActive?.dataset?.topic || "barchasi";
-      buildCards(topicKey, searchInput?.value || "");
-    });
-  });
+    if (contentTitle) {
+      const activeItem =
+        topicItems.find((item) => item.classList.contains("active")) ||
+        topicItems[0];
+      const label =
+        activeItem?.querySelector("span")?.textContent ||
+        t("ThemeAllTitle", "Barchasi");
+      contentTitle.textContent = label;
+    }
 
-  if (topicToggle && topicsPanel) {
-    topicToggle.addEventListener("click", () => {
-      const isOpen = topicsPanel.classList.toggle("is-open");
-      topicToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    if (cards.length === 0) {
+      cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeEmpty", "Hozircha testlar yo'q.")}</div>`;
+      return;
+    }
+
+    cards = shuffle(cards);
+    cardWrapper.innerHTML = cards.map((card) => toCardHtml(card, q)).join("");
+    document.dispatchEvent(
+      new CustomEvent("cards-rendered", { detail: { cards } }),
+    );
+
+    cardWrapper.querySelectorAll(".test-card").forEach((card) => {
+      card.addEventListener("click", (event) => {
+        if (event.target.closest(".test-bookmark-btn")) return;
+        const subject = card.getAttribute("data-subject");
+        const topic = card.getAttribute("data-topic");
+        const displaySubject =
+          card.querySelector(".test-card-subject")?.textContent || subject;
+        if (!subject || !topic) return;
+
+        const selection = {
+          subject,
+          topic,
+          displaySubject,
+          startedAt: Date.now(),
+        };
+        localStorage.setItem(SELECTION_KEY, JSON.stringify(selection));
+
+        const params = new URLSearchParams({
+          subject,
+          topic,
+        });
+        window.location.href = `./test.html?${params.toString()}`;
+      });
     });
   }
-}
+
+  async function initThemeTest() {
+    try {
+      const res = await fetch(DATA_URL);
+      allTests = await res.json();
+    } catch (err) {
+      console.error("Failed to load data.json:", err);
+      if (cardWrapper) {
+        cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeLoadError", "Ma'lumot yuklanmadi.")}</div>`;
+      }
+      return;
+    }
+
+    const activeItem =
+      topicItems.find((item) => item.classList.contains("active")) ||
+      topicItems[0];
+
+    const activeKey = activeItem?.dataset?.topic || "barchasi";
+    setActiveTopic(activeKey);
+    buildCards(activeKey, searchInput?.value || "");
+
+    topicItems.forEach((item) => {
+      item.addEventListener("click", () => {
+        const topicKey = item.dataset.topic || "barchasi";
+        setActiveTopic(topicKey);
+        buildCards(topicKey, searchInput?.value || "");
+        if (topicsPanel && topicToggle) {
+          topicsPanel.classList.remove("is-open");
+          topicToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    searchInput?.addEventListener("input", () => {
+      const currentActive =
+        topicItems.find((item) => item.classList.contains("active")) ||
+        topicItems[0];
+      const topicKey = currentActive?.dataset?.topic || "barchasi";
+      buildCards(topicKey, searchInput.value || "");
+    });
+
+    document.querySelectorAll(".settings-select").forEach((el) => {
+      el.addEventListener("lang-update", () => {
+        const currentActive =
+          topicItems.find((item) => item.classList.contains("active")) ||
+          topicItems[0];
+        const topicKey = currentActive?.dataset?.topic || "barchasi";
+        buildCards(topicKey, searchInput?.value || "");
+      });
+    });
+
+    if (topicToggle && topicsPanel) {
+      topicToggle.addEventListener("click", () => {
+        const isOpen = topicsPanel.classList.toggle("is-open");
+        topicToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      });
+    }
+  }
 
   document.addEventListener("DOMContentLoaded", initThemeTest);
 })();

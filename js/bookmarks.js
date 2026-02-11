@@ -48,7 +48,9 @@ async function loadSavedKeys() {
   savedKeys.clear();
   if (!currentUser) return;
 
-  const snap = await getDocs(collection(db, "users", currentUser.uid, "savedTests"));
+  const snap = await getDocs(
+    collection(db, "users", currentUser.uid, "savedTests"),
+  );
   snap.forEach((docSnap) => {
     const data = docSnap.data();
     if (data?.key) savedKeys.add(data.key);

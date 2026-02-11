@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const openBtns = Array.from(document.querySelectorAll("[data-open-settings]"));
+  const openBtns = Array.from(
+    document.querySelectorAll("[data-open-settings]"),
+  );
   const overlay = document.getElementById("settingsOverlay");
   const closeBtn = document.getElementById("settingsClose");
   const nav = document.getElementById("settingsNav");
@@ -19,8 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   closeBtn.addEventListener("click", close);
 
-  overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
 
   function enhanceSelect(select) {
     if (!select || select.dataset.enhanced === "true") return;
@@ -47,7 +53,9 @@ document.addEventListener("DOMContentLoaded", () => {
       select.value = value;
       const opt = select.options[select.selectedIndex];
       btn.textContent = opt ? opt.textContent : "";
-      optionButtons.forEach((b) => b.classList.toggle("active", b.dataset.value === value));
+      optionButtons.forEach((b) =>
+        b.classList.toggle("active", b.dataset.value === value),
+      );
       if (trigger) select.dispatchEvent(new Event("change", { bubbles: true }));
     }
 
@@ -103,7 +111,8 @@ document.addEventListener("DOMContentLoaded", () => {
   enhanceSelect(langSelect);
 
   if (themeSelect) {
-    const forcedTheme = document.documentElement.getAttribute("data-force-theme");
+    const forcedTheme =
+      document.documentElement.getAttribute("data-force-theme");
     const storedTheme = localStorage.getItem("theme") || "light";
     const savedTheme = storedTheme === "dark" ? "dark" : "light";
     const pageTheme =
@@ -119,7 +128,8 @@ document.addEventListener("DOMContentLoaded", () => {
     themeSelect.addEventListener("change", () => {
       if (forcedTheme === "dark" || forcedTheme === "light") {
         themeSelect.value = forcedTheme;
-        if (typeof window.applyTheme === "function") window.applyTheme(forcedTheme);
+        if (typeof window.applyTheme === "function")
+          window.applyTheme(forcedTheme);
         return;
       }
       const theme = themeSelect.value === "dark" ? "dark" : "light";
@@ -140,18 +150,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 const sw = document.getElementById("setNotifySwitch");
-const saved = (localStorage.getItem("notify") || "on") === "on";
+localStorage.setItem("notify", "on");
 if (sw) {
-  sw.classList.toggle("is-on", saved);
-  sw.setAttribute("aria-checked", saved ? "true" : "false");
-  const toggle = () => {
-    const on = !sw.classList.contains("is-on");
-    sw.classList.toggle("is-on", on);
-    sw.setAttribute("aria-checked", on ? "true" : "false");
-    localStorage.setItem("notify", on ? "on" : "off");
-  };
-  sw.addEventListener("click", toggle);
-  sw.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
-  });
+  sw.classList.add("is-on");
+  sw.setAttribute("aria-checked", "true");
+  sw.setAttribute("aria-disabled", "true");
 }
