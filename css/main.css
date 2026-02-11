@@ -991,15 +991,17 @@ html.auth-pending #userMenu {
 }
 
 .settings-modal {
-  width: 560px;
+  width: 600px;
   max-width: 92vw;
-  max-height: 92vh;
+  max-height: none;
+  min-height: 350px;
   background: var(--bg-white);
   border: 1px solid var(--bg-gray);
   border-radius: var(--radius-lg);
   box-shadow: 0 26px 80px rgba(0, 0, 0, 0.35);
-  overflow: hidden;
-  display: block;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
   animation: settingsPop 0.18s ease-out;
 }
 
@@ -1017,7 +1019,8 @@ html.auth-pending #userMenu {
 .settings-main {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
 }
 
 .settings-title {
@@ -1061,9 +1064,9 @@ html.auth-pending #userMenu {
   flex-direction: column;
   padding: 16px 18px 18px;
   gap: 14px;
-  min-height: 280px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
 }
 
 .set-pane h2 {
@@ -1130,6 +1133,7 @@ html.auth-pending #userMenu {
 .settings-select-wrap {
   position: relative;
   min-width: 180px;
+  z-index: 1;
 }
 
 .settings-select-btn {
@@ -1180,11 +1184,15 @@ html.auth-pending #userMenu {
   padding: 6px;
   display: none;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
-  z-index: 5;
+  z-index: 30;
 }
 
 .settings-select-wrap.open .settings-select-list {
   display: block;
+}
+
+.settings-select-wrap.open {
+  z-index: 20;
 }
 
 .settings-select-option {
@@ -1209,21 +1217,24 @@ html.auth-pending #userMenu {
   margin-top: auto;
   padding-top: 12px;
   border-top: 1px dashed var(--bg-gray);
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
   color: var(--text-gray);
   font-size: 12.5px;
 }
 
 .settings-reset-btn {
-  height: 34px;
+  height: 38px;
   border-radius: 10px;
   border: 1px solid var(--bg-gray);
   background: var(--bg-white);
   color: var(--text-main);
   font-weight: 750;
-  font-size: 12px;
-  padding: 0 12px;
-  margin-right: 10px;
+  font-size: 12.5px;
+  padding: 0 14px;
+  margin: 0;
   cursor: pointer;
 }
 
@@ -1278,6 +1289,7 @@ html.auth-pending #userMenu {
 @media (max-width: 600px) {
   .settings-modal {
     width: 100%;
+    min-height: 450px;
   }
   .settings-select {
     min-width: 140px;
@@ -1287,7 +1299,8 @@ html.auth-pending #userMenu {
 @media (max-width: 520px) {
   .settings-modal {
     max-width: 100%;
-    max-height: 94vh;
+    max-height: none;
+    min-height: 420px;
   }
   .settings-overlay {
     padding: 10px;
@@ -1296,13 +1309,22 @@ html.auth-pending #userMenu {
     font-size: 16px;
   }
   .settings-right {
-    padding: 12px;
+    padding: 12px 12px 18px;
   }
   .set-row {
     flex-direction: column;
     align-items: flex-start;
   }
-  .settings-select {
+  .settings-select,
+  .settings-select-wrap {
     width: 100%;
+    min-width: 0;
+  }
+  .settings-reset-btn {
+    width: auto;
+  }
+  .settings-footer {
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
 }
