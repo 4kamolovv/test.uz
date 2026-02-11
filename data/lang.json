@@ -1,7 +1,7 @@
 ﻿{
     "uz": {
         "AuthRegSuccessTitle": "Ro‘yxatdan o‘tildi!",
-        "AuthRegSuccessDesc": "Emailingizga tasdiqlash havolasi yuborildi. Emailni ochib linkni bosing va keyin kirish qiling.",
+        "AuthRegSuccessDesc": "Emailingizga tasdiqlash havolasi yuborildi. Emailni ochib linkni bosing va keyin kirish qiling. Spam papkasini ham tekshiring",
         "AuthRegErrorTitle": "Ro‘yxatdan o‘tishda xatolik",
         "AuthRegErrorDesc": "Iltimos, ma’lumotlarni tekshirib qayta urinib ko‘ring.",
         "AuthLoginSuccessTitle": "Kirish muvaffaqiyatli!",
@@ -262,7 +262,7 @@
     },
     "ru": {
         "AuthRegSuccessTitle": "Регистрация завершена!",
-        "AuthRegSuccessDesc": "Мы отправили ссылку подтверждения на ваш Email. Откройте письмо, подтвердите и затем войдите.",
+        "AuthRegSuccessDesc": "Мы отправили ссылку подтверждения на ваш Email. Откройте письмо, подтвердите и затем войдите. Проверьте также папку Спам.",
         "AuthRegErrorTitle": "Ошибка регистрации",
         "AuthRegErrorDesc": "Проверьте данные и попробуйте снова.",
         "AuthLoginSuccessTitle": "Вход выполнен!",
@@ -522,4 +522,3 @@
         "RatingAccuracy": "Точность"
     }
 }
-
