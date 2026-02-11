@@ -14,7 +14,11 @@
   --score-col-width: 60px;
   --item-gap: 10px;
   background:
-    radial-gradient(700px 140px at 8% -30%, rgba(0, 179, 72, 0.12), transparent 65%),
+    radial-gradient(
+      700px 140px at 8% -30%,
+      rgba(0, 179, 72, 0.12),
+      transparent 65%
+    ),
     var(--bg-white);
   border: 1px solid var(--bg-gray);
   border-radius: var(--radius-lg);
@@ -79,7 +83,9 @@
 
 .toprating-item {
   display: grid;
-  grid-template-columns: 28px minmax(0, 1fr) var(--stats-col-width) var(--score-col-width);
+  grid-template-columns: 28px minmax(0, 1fr) var(--stats-col-width) var(
+      --score-col-width
+    );
   align-items: center;
   gap: 10px;
   padding: 10px;
@@ -107,21 +113,27 @@
   background: linear-gradient(145deg, #fef08a, #f59e0b);
   color: #1f1300;
   border-color: rgba(245, 158, 11, 0.9);
-  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.22), 0 6px 12px rgba(0, 0, 0, 0.18);
+  box-shadow:
+    0 0 0 2px rgba(245, 158, 11, 0.22),
+    0 6px 12px rgba(0, 0, 0, 0.18);
 }
 
 .toprating-item:nth-child(2) .rank {
   background: linear-gradient(145deg, #e5e7eb, #94a3b8);
   color: #1f2937;
   border-color: rgba(148, 163, 184, 0.95);
-  box-shadow: 0 0 0 2px rgba(148, 163, 184, 0.2), 0 6px 12px rgba(0, 0, 0, 0.16);
+  box-shadow:
+    0 0 0 2px rgba(148, 163, 184, 0.2),
+    0 6px 12px rgba(0, 0, 0, 0.16);
 }
 
 .toprating-item:nth-child(3) .rank {
   background: linear-gradient(145deg, #fed7aa, #ea580c);
   color: #2b1205;
   border-color: rgba(234, 88, 12, 0.9);
-  box-shadow: 0 0 0 2px rgba(234, 88, 12, 0.2), 0 6px 12px rgba(0, 0, 0, 0.16);
+  box-shadow:
+    0 0 0 2px rgba(234, 88, 12, 0.2),
+    0 6px 12px rgba(0, 0, 0, 0.16);
 }
 
 .user {
@@ -135,7 +147,11 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(145deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.42));
+  background: linear-gradient(
+    145deg,
+    rgba(16, 185, 129, 0.2),
+    rgba(16, 185, 129, 0.42)
+  );
   border: 1px solid rgba(16, 185, 129, 0.4);
   color: var(--green-dark);
   font-weight: 800;
@@ -174,17 +190,17 @@
 }
 
 .rating-stats-val {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--text-main);
   line-height: 1.1;
 }
 
 .score {
   justify-self: end;
-  font-weight: 800;
+  font-size: 16px;
+  font-weight: 700;
   color: var(--text-main);
-  font-size: 12px;
 }
 
 @media (max-width: 980px) {
