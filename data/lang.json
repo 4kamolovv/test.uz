@@ -120,7 +120,7 @@
         "AuthPlaceholderPassword": "Parol",
         "AuthBtnLogin": "Kirish",
         "AuthTitleRegister": "Ro‘yxatdan o‘tish",
-        "AuthSubRegister": "Emailingizga tasdiqlash havolasi yuboriladi.",
+        "AuthSubRegister": "Emailingizga tasdiqlash havolasi yuboriladi. Spam papkasini ham tekshiring.",
         "AuthPlaceholderNickname": "Nickname",
         "AuthPlaceholderPasswordMin": "Parol (kamida 6 ta)",
         "AuthBtnRegister": "Ro‘yxatdan o‘tish",
@@ -381,7 +381,7 @@
         "AuthPlaceholderPassword": "Пароль",
         "AuthBtnLogin": "Войти",
         "AuthTitleRegister": "Регистрация",
-        "AuthSubRegister": "Ссылка подтверждения будет отправлена на Email.",
+        "AuthSubRegister": "Ссылка подтверждения будет отправлена на Email. Проверьте также папку Спам.",
         "AuthPlaceholderNickname": "Ник",
         "AuthPlaceholderPasswordMin": "Пароль (минимум 6)",
         "AuthBtnRegister": "Зарегистрироваться",
@@ -522,3 +522,4 @@
         "RatingAccuracy": "Точность"
     }
 }
+
