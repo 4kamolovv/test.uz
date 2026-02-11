@@ -158,6 +158,7 @@ function getToastSound() {
 }
 function showToast(type, titleKey, descKey = null) {
   const container = document.getElementById("toast-container");
+  if (!container) return;
 
   const lang = localStorage.getItem("siteLang") || "uz";
 

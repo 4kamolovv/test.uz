@@ -302,6 +302,30 @@ import {
     });
   }
 
+  function updateProgressUI() {
+    if (!session || session.items.length === 0) return;
+
+    const total = session.items.length;
+    const currentNumber = session.currentIndex + 1;
+    const answeredCount = session.items.filter((it) => it.answered).length;
+
+    const questionText = `${currentNumber}/${total}`;
+    const progressText = `${answeredCount}/${total}`;
+
+    if (elements.quizQuestionProgress) {
+      elements.quizQuestionProgress.textContent = questionText;
+    }
+    if (elements.progressText) elements.progressText.textContent = progressText;
+
+    if (elements.progressFill) {
+      const percent = Math.round((answeredCount / total) * 100);
+      elements.progressFill.style.width = `${percent}%`;
+      if (elements.progressPercent) {
+        elements.progressPercent.textContent = `${percent}%`;
+      }
+    }
+  }
+
   function renderQuestion() {
     if (!session || session.items.length === 0) return;
 
@@ -309,19 +333,7 @@ import {
     const question = getQuestionById(item.id);
     if (!question) return;
 
-    const total = session.items.length;
-    const currentNumber = session.currentIndex + 1;
-
-    const progressText = `${currentNumber}/${total}`;
-    if (elements.quizQuestionProgress)
-      elements.quizQuestionProgress.textContent = progressText;
-    if (elements.progressText) elements.progressText.textContent = progressText;
-
-    if (elements.progressFill) {
-      const percent = Math.round((currentNumber / total) * 100);
-      elements.progressFill.style.width = `${percent}%`;
-      if (elements.progressPercent) elements.progressPercent.textContent = `${percent}%`;
-    }
+    updateProgressUI();
 
     elements.quizSubjectEls.forEach((el) => {
       el.textContent = session.displaySubject || session.subject;
@@ -442,6 +454,7 @@ import {
       session.correctCount * SCORE_CORRECT - session.wrongCount * SCORE_WRONG;
 
     saveSession();
+    updateProgressUI();
     setAnswerStatus(isCorrect);
     setOptionsDisabled(true);
     elements.optionButtons.forEach((btn, index) => {
