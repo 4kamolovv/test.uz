@@ -21,6 +21,7 @@ function t(key, fallback) {
 function setTopRow(index, data) {
   const row = topItems[index];
   if (!row) return;
+  const item = row.nick?.closest(".toprating-item");
   const userWrap = row.nick?.parentElement;
   let avatar = userWrap?.querySelector(".rating-avatar");
   if (userWrap && !avatar) {
@@ -28,10 +29,18 @@ function setTopRow(index, data) {
     avatar.className = "rating-avatar";
     userWrap.insertBefore(avatar, row.nick);
   }
+  if (item && row.meta && row.meta.parentElement !== item) {
+    item.insertBefore(row.meta, row.score);
+  }
+  row.meta?.classList.add("rating-stats-row");
 
   if (!data) {
     row.nick.textContent = "-";
-    row.meta.textContent = "-";
+    row.meta.innerHTML = `
+      <span class="rating-stats-val">-</span>
+      <span class="rating-stats-val">-</span>
+      <span class="rating-stats-val">-</span>
+    `;
     row.score.textContent = "-";
     if (avatar) {
       avatar.textContent = "-";
@@ -54,18 +63,9 @@ function setTopRow(index, data) {
     (data.displayName || "").trim() || t("GuestUser", "Mehmon (Guest)");
   row.nick.textContent = displayName;
   row.meta.innerHTML = `
-    <span class="rating-chip">
-      <img src="../images/icons/alltests.png" alt="${t("RatingSolvedPrefix", "Yechilgan")}" />
-      ${t("RatingSolvedPrefix", "Yechilgan")}: ${solved}
-    </span>
-    <span class="rating-chip">
-      <img src="../images/icons/xpicon.svg" alt="${t("RatingLevel", "Daraja")}" />
-      ${t("RatingLevel", "Daraja")}: ${level}
-    </span>
-    <span class="rating-chip">
-      <img src="../images/icons/correct.webp" alt="${t("RatingAccuracy", "Aniqlik")}" />
-      ${t("RatingAccuracy", "Aniqlik")}: ${accuracy}%
-    </span>
+    <span class="rating-stats-val">${solved}</span>
+    <span class="rating-stats-val">${level}</span>
+    <span class="rating-stats-val">${accuracy}%</span>
   `;
   row.score.textContent = String(totalScore);
 
