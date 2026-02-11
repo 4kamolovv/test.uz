@@ -68,7 +68,11 @@ if (toggleBtn) {
 //ThemeSwitcher>
 let langData = {};
 fetch(`${basePath}/data/lang.json`)
-  .then((res) => res.json())
+  .then((res) => res.text())
+  .then((raw) => {
+    const sanitized = raw.charCodeAt(0) === 0xfeff ? raw.slice(1) : raw;
+    return JSON.parse(sanitized);
+  })
   .then((data) => {
     langData = data;
     window.langData = data;

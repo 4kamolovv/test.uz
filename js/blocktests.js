@@ -5,6 +5,50 @@
   const chipsEl = document.getElementById("blockChips");
   const gridEl = document.getElementById("blockGrid");
   const searchInput = document.getElementById("blockSearch");
+  const DEMO_BLOCKS = [
+    {
+      subject: "Matematika",
+      total: 120,
+      topicCount: 8,
+      topTopics: ["Tenglamalar", "Algebra", "Geometriya"],
+      primaryTopic: "Tenglamalar",
+    },
+    {
+      subject: "Ona tili",
+      total: 86,
+      topicCount: 6,
+      topTopics: ["Sintaksis", "Morfologiya", "Imlo"],
+      primaryTopic: "Sintaksis",
+    },
+    {
+      subject: "Tarix",
+      total: 74,
+      topicCount: 5,
+      topTopics: ["Jadidchilik", "Amir Temur", "Mustaqillik"],
+      primaryTopic: "Jadidchilik",
+    },
+    {
+      subject: "Fizika",
+      total: 68,
+      topicCount: 5,
+      topTopics: ["Mexanika", "Elektr", "Optika"],
+      primaryTopic: "Mexanika",
+    },
+    {
+      subject: "Ingliz tili",
+      total: 54,
+      topicCount: 4,
+      topTopics: ["Grammar", "Vocabulary", "Reading"],
+      primaryTopic: "Grammar",
+    },
+    {
+      subject: "Kimyo",
+      total: 61,
+      topicCount: 5,
+      topTopics: ["Organik", "Noorganik", "Masalalar"],
+      primaryTopic: "Organik",
+    },
+  ];
 
   let blocks = [];
   let activeSubject = "__all__";
@@ -135,12 +179,21 @@
       const res = await fetch(DATA_URL);
       const data = await res.json();
       blocks = groupBlocks(data);
+      if (blocks.length < 6) {
+        const existing = new Set(blocks.map((b) => b.subject));
+        DEMO_BLOCKS.forEach((block) => {
+          if (!existing.has(block.subject)) blocks.push(block);
+        });
+      }
       const subjects = blocks.map((b) => b.subject).sort((a, b) => a.localeCompare(b));
       renderChips(subjects);
       render();
     } catch (err) {
       console.error("Failed to load data.json:", err);
-      gridEl.innerHTML = `<div class="block-empty">${t("BlockLoadError", "Ma'lumot yuklanmadi.")}</div>`;
+      blocks = DEMO_BLOCKS.slice();
+      const subjects = blocks.map((b) => b.subject).sort((a, b) => a.localeCompare(b));
+      renderChips(subjects);
+      render();
     }
   }
 

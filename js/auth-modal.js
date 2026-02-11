@@ -54,12 +54,16 @@ function mapLoginError(err) {
 
 function getInitial(nameOrEmail = "") {
   const s = (nameOrEmail || "").trim();
-  return s ? s[0].toUpperCase() : "U";
+  return s ? s[0].toUpperCase() : "G";
 }
 
 function t(key, fallback) {
   const lang = localStorage.getItem("siteLang") || "uz";
   return window.langData?.[lang]?.[key] || fallback;
+}
+
+function guestLabel() {
+  return t("GuestUser", "Mehmon (Guest)");
 }
 
 function setSubmitLoading(form, isLoading, loadingText = "Yuklanmoqda...") {
@@ -183,6 +187,7 @@ function initAuthModal() {
   openBtn.addEventListener("click", () => {
     if (!currentUser) openAuthModal();
   });
+                
 
   closeBtn?.addEventListener("click", closeAuthModal);
 
@@ -300,7 +305,10 @@ function initAuthModal() {
   
   function applyCachedAuthUI() {
     const cachedLoggedIn = localStorage.getItem("authLoggedIn") === "true";
-    const cachedName = localStorage.getItem("authUserName") || "User";
+    const cachedName = localStorage.getItem("authUserName") || guestLabel();
+
+    if (userNameEl) userNameEl.textContent = guestLabel();
+    if (userAvatarEl) userAvatarEl.textContent = "G";
 
     if (cachedLoggedIn) {
       openBtn.style.display = "none";
@@ -312,6 +320,8 @@ function initAuthModal() {
       openBtn.style.display = "inline-block";
       if (guestSettingsBtn) guestSettingsBtn.style.display = "inline-grid";
       openBtn.textContent = t("AuthLoginBtn", "Kirish");
+      if (userNameEl) userNameEl.textContent = guestLabel();
+      if (userAvatarEl) userAvatarEl.textContent = "G";
       if (userMenu) userMenu.style.display = "none";
       closeUserDropdown();
     }
@@ -373,7 +383,7 @@ function initAuthModal() {
 
       const displayName =
         currentUser.displayName ||
-        (currentUser.email ? currentUser.email.split("@")[0] : "User");
+        (currentUser.email ? currentUser.email.split("@")[0] : "Foydalanuvchi");
 
       if (userNameEl) userNameEl.textContent = displayName;
       if (userAvatarEl) userAvatarEl.textContent = getInitial(displayName);
@@ -384,6 +394,8 @@ function initAuthModal() {
       openBtn.style.display = "inline-block";
       if (guestSettingsBtn) guestSettingsBtn.style.display = "inline-grid";
       openBtn.textContent = t("AuthLoginBtn", "Kirish");
+      if (userNameEl) userNameEl.textContent = guestLabel();
+      if (userAvatarEl) userAvatarEl.textContent = "G";
       if (userMenu) userMenu.style.display = "none";
       closeUserDropdown();
 
@@ -396,4 +408,3 @@ function initAuthModal() {
 }
 
 document.addEventListener("DOMContentLoaded", initAuthModal);
-

@@ -32,7 +32,7 @@ function setTopRow(index, data) {
   if (!data) {
     row.nick.textContent = "-";
     row.meta.textContent = "-";
-    row.score.textContent = "0";
+    row.score.textContent = "-";
     if (avatar) {
       avatar.textContent = "-";
       avatar.style.backgroundImage = "";
@@ -49,7 +49,8 @@ function setTopRow(index, data) {
   const accuracy = totalAnswers > 0 ? Math.round((correct / totalAnswers) * 100) : 0;
   const level = Math.floor(totalScore / 100) + 1;
 
-  row.nick.textContent = data.displayName || "User";
+  const displayName = (data.displayName || "").trim() || t("GuestUser", "Mehmon (Guest)");
+  row.nick.textContent = displayName;
   row.meta.innerHTML = `
     <span class="rating-chip">
       <img src="../images/icons/alltests.png" alt="${t("RatingSolvedPrefix", "Yechilgan")}" />
@@ -67,7 +68,7 @@ function setTopRow(index, data) {
   row.score.textContent = String(totalScore);
 
   if (avatar) {
-    const letter = row.nick.textContent.trim()[0]?.toUpperCase() || "U";
+    const letter = row.nick.textContent.trim()[0]?.toUpperCase() || "G";
     if (data.avatarUrl) {
       avatar.textContent = "";
       avatar.style.backgroundImage = `url("${data.avatarUrl}")`;
@@ -78,6 +79,20 @@ function setTopRow(index, data) {
       avatar.classList.remove("has-photo");
     }
   }
+}
+
+function renderEmptyBoard() {
+  for (let i = 0; i < topItems.length; i += 1) {
+    setTopRow(i, null);
+  }
+  const first = topItems[0];
+  if (!first) return;
+  first.nick.textContent = t("RatingEmpty", "Hali reyting yo'q.");
+  first.meta.textContent = t(
+    "RatingEmptySub",
+    "Birinchi natijani siz yarating.",
+  );
+  first.score.textContent = "-";
 }
 
 async function loadTopTen() {
@@ -91,6 +106,11 @@ async function loadTopTen() {
   const list = [];
   snap.forEach((docSnap) => list.push(docSnap.data()));
 
+  if (list.length === 0) {
+    renderEmptyBoard();
+    return;
+  }
+
   for (let i = 0; i < 10; i += 1) {
     setTopRow(i, list[i]);
   }
@@ -101,6 +121,7 @@ async function initRating() {
     await loadTopTen();
   } catch (err) {
     console.error("Rating load error:", err);
+    renderEmptyBoard();
   }
 }
 

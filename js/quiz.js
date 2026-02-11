@@ -21,6 +21,7 @@ import {
     quizQuestionText: document.querySelector(".quiz-question-text"),
     quizQuestionProgress: document.querySelector(".quiz-question-progress"),
     progressText: document.getElementById("progress-text"),
+    progressPercent: document.getElementById("progress-percent"),
     progressFill: document.getElementById("progress-fill"),
     optionsPic: document.querySelector(".quiz-options-pic"),
     optionButtons: Array.from(document.querySelectorAll(".quiz-option")),
@@ -43,12 +44,47 @@ import {
   };
 
   let allTests = [];
+  const DEMO_TESTS = [
+    {
+      id: "demo-1",
+      subject: "Matematika",
+      topic: "Tenglamalar",
+      question: "2x + 6 = 14 bo'lsa, x nechaga teng?",
+      answer: "4",
+    },
+    {
+      id: "demo-2",
+      subject: "Matematika",
+      topic: "Tenglamalar",
+      question: "3x - 9 = 0 bo'lsa, x nechaga teng?",
+      answer: "3",
+    },
+    {
+      id: "demo-3",
+      subject: "Matematika",
+      topic: "Tenglamalar",
+      question: "x/5 = 7 bo'lsa, x ni toping.",
+      answer: "35",
+    },
+    {
+      id: "demo-4",
+      subject: "Matematika",
+      topic: "Tenglamalar",
+      question: "x + 12 = 20 bo'lsa, x nechaga teng?",
+      answer: "8",
+    },
+  ];
   let session = null;
   let currentSelectedIndex = null;
   let timerId = null;
   let currentUser = null;
   const SCORE_CORRECT = 5;
   const SCORE_WRONG = 2;
+
+  function t(key, fallback) {
+    const lang = localStorage.getItem("siteLang") || "uz";
+    return window.langData?.[lang]?.[key] || fallback;
+  }
 
   function shuffle(arr) {
     const copy = arr.slice();
@@ -276,7 +312,7 @@ import {
     const total = session.items.length;
     const currentNumber = session.currentIndex + 1;
 
-    const progressText = `${total}/${currentNumber}`;
+    const progressText = `${currentNumber}/${total}`;
     if (elements.quizQuestionProgress)
       elements.quizQuestionProgress.textContent = progressText;
     if (elements.progressText) elements.progressText.textContent = progressText;
@@ -284,6 +320,7 @@ import {
     if (elements.progressFill) {
       const percent = Math.round((currentNumber / total) * 100);
       elements.progressFill.style.width = `${percent}%`;
+      if (elements.progressPercent) elements.progressPercent.textContent = `${percent}%`;
     }
 
     elements.quizSubjectEls.forEach((el) => {
@@ -344,7 +381,7 @@ import {
     saveSession();
 
     if (elements.resultUsername) {
-      const name = localStorage.getItem("authUserName") || "Foydalanuvchi";
+      const name = localStorage.getItem("authUserName") || t("GuestUser", "Mehmon (Guest)");
       elements.resultUsername.textContent = name;
     }
     if (elements.resultTotal)
@@ -354,7 +391,7 @@ import {
     if (elements.resultWrong)
       elements.resultWrong.textContent = String(session.wrongCount);
     if (elements.resultTopic)
-      elements.resultTopic.textContent = `${session.displaySubject || session.subject} " ${session.topic}`;
+      elements.resultTopic.textContent = `${session.displaySubject || session.subject} - ${session.topic}`;
     if (elements.resultTime) {
       const time = formatTime(session.elapsedMs);
       elements.resultTime.textContent = time;
@@ -581,23 +618,24 @@ import {
   }
 
   async function initQuiz() {
-    const selection = getSelection();
+    let selection = getSelection();
     if (!selection) {
-      if (elements.quizQuestionText) {
-        elements.quizQuestionText.textContent = "Mavzu tanlanmagan.";
-      }
-      setCheckButtonState("Tekshirish", false);
-      return;
+      selection = {
+        subject: "Matematika",
+        topic: "Tenglamalar",
+        displaySubject: "Matematika",
+      };
     }
 
     try {
       const res = await fetch(DATA_URL);
       allTests = await res.json();
+      if (!Array.isArray(allTests) || allTests.length === 0) {
+        allTests = DEMO_TESTS.slice();
+      }
     } catch (err) {
       console.error("Failed to load data.json:", err);
-      if (elements.quizQuestionText)
-        elements.quizQuestionText.textContent = "Ma'lumot yuklanmadi.";
-      return;
+      allTests = DEMO_TESTS.slice();
     }
 
     const existing = loadSession(selection);
@@ -609,11 +647,14 @@ import {
     }
 
     if (!session.items || session.items.length === 0) {
-      if (elements.quizQuestionText) {
-        elements.quizQuestionText.textContent = "Bu mavzuda testlar yo'q.";
-      }
-      setCheckButtonState("Tekshirish", false);
-      return;
+      const demoSelection = {
+        subject: "Matematika",
+        topic: "Tenglamalar",
+        displaySubject: "Matematika",
+      };
+      allTests = DEMO_TESTS.slice();
+      session = createSession(demoSelection, allTests);
+      saveSession();
     }
 
     bindEvents();

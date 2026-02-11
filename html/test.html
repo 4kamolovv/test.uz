@@ -68,10 +68,14 @@
         
         <div class="progress-card">
           <h3 class="progress-title" langIn="TestQuestionsTitle">Savollar</h3>
-          <div class="progress-bar-track">
-            <div class="progress-bar-fill" id="progress-fill"></div>
+          <div class="progress-meta">
+            <span class="progress-meta-label" langIn="TestProgressLabel">Progress</span>
+            <span class="progress-meta-value" id="progress-percent">10%</span>
           </div>
-          <div class="progress-bar-text" id="progress-text"></div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-fill" style="width: 10%;"></div>
+          </div>
+          <div class="progress-bar-text" id="progress-text">1/10</div>
         </div>
       </div>
       
@@ -79,33 +83,35 @@
       <div class="quiz-container">
         <div class="quiz-question-box">
           <div class="quiz-question-header">
-            <span class="quiz-question-progress" id="progress-text"></span>
+            <span class="quiz-question-progress">1/10</span>
             <div class="quiz-tmsb-wrap">
               <div class="quiz-time" id="quizTime">00:00</div>
               <div class="quiz-subject" langIn="TestSubject" data-lang-skip></div>
             </div>
           </div>
-          <div class="quiz-question-text"></div>
+          <p class="quiz-question-label" langIn="HeroQuestionLabel">Savol:</p>
+          <div class="quiz-question-text" langIn="TestQuestionText">2x + 6 = 14 bo'lsa, x = ?</div>
         </div>
         
         <div class="quiz-options-box">
+          <div class="quiz-options-title" langIn="TestOptionsTitle">Variantlar</div>
           <img class="quiz-options-pic" src="" alt="" />
           
           <button class="quiz-option">
             <span class="quiz-label">a)</span>
-            <span class="quiz-variant"></span>
+            <span class="quiz-variant" langIn="TestOptionA">2</span>
           </button>
           <button class="quiz-option">
             <span class="quiz-label">b)</span>
-            <span class="quiz-variant"></span>
+            <span class="quiz-variant" langIn="TestOptionB">4</span>
           </button>
           <button class="quiz-option">
             <span class="quiz-label">c)</span>
-            <span class="quiz-variant"></span>
+            <span class="quiz-variant" langIn="TestOptionC">6</span>
           </button>
           <button class="quiz-option">
             <span class="quiz-label">d)</span>
-            <span class="quiz-variant"></span>
+            <span class="quiz-variant" langIn="TestOptionD">8</span>
           </button>
           
           <div class="quiz-controls">

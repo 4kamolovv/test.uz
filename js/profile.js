@@ -65,7 +65,7 @@ function setGuestState() {
   refs.name.textContent = localStorage.getItem("authUserName") || t("ProfileGuestName", "Mehmon");
   refs.email.textContent = t("ProfileEmailPrompt", "Email: tizimga kiring");
   refs.status.textContent = t("ProfileStatusGuest", "Profil holati: Mehmon rejimida");
-  refs.avatar.textContent = "M";
+  refs.avatar.textContent = "G";
   refs.avatar.style.backgroundImage = "";
   refs.avatar.classList.remove("has-photo");
   if (refs.avatarBtn) refs.avatarBtn.disabled = true;
@@ -98,7 +98,7 @@ function setAvatar(url, fallbackLetter) {
   } else {
     refs.avatar.style.backgroundImage = "";
     refs.avatar.classList.remove("has-photo");
-    refs.avatar.textContent = fallbackLetter || "U";
+    refs.avatar.textContent = fallbackLetter || "G";
   }
 }
 
@@ -208,7 +208,7 @@ onAuthStateChanged(auth, async (user) => {
   refs.name.textContent = displayName;
   refs.email.textContent = `Email: ${currentUser.email || "-"}`;
   refs.status.textContent = t("ProfileStatusActive", "Profil holati: Aktiv");
-  setAvatar("", displayName.trim()[0]?.toUpperCase() || "U");
+  setAvatar("", displayName.trim()[0]?.toUpperCase() || "G");
   if (refs.avatarBtn) refs.avatarBtn.disabled = false;
   const localAvatar = localStorage.getItem(getLocalAvatarKey(currentUser.uid));
   if (localAvatar) setAvatar(localAvatar);
@@ -261,7 +261,6 @@ if (refs.avatarBtn && refs.avatarInput) {
     }
   });
 }
-
 
 
 
