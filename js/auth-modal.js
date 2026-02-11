@@ -62,6 +62,38 @@ function t(key, fallback) {
   return window.langData?.[lang]?.[key] || fallback;
 }
 
+function setSubmitLoading(form, isLoading, loadingText = "Yuklanmoqda...") {
+  if (!form) return;
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  if (!submitBtn) return;
+
+  const controls = form.querySelectorAll("input, select, textarea, button");
+
+  if (isLoading) {
+    submitBtn.dataset.originalText =
+      submitBtn.dataset.originalText || submitBtn.textContent || "";
+    submitBtn.classList.add("is-loading");
+    submitBtn.textContent = loadingText;
+    submitBtn.disabled = true;
+    form.setAttribute("aria-busy", "true");
+
+    controls.forEach((el) => {
+      if (el !== submitBtn) el.disabled = true;
+    });
+    return;
+  }
+
+  submitBtn.classList.remove("is-loading");
+  submitBtn.disabled = false;
+  submitBtn.textContent = submitBtn.dataset.originalText || submitBtn.textContent;
+  form.removeAttribute("aria-busy");
+
+  controls.forEach((el) => {
+    el.disabled = false;
+  });
+}
+
 function injectCSS() {
   if (document.getElementById("authModalCSS")) return;
 
@@ -103,6 +135,10 @@ function injectCSS() {
 
     .auth-btn{height:44px; border-radius:12px; border:none; cursor:pointer; font-weight:900;}
     .auth-btn.primary{background:var(--green-dark); color:#fff;}
+    .auth-btn[disabled]{opacity:.78; cursor:not-allowed;}
+    .auth-btn.is-loading{display:flex; align-items:center; justify-content:center; gap:8px;}
+    .auth-btn.is-loading::before{content:""; width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,255,255,.45); border-top-color:#fff; animation:authSpin .75s linear infinite;}
+    @keyframes authSpin{to{transform:rotate(360deg);}}
 
     
     .user-dropdown{display:none;}
@@ -181,6 +217,10 @@ function initAuthModal() {
     const nickname = document.getElementById("regNickname")?.value.trim();
     const email = document.getElementById("regEmail")?.value.trim();
     const password = document.getElementById("regPassword")?.value;
+    const lang = localStorage.getItem("siteLang") || "uz";
+    const loadingText = window.langData?.[lang]?.AuthLoading || "Yuklanmoqda...";
+
+    setSubmitLoading(registerForm, true, loadingText);
 
     try {
       await registerWithEmail({ nickname, email, password });
@@ -190,6 +230,8 @@ function initAuthModal() {
     } catch (err) {
       const [t, titleKey, descKey] = mapRegisterError(err);
       toast(t, titleKey, descKey);
+    } finally {
+      setSubmitLoading(registerForm, false);
     }
   });
 
@@ -199,6 +241,10 @@ function initAuthModal() {
 
     const email = document.getElementById("loginEmail")?.value.trim();
     const password = document.getElementById("loginPassword")?.value;
+    const lang = localStorage.getItem("siteLang") || "uz";
+    const loadingText = window.langData?.[lang]?.AuthLoading || "Yuklanmoqda...";
+
+    setSubmitLoading(loginForm, true, loadingText);
 
     try {
       const cred = await loginWithEmail({ email, password });
@@ -228,6 +274,8 @@ function initAuthModal() {
     } catch (err) {
       const [t, titleKey, descKey] = mapLoginError(err);
       toast(t, titleKey, descKey);
+    } finally {
+      setSubmitLoading(loginForm, false);
     }
   });
 
@@ -348,5 +396,4 @@ function initAuthModal() {
 }
 
 document.addEventListener("DOMContentLoaded", initAuthModal);
-
 
