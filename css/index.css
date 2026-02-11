@@ -1,11 +1,9 @@
-/* ============================= ST-HERO ============================= */
-/* Landing page styles (index) */
+﻿
 
 .landing {
   padding-bottom: 40px;
 }
 
-/* HERO */
 .hero {
   padding: 40px 0 24px;
 }
@@ -112,7 +110,6 @@
   color: var(--text-main);
 }
 
-/* Hero right demo card */
 .hero-card {
   background: var(--bg-white);
   border-radius: var(--radius-lg);
@@ -212,7 +209,6 @@
   font-weight: 650;
 }
 
-/* SECTIONS */
 .section-head {
   margin: 30px 0 16px;
   display: flex;
@@ -234,7 +230,6 @@
   color: var(--text-main);
 }
 
-/* FEATURES */
 .features {
   padding: 10px 0 0;
 }
@@ -282,7 +277,6 @@
   color: var(--green-dark);
 }
 
-/* CATEGORIES */
 .categories {
   padding: 10px 0 0;
 }
@@ -327,8 +321,6 @@
   color: var(--text-main);
 }
 
-/* HOW */
-/* ====== Landing spacing tune (less dense) ====== */
 .hero {
   padding: 56px 0 40px;
 }
@@ -349,14 +341,12 @@
   padding-top: 18px;
 }
 
-/* Kartalar orasini ochamiz */
 .feature-grid,
 .cat-grid,
 .how-grid {
   gap: 18px;
 }
 
-/* Kartalar ichini "nafas" oldiramiz */
 .feature-card {
   padding: 18px;
 }
@@ -367,7 +357,6 @@
   padding: 16px;
 }
 
-/* Pastdagi eslatma */
 .how-note {
   margin-top: 16px;
   padding: 14px 16px;
@@ -483,7 +472,7 @@
 .footer-links a:first-child {
   margin-left: 0;
 }
-/* RESPONSIVE */
+
 @media (max-width: 1200px) {
   .container {
     width: 100%;
@@ -516,4 +505,5 @@
     grid-template-columns: 1fr;
   }
 }
+
 

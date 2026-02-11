@@ -1,5 +1,4 @@
-﻿// ------------------------------------
-const bar = document.getElementById("progress-bar");
+﻿const bar = document.getElementById("progress-bar");
 
 bar.style.width = "5%";
 
@@ -22,8 +21,7 @@ window.onload = function () {
     }, 300);
   }, 1800);
 };
-// Loading progress bar>
-// ------------------------------------
+//LoadingProgressBar>
 const toggleBtn = document.getElementById("theme-toggle");
 const logoImg = document.getElementById("logo-img");
 const root = document.documentElement;
@@ -67,9 +65,7 @@ if (toggleBtn) {
     applyTheme(next);
   });
 }
-
-// Theme switcher>
-// ------------------------------------------------------------------------
+//ThemeSwitcher>
 let langData = {};
 fetch(`${basePath}/data/lang.json`)
   .then((res) => res.json())
@@ -147,8 +143,7 @@ if (navToggle) {
     });
   });
 }
-// Language switcher>
-// ------------------------------------------------------------------------
+//LanguageSwitcher>
 let toastSound = null;
 function getToastSound() {
   if (!toastSound) {
@@ -157,7 +152,6 @@ function getToastSound() {
   }
   return toastSound;
 }
-// Toast sound>
 function showToast(type, titleKey, descKey = null) {
   const container = document.getElementById("toast-container");
 
@@ -168,8 +162,6 @@ function showToast(type, titleKey, descKey = null) {
 
   const toast = document.createElement("div");
   toast.className = `toast ${type}`;
-
-  // Icon SVGs
   let icon = "";
   if (type === "success")
     icon = `<svg class="toast-icon" viewBox="0 0 24 24">
@@ -204,34 +196,21 @@ function showToast(type, titleKey, descKey = null) {
     </button>
   `;
   container.appendChild(toast);
-
-  // Sound play (1 sound, only warning & error)
   if (type === "warning" || type === "error") {
     const sound = getToastSound();
     sound.currentTime = 0;
     sound.play().catch(() => {});
   }
-
-  // toastSound.currentTime = 0;
-  // toastSound.play().catch(() => {});
-  // (toast sound success,warning,error daxam chiqishi)
-
-  // Close button -> slide out
   toast.querySelector(".close-btn").addEventListener("click", () => {
     removeToast(toast);
   });
-
-  // Auto close
   setTimeout(() => removeToast(toast), 10000);
 }
-// Toast main function>
-// Slide-out remove
 function removeToast(toast) {
   if (!toast) return;
   toast.style.animation = "slideOut 0.4s ease forwards";
   toast.addEventListener("animationend", () => toast.remove(), { once: true });
 }
-// Attach buttons
 document.querySelectorAll("[successToast]").forEach((btn) => {
   btn.addEventListener("click", () =>
     showToast("success", btn.getAttribute("successToast"))
@@ -251,21 +230,13 @@ document.querySelectorAll("[warningToast]").forEach((btn) => {
     )
   );
 });
-// Toast>
-// ------------------------------------
-
-// ================= FIX: main.js -> globals for module scripts =================
-// Nega: auth-modal.js (type="module") main.js ichidagi funksiyalarni kormaydi.
-// Shuning uchun ularni window ga chiqaramiz.
+//Toast>
 
 window.applyTheme = applyTheme;
 window.setLanguage = setLanguage;
-window.showToastRaw = showToast; // asl showToast
-window.langData = langData;      // hozircha bosh, fetchdan keyin toladi
-
-// notify OFF bolsa toast umuman chiqmasin
+window.showToastRaw = showToast;
+window.langData = langData;
 window.showToast = function (type, titleKey, descKey = null) {
   if (localStorage.getItem("notify") === "off") return;
   return window.showToastRaw(type, titleKey, descKey);
 };
-

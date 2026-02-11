@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;800;900&display=swap");
-/* scrollbar> */
+﻿@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;400;500;600;800;900&display=swap");
+
 ::-webkit-scrollbar {
   width: 4px;
   height: 15px;
@@ -11,7 +11,7 @@
   background-color: var(--bg-gray);
   border-radius: 10px;
 }
-/* html, body> */
+
 * {
   box-sizing: border-box;
 }
@@ -106,7 +106,7 @@ img {
   --modal-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   --modal-overlay: rgba(0, 0, 0, 0.45);
 }
-/* main styles> */
+
 .gren-navlink {
   color: var(--green-hover);
 }
@@ -157,7 +157,7 @@ img {
   width: 27px;
   height: 26px;
 }
-/* main styles> ------- */
+
 #toast-container {
   position: fixed;
   top: 20px;
@@ -235,7 +235,7 @@ img {
   width: 20px;
   height: 20px;
 }
-/* toast> */
+
 .logo-wrapper {
   width: 144px;
   height: 32px;
@@ -287,7 +287,7 @@ hr {
   height: 22px;
   fill: currentColor;
 }
-/* Navigation */
+
 .nav-list {
   display: flex;
   gap: 24px;
@@ -316,7 +316,7 @@ hr {
 .nav-link.theme-navlink {
   color: var(--green-hover);
 }
-/* Actions */
+
 .header-actions {
   display: flex;
   align-items: center;
@@ -372,7 +372,6 @@ hr {
 .btn-settings-header .is-stroke circle {
   fill: none;
 }
-/* header> */
 
 @media (max-width: 980px) {
   .header-container {
@@ -463,7 +462,6 @@ body.nav-open .nav {
   display: block;
 }
 
-/* ================= AUTH MODAL ================= */
 .auth-overlay {
   position: fixed;
   inset: 0;
@@ -624,15 +622,12 @@ body.nav-open .nav {
 .auth-msg.success {
   color: var(--green-main);
 }
-/* auth> */
 
-/* Flicker bo'lmasin: auth aniqlanmaguncha yashir */
 html.auth-pending #openAuth,
 html.auth-pending #userMenu {
   visibility: hidden;
 }
 
-/* ---- User menu ---- */
 .user-menu {
   position: relative;
 }
@@ -769,7 +764,6 @@ html.auth-pending #userMenu {
   background: rgba(239, 68, 68, 0.1);
 }
 
-/* ---- Confirm modal ---- */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -977,9 +971,6 @@ html.auth-pending #userMenu {
   visibility: hidden;
 }
 
-/* ================= SETTINGS MODAL (ChatGPT-like) ================= */
-
-/* Overlay */
 .settings-overlay {
   position: fixed;
   inset: 0;
@@ -995,7 +986,6 @@ html.auth-pending #userMenu {
   display: flex;
 }
 
-/* Modal shell */
 .settings-modal {
   width: 560px;
   max-width: 92vw;
@@ -1288,4 +1278,5 @@ html.auth-pending #userMenu {
     width: 100%;
   }
 }
+
 

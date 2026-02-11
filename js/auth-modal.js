@@ -1,7 +1,5 @@
-// /js/auth-modal.js
-import { loginWithEmail, registerWithEmail, logout, watchUser } from "./auth.js";
+﻿import { loginWithEmail, registerWithEmail, logout, watchUser } from "./auth.js";
 
-/* ------------------ helpers ------------------ */
 function ensureToastContainer() {
   if (!document.getElementById("toast-container")) {
     const div = document.createElement("div");
@@ -64,7 +62,6 @@ function t(key, fallback) {
   return window.langData?.[lang]?.[key] || fallback;
 }
 
-/* ------------------ CSS inject (ixtiyoriy) ------------------ */
 function injectCSS() {
   if (document.getElementById("authModalCSS")) return;
 
@@ -107,22 +104,19 @@ function injectCSS() {
     .auth-btn{height:44px; border-radius:12px; border:none; cursor:pointer; font-weight:900;}
     .auth-btn.primary{background:var(--green-dark); color:#fff;}
 
-    /* user dropdown minimal safety */
+    
     .user-dropdown{display:none;}
     .user-dropdown.open{display:block;}
   `;
   document.head.appendChild(style);
 }
 
-/* ------------------ Init ------------------ */
 function initAuthModal() {
   const openBtn = document.getElementById("openAuth");
   const guestSettingsBtn = document.getElementById("openSettingsGuest");
   if (!openBtn) return;
 
   injectCSS();
-
-  // Auth modal elements (HTML'da bor)
   const overlay = document.getElementById("authOverlay");
   const closeBtn = document.getElementById("authClose");
 
@@ -133,16 +127,12 @@ function initAuthModal() {
 
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
-
-  // User menu elements (HTML'da bor)
   const userMenu = document.getElementById("userMenu");
   const userMenuBtn = document.getElementById("userMenuBtn");
   const userDropdown = document.getElementById("userDropdown");
   const userNameEl = document.getElementById("userName");
   const userAvatarEl = document.getElementById("userAvatar");
   const btnLogout = document.getElementById("btnLogout");
-
-  // Logout confirm modal (HTML'da bor)
   const logoutOverlay = document.getElementById("logoutOverlay");
   const logoutX = document.getElementById("logoutX");
   const logoutCancel = document.getElementById("logoutCancel");
@@ -150,12 +140,11 @@ function initAuthModal() {
 
   let currentUser = null;
 
-  /* --------- modal open/close --------- */
+  
   const openAuthModal = () => overlay?.classList.add("active");
   const closeAuthModal = () => overlay?.classList.remove("active");
 
   openBtn.addEventListener("click", () => {
-    // faqat kirmagan bo'lsa modal ochiladi
     if (!currentUser) openAuthModal();
   });
 
@@ -173,7 +162,7 @@ function initAuthModal() {
     }
   });
 
-  /* --------- tabs --------- */
+  
   function setTab(which) {
     const isLogin = which === "login";
     tabLogin?.classList.toggle("active", isLogin);
@@ -185,7 +174,7 @@ function initAuthModal() {
   tabLogin?.addEventListener("click", () => setTab("login"));
   tabRegister?.addEventListener("click", () => setTab("register"));
 
-  /* --------- register --------- */
+  
   registerForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -204,7 +193,7 @@ function initAuthModal() {
     }
   });
 
-  /* --------- login --------- */
+  
   loginForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -242,7 +231,7 @@ function initAuthModal() {
     }
   });
 
-  /* --------- user dropdown --------- */
+  
   function openUserDropdown() {
     if (!userDropdown) return;
     userDropdown.classList.add("open");
@@ -260,7 +249,7 @@ function initAuthModal() {
     else openUserDropdown();
   }
 
-  /* --------- optimistic UI (cache) --------- */
+  
   function applyCachedAuthUI() {
     const cachedLoggedIn = localStorage.getItem("authLoggedIn") === "true";
     const cachedName = localStorage.getItem("authUserName") || "User";
@@ -286,14 +275,12 @@ function initAuthModal() {
     e.stopPropagation();
     toggleUserDropdown();
   });
-
-  // outside click closes dropdown
   document.addEventListener("click", (e) => {
     if (!userDropdown || !userMenu) return;
     if (!userMenu.contains(e.target)) closeUserDropdown();
   });
 
-  /* --------- logout confirm --------- */
+  
   function openLogoutConfirm() {
     if (!logoutOverlay) return;
     logoutOverlay.classList.add("active");
@@ -327,12 +314,11 @@ function initAuthModal() {
     }
   });
 
-  /* --------- auth state -> header UI --------- */
+  
   function setAuthUI(user) {
     currentUser = user && user.emailVerified ? user : null;
 
     if (currentUser) {
-      // kirgan: user menu ko'rsat, login tugma yashir
       openBtn.style.display = "none";
       if (guestSettingsBtn) guestSettingsBtn.style.display = "none";
       if (userMenu) userMenu.style.display = "inline-block";
@@ -347,7 +333,6 @@ function initAuthModal() {
       localStorage.setItem("authLoggedIn", "true");
       localStorage.setItem("authUserName", displayName);
     } else {
-      // kirmagan: login tugma ko'rsat, user menu yashir
       openBtn.style.display = "inline-block";
       if (guestSettingsBtn) guestSettingsBtn.style.display = "inline-grid";
       openBtn.textContent = t("AuthLoginBtn", "Kirish");
@@ -363,4 +348,5 @@ function initAuthModal() {
 }
 
 document.addEventListener("DOMContentLoaded", initAuthModal);
+
 

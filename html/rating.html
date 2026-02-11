@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -45,9 +45,9 @@
                     </li>
                 </ul>
             </nav>
-            <!-- Actions -->
+            
             <div class="header-actions">                
-                <!-- Login button (auth-modal.js ishlatadi) -->
+                
                 <button class="btn-settings-header" type="button" id="openSettingsGuest" data-open-settings langTitle="SettingsTitle" title="Sozlamalar" aria-label="Settings">
                     <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
                         <circle cx="12" cy="12" r="3.2"></circle>
@@ -56,7 +56,7 @@
                 </button>
                 <button class="btn-login" type="button" id="openAuth"></button>
                 
-                <!-- User menu -->
+                
                 <div class="user-menu" id="userMenu" style="display:none;">
                     <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
                         <span class="user-name" id="userName">User</span>
@@ -105,7 +105,7 @@
                             <span langIn="MenuSaved">Saqlanganlar</span>
                         </a>
                         
-                        <!-- Settings -->
+                        
                         <a class="dd-item" href="" data-open-settings role="menuitem">
                             <span class="dd-ico" aria-hidden="true">
                                 <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
@@ -150,7 +150,7 @@
             </div>
             
             <div class="toprating-grid">
-                <!-- Left: rating list -->
+                
                 <div class="toprating-card">
                     <div class="toprating-card-head">
                         <b langIn="RatingWeeklyTop">Haftalik Top 10</b>
@@ -158,7 +158,7 @@
                     </div>
                     
                     <div class="toprating-list">
-                        <!-- 1 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">1</span>
                             <div class="user">
@@ -168,7 +168,7 @@
                             <span class="score" id="topScore1">0</span>
                         </div>
                         
-                        <!-- 2 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">2</span>
                             <div class="user">
@@ -178,7 +178,7 @@
                             <span class="score" id="topScore2">0</span>
                         </div>
                         
-                        <!-- 3 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">3</span>
                             <div class="user">
@@ -188,7 +188,7 @@
                             <span class="score" id="topScore3">0</span>
                         </div>
                         
-                        <!-- 4 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">4</span>
                             <div class="user">
@@ -198,7 +198,7 @@
                             <span class="score" id="topScore4">0</span>
                         </div>
                         
-                        <!-- 5 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">5</span>
                             <div class="user">
@@ -208,7 +208,7 @@
                             <span class="score" id="topScore5">0</span>
                         </div>
                         
-                        <!-- 6 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">6</span>
                             <div class="user">
@@ -218,7 +218,7 @@
                             <span class="score" id="topScore6">0</span>
                         </div>
                         
-                        <!-- 7 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">7</span>
                             <div class="user">
@@ -228,7 +228,7 @@
                             <span class="score" id="topScore7">0</span>
                         </div>
                         
-                        <!-- 8 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">8</span>
                             <div class="user">
@@ -238,7 +238,7 @@
                             <span class="score" id="topScore8">0</span>
                         </div>
                         
-                        <!-- 9 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">9</span>
                             <div class="user">
@@ -248,7 +248,7 @@
                             <span class="score" id="topScore9">0</span>
                         </div>
                         
-                        <!-- 10 -->
+                        
                         <div class="toprating-item">
                             <span class="rank">10</span>
                             <div class="user">
@@ -267,7 +267,7 @@
         <div class="container footer-inner">
             <div class="footer-brand">
                 <span class="footer-logo">test.uz</span>
-                <span class="footer-copy" langIn="FooterCopy">� 2026 test.uz. Barcha huquqlar himoyalangan.</span>
+                <span class="footer-copy" langIn="FooterCopy">© 2026 test.uz. Barcha huquqlar himoyalangan.</span>
             </div>
             <div class="footer-links">
                 <a href="../html/news.html" langIn="FooterNews">Yangiliklar</a>
@@ -279,7 +279,7 @@
 
     
     
-    <!-- SETTINGS MODAL -->
+    
     <div class="settings-overlay" id="settingsOverlay">
         <div class="settings-modal">
             <div class="settings-main">
@@ -322,7 +322,7 @@
             </div>
         </div>
     </div>
-    <!-- AUTH MODAL -->
+    
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
             <button class="auth-close" id="authClose" aria-label="Yopish">x</button>
@@ -332,7 +332,7 @@
                 <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Ro'yxatdan o'tish</button>
             </div>
             
-            <!-- LOGIN -->
+            
             <div class="auth-pane active" id="paneLogin">
                 <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin">Kirish</h3>
                 <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bo'lishi kerak.</p>
@@ -346,7 +346,7 @@
                 <div class="auth-msg" id="loginMsg"></div>
             </div>
             
-            <!-- REGISTER -->
+            
             <div class="auth-pane" id="paneRegister">
                 <h3 class="auth-title" langIn="AuthTitleRegister">Ro'yxatdan o'tish</h3>
                 <p class="auth-sub" langIn="AuthSubRegister">Emailingizga tasdiqlash havolasi yuboriladi.</p>
@@ -362,7 +362,7 @@
             </div>
         </div>
     </div>
-    <!-- Logout confirm modal -->
+    
     <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
         <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
             <img
@@ -387,11 +387,5 @@
     <script src="../js/settings-modal.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
 
 

@@ -1,5 +1,4 @@
-﻿// /js/auth.js
-import { auth, db } from "./firebase.js";
+﻿import { auth, db } from "./firebase.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -14,13 +13,9 @@ import {
   runTransaction,
   serverTimestamp
 } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-
-// helper: nickname normalize
 function normalizeNick(nick) {
   return (nick || "").trim().toLowerCase();
 }
-
-// Register + email verify link + nickname unique
 export async function registerWithEmail({ email, password, nickname }) {
   const nick = normalizeNick(nickname);
 
@@ -29,12 +24,9 @@ export async function registerWithEmail({ email, password, nickname }) {
     e.code = "nick/empty";
     throw e;
   }
-
-  // 1) avval user yaratamiz
   const cred = await createUserWithEmailAndPassword(auth, email, password);
 
   try {
-    // 2) transaction: nicknames/{nick} bandmi yoqmi
     const nickRef = doc(db, "nicknames", nick);
 
     await runTransaction(db, async (tx) => {
@@ -49,20 +41,12 @@ export async function registerWithEmail({ email, password, nickname }) {
         createdAt: serverTimestamp()
       });
     });
-
-    // 3) displayName yozamiz (nick original korinishda chiqsin desang nickname'ni qoy)
     await updateProfile(cred.user, { displayName: nickname.trim() });
-
-    // 4) email verification yuboramiz
     await sendEmailVerification(cred.user);
-
-    // 5) verify qilmaguncha logout
     await signOut(auth);
 
     return cred;
   } catch (err) {
-    // agar nick band bolsa, yaratib qoyilgan userni tozalash kerak boladi
-    // Client SDK bilan userni delete qilish mumkin:
     try {
       await cred.user.delete();
     } catch (_) {}
@@ -89,4 +73,5 @@ export async function logout() {
 export function watchUser(cb) {
   return onAuthStateChanged(auth, cb);
 }
+
 

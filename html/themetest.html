@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -47,9 +47,9 @@
                     </li>
                 </ul>
             </nav>
-            <!-- Actions -->
+            
             <div class="header-actions">     
-                <!-- Login button (auth-modal.js ishlatadi) -->
+                
                 <button class="btn-settings-header" type="button" id="openSettingsGuest" data-open-settings langTitle="SettingsTitle" title="Sozlamalar" aria-label="Settings">
                     <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
                         <circle cx="12" cy="12" r="3.2"></circle>
@@ -58,7 +58,7 @@
                 </button>
                 <button class="btn-login" type="button" id="openAuth"></button>
                 
-                <!-- User menu -->
+                
                 <div class="user-menu" id="userMenu" style="display:none;">
                     <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
                         <span class="user-name" id="userName">User</span>
@@ -107,7 +107,7 @@
                             <span langIn="MenuSaved">Saqlanganlar</span>
                         </a>
                         
-                        <!-- Settings -->
+                        
                         <a class="dd-item" href="" data-open-settings role="menuitem">
                             <span class="dd-ico" aria-hidden="true">
                                 <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
@@ -266,9 +266,9 @@
                         </div>
                     </div>
                     
-                    <!-- test cards -->
+                    
                     <div class="test-card-wrapper">
-                        <!-- cards s -->
+                        
                         <div class="test-card">
                             <div class="test-card-top-wrapper">
                                 <div class="test-card-top">
@@ -298,15 +298,15 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- cards f -->
+                        
                     </div>
-                    <!-- test cards -->
+                    
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- SETTINGS MODAL -->
+    
     <div class="settings-overlay" id="settingsOverlay">
         <div class="settings-modal">
             <div class="settings-main">
@@ -349,7 +349,7 @@
             </div>
         </div>
     </div>
-    <!-- AUTH MODAL -->
+    
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
             <button class="auth-close" id="authClose" aria-label="Yopish">x</button>
@@ -359,7 +359,7 @@
                 <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Ro'yxatdan o'tish</button>
             </div>
             
-            <!-- LOGIN -->
+            
             <div class="auth-pane active" id="paneLogin">
                 <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin">Kirish</h3>
                 <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bo'lishi kerak.</p>
@@ -373,7 +373,7 @@
                 <div class="auth-msg" id="loginMsg"></div>
             </div>
             
-            <!-- REGISTER -->
+            
             <div class="auth-pane" id="paneRegister">
                 <h3 class="auth-title" langIn="AuthTitleRegister">Ro'yxatdan o'tish</h3>
                 <p class="auth-sub" langIn="AuthSubRegister">Emailingizga tasdiqlash havolasi yuboriladi.</p>
@@ -389,7 +389,7 @@
             </div>
         </div>
     </div>
-    <!-- Logout confirm modal -->
+    
     <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
         <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
             <img
@@ -407,7 +407,7 @@
         </div>
     </div>
     <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-    <!-- js -->
+    
     <script src="../js/main.js" defer></script>
     <script src="../js/theme.js" defer></script>
     <script type="module" src="../js/bookmarks.js"></script>
@@ -415,10 +415,3 @@
     <script src="../js/settings-modal.js" defer></script>
 </body>
 </html>
-
-
-
-
-
-
-

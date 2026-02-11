@@ -1,12 +1,10 @@
-.quiz-layout {
+﻿.quiz-layout {
   display: flex;
   gap: 20px;
   align-items: flex-start;
   flex-wrap: wrap;
 }
-/* ============================= LEFT PANEL (info + progress) ============================= */
 
-/* boshlandi| chapdagi info card */
 .quiz-info-card,
 .progress-card {
   width: 270px;
@@ -48,9 +46,7 @@
   margin: 0;
   color: var(--text-main);
 }
-/* tugadi| chapdagi info card */
 
-/* boshlandi| savollar progress bar */
 .progress-title {
   font-size: 18px;
   margin: 0 0 10px;
@@ -79,11 +75,7 @@
   font-weight: 500;
   color: #00c853;
 }
-/* tugadi| savollar progress bar */
 
-/* ============================= RIGHT MAIN QUIZ ============================= */
-
-/* boshlandi| test savol card */
 .quiz-container {
   flex: 1;
   min-width: 0;
@@ -126,9 +118,7 @@
   font-size: 16px;
   color: var(--text-main);
 }
-/* tugadi| test savol card */
 
-/* boshlandi| variantlar va tugmalar */
 .quiz-options-box {
   width: 100%;
   background-color: var(--bg-white);
@@ -141,7 +131,7 @@
 }
 
 .quiz-options-pic {
-  display: none; /* JS orqali faollashadi */
+  display: none; 
   max-width: 100%;
   max-height: 220px;
   object-fit: contain;
@@ -186,9 +176,6 @@
   background-color: rgba(251, 44, 54, 0.12);
 }
 
-/* tugadi| variantlar */
-
-/* boshlandi| tekshirish + yakunlash tugmalari */
 .quiz-controls {
   display: flex;
   justify-content: space-between;
@@ -236,9 +223,7 @@
   color: #fff;
   cursor: pointer;
 }
-/* tugadi| tekshirish + yakunlash */
 
-/* boshlandi| tog'ri / noto'g'ri javob chiqadigan joy */
 .answer-status {
   display: flex;
   align-items: center;
@@ -260,7 +245,6 @@
 .answer-status.is-wrong {
   color: #fb2c36;
 }
-/* tugadi| tog'ri / noto'g'ri javob */
 
 .answerstatus-check-wrapper {
   display: flex;
@@ -269,8 +253,6 @@
   margin: 0;
   flex-wrap: wrap;
 }
-
-/* modal umumiy stillar main.css ga ko'chirildi */
 
 .result-title-h {
   display: flex;
@@ -444,3 +426,4 @@
   font-weight: 500;
   padding: 10px 54px;
 }
+
