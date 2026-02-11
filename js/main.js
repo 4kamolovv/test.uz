@@ -28,6 +28,43 @@ const root = document.documentElement;
 const forcedTheme = root.getAttribute("data-force-theme");
 const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
 const navToggle = document.getElementById("navToggle");
+const THEME_MODE_KEY = "themeMode";
+const LANG_MODE_KEY = "siteLangMode";
+
+if (!localStorage.getItem(THEME_MODE_KEY)) {
+  localStorage.setItem(THEME_MODE_KEY, "auto");
+}
+if (!localStorage.getItem(LANG_MODE_KEY)) {
+  localStorage.setItem(LANG_MODE_KEY, "auto");
+}
+
+function detectSystemTheme() {
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function resolveThemeFromMode(mode) {
+  if (mode === "auto") return detectSystemTheme();
+  return mode === "dark" ? "dark" : "light";
+}
+
+function detectSystemLanguage() {
+  const langs = [
+    ...(Array.isArray(navigator.languages) ? navigator.languages : []),
+    navigator.language,
+  ]
+    .filter(Boolean)
+    .map((lang) => String(lang).toLowerCase());
+
+  if (langs.some((lang) => lang.startsWith("ru"))) return "ru";
+  return "uz";
+}
+
+function resolveLanguage(modeOrLang) {
+  if (modeOrLang === "auto") return detectSystemLanguage();
+  return modeOrLang === "ru" ? "ru" : "uz";
+}
 
 function applyTheme(theme) {
   const resolvedTheme =
@@ -51,7 +88,24 @@ function applyTheme(theme) {
   }
 }
 
-applyTheme(localStorage.getItem("theme") || "light");
+const savedThemeMode = localStorage.getItem(THEME_MODE_KEY) || "auto";
+const initialTheme = resolveThemeFromMode(savedThemeMode);
+localStorage.setItem("theme", initialTheme);
+applyTheme(initialTheme);
+
+const themeMedia = window.matchMedia("(prefers-color-scheme: dark)");
+const handleSystemThemeChange = () => {
+  const mode = localStorage.getItem(THEME_MODE_KEY) || "auto";
+  if (mode !== "auto") return;
+  const nextTheme = resolveThemeFromMode("auto");
+  localStorage.setItem("theme", nextTheme);
+  applyTheme(nextTheme);
+};
+if (typeof themeMedia.addEventListener === "function") {
+  themeMedia.addEventListener("change", handleSystemThemeChange);
+} else if (typeof themeMedia.addListener === "function") {
+  themeMedia.addListener(handleSystemThemeChange);
+}
 
 if (toggleBtn) {
   toggleBtn.addEventListener("click", () => {
@@ -61,6 +115,7 @@ if (toggleBtn) {
     }
     const isDark = root.getAttribute("data-theme") === "dark";
     const next = isDark ? "light" : "dark";
+    localStorage.setItem(THEME_MODE_KEY, next);
     localStorage.setItem("theme", next);
     applyTheme(next);
   });
@@ -77,7 +132,13 @@ fetch(`${basePath}/data/lang.json`)
     langData = data;
     window.langData = data;
 
-    const savedLang = localStorage.getItem("siteLang") || "uz";
+    const langMode = localStorage.getItem(LANG_MODE_KEY) || "auto";
+    const savedLang =
+      langMode === "auto"
+        ? "auto"
+        : localStorage.getItem("siteLang") === "ru"
+          ? "ru"
+          : "uz";
     setLanguage(savedLang);
 
     document
@@ -90,42 +151,45 @@ fetch(`${basePath}/data/lang.json`)
   .catch((err) => console.error("Failed to load lang.json:", err));
 
 function setLanguage(lang) {
-  localStorage.setItem("siteLang", lang);
+  const isAuto = lang === "auto";
+  const resolvedLang = resolveLanguage(lang);
+  localStorage.setItem(LANG_MODE_KEY, isAuto ? "auto" : "manual");
+  localStorage.setItem("siteLang", resolvedLang);
 
   document.querySelectorAll("[langIn]").forEach((el) => {
     if (el.hasAttribute("data-lang-skip")) return;
     const key = el.getAttribute("langIn");
-    if (langData[lang] && langData[lang][key]) {
-      el.textContent = langData[lang][key];
+    if (langData[resolvedLang] && langData[resolvedLang][key]) {
+      el.textContent = langData[resolvedLang][key];
     }
   });
 
   document.querySelectorAll("[langHtml]").forEach((el) => {
     if (el.hasAttribute("data-lang-skip")) return;
     const key = el.getAttribute("langHtml");
-    if (langData[lang] && langData[lang][key]) {
-      el.innerHTML = langData[lang][key];
+    if (langData[resolvedLang] && langData[resolvedLang][key]) {
+      el.innerHTML = langData[resolvedLang][key];
     }
   });
 
   document.querySelectorAll("[langPlaceholder]").forEach((el) => {
     const key = el.getAttribute("langPlaceholder");
-    if (langData[lang] && langData[lang][key]) {
-      el.setAttribute("placeholder", langData[lang][key]);
+    if (langData[resolvedLang] && langData[resolvedLang][key]) {
+      el.setAttribute("placeholder", langData[resolvedLang][key]);
     }
   });
 
   document.querySelectorAll("[langAlt]").forEach((el) => {
     const key = el.getAttribute("langAlt");
-    if (langData[lang] && langData[lang][key]) {
-      el.setAttribute("alt", langData[lang][key]);
+    if (langData[resolvedLang] && langData[resolvedLang][key]) {
+      el.setAttribute("alt", langData[resolvedLang][key]);
     }
   });
 
   document.querySelectorAll("[langTitle]").forEach((el) => {
     const key = el.getAttribute("langTitle");
-    if (langData[lang] && langData[lang][key]) {
-      el.setAttribute("title", langData[lang][key]);
+    if (langData[resolvedLang] && langData[resolvedLang][key]) {
+      el.setAttribute("title", langData[resolvedLang][key]);
     }
   });
 

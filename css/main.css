@@ -993,7 +993,7 @@ html.auth-pending #userMenu {
 .settings-modal {
   width: 560px;
   max-width: 92vw;
-  max-height: 88vh;
+  max-height: 92vh;
   background: var(--bg-white);
   border: 1px solid var(--bg-gray);
   border-radius: var(--radius-lg);
@@ -1098,7 +1098,7 @@ html.auth-pending #userMenu {
 }
 .settings-select {
   height: 40px;
-  min-width: 150px;
+  min-width: 180px;
   border-radius: 10px;
   border: 2px solid var(--bg-gray);
   background: var(--bg-white);
@@ -1129,7 +1129,7 @@ html.auth-pending #userMenu {
 
 .settings-select-wrap {
   position: relative;
-  min-width: 150px;
+  min-width: 180px;
 }
 
 .settings-select-btn {
@@ -1214,6 +1214,23 @@ html.auth-pending #userMenu {
   font-size: 12.5px;
 }
 
+.settings-reset-btn {
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid var(--bg-gray);
+  background: var(--bg-white);
+  color: var(--text-main);
+  font-weight: 750;
+  font-size: 12px;
+  padding: 0 12px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.settings-reset-btn:hover {
+  background: var(--bg-gray);
+}
+
 .site-footer {
   margin-top: 24px;
   padding: 20px 0 28px;
@@ -1263,14 +1280,14 @@ html.auth-pending #userMenu {
     width: 100%;
   }
   .settings-select {
-    min-width: 120px;
+    min-width: 140px;
   }
 }
 
 @media (max-width: 520px) {
   .settings-modal {
     max-width: 100%;
-    max-height: 92vh;
+    max-height: 94vh;
   }
   .settings-overlay {
     padding: 10px;
