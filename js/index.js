@@ -41,12 +41,30 @@ async function loadRegisteredUsersCount() {
   return snap.data().count;
 }
 
+function canReadUsersCount() {
+  return localStorage.getItem("authLoggedIn") === "true";
+}
+
 async function loadStats() {
   try {
-    const [{ tests, topics }, users] = await Promise.all([
-      loadDataStats(),
-      loadRegisteredUsersCount(),
-    ]);
+    const { tests, topics } = await loadDataStats();
+    let users = null;
+
+    if (canReadUsersCount()) {
+      try {
+        users = await loadRegisteredUsersCount();
+      } catch (err) {
+        const code = String(err?.code || "");
+        const msg = String(err?.message || "");
+        const isPermission =
+          code.includes("permission-denied") ||
+          msg.includes("Missing or insufficient permissions");
+        if (!isPermission) {
+          console.error("Failed to load users count:", err);
+        }
+      }
+    }
+
     setStat(statTests, tests);
     setStat(statUsers, users);
     setStat(statTopics, topics);
