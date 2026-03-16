@@ -66,6 +66,9 @@
   }
 
   function toCardHtml({ subject, topic, count, displaySubject }, query) {
+    // Derive a simple rating (1..5) from the number of tests in the topic.
+    // This is a lightweight placeholder until real rating data is available.
+    const rating = Math.min(5, Math.max(1, Math.round(count / 5)));
     return `
     <div class="test-card" data-subject="${subject}" data-topic="${topic}" data-count="${count}" data-display-subject="${escapeHtml(displaySubject)}">
       <div class="test-card-top-wrapper">
@@ -83,16 +86,16 @@
       </div>
       <div class="test-card-footer">
         <div class="test-card-stat">
+          <span class="test-card-stat-value">${rating}</span>
           <img src="${basePath}/images/icons/staricon.svg" alt="${t("RatingAlt", "Reyting")}" class="test-icon">
-          <span>4.5</span>
         </div>
         <div class="test-card-stat">
+          <span class="test-card-stat-value">${count} ${t("SavedTestsCount", "test")}</span>
           <img src="${basePath}/images/icons/quantityicon.svg" alt="${t("TestCountAlt", "Test soni")}" class="test-icon">
-          <span>${count} ${t("SavedTestsCount", "test")}</span>
         </div>
         <div class="test-card-stat">
+          <span class="test-card-stat-value">${count * 10}</span>
           <img src="${basePath}/images/icons/viewsicon.svg" alt="${t("ViewsAlt", "Ko'rilgan")}" class="test-icon">
-          <span>${count * 10}</span>
         </div>
       </div>
     </div>
