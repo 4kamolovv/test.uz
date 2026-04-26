@@ -1274,6 +1274,21 @@ html.auth-pending #userMenu {
   font-size: 12px;
 }
 
+.footer-created {
+  color: var(--text-gray);
+  font-size: 12px;
+}
+
+.footer-created a {
+  color: var(--green-btn);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-created a:hover {
+  text-decoration: underline;
+}
+
 .footer-links a {
   text-decoration: none;
   color: var(--text-main);

@@ -19,6 +19,7 @@
 <body>
     <div id="progress-bg"></div>
     <div id="progress-bar"></div>
+    
     <header class="main-header">
         <div class="header-container">
             <a href="./index.html" class="logo-wrapper">
@@ -319,12 +320,15 @@
             </div>
         </section>
     </main>
-
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">
                 <span class="footer-logo">test.uz</span>
                 <span class="footer-copy" langIn="FooterCopy">© 2026 test.uz. Barcha huquqlar himoyalangan.</span>
+                <span class="footer-created">
+                    <span langIn="FooterCreatedBy">Muallif:</span>
+                    <a href="https://4kamolovv.github.io/PORTFOLIO-/" target="_blank" rel="noopener noreferrer">Kamolov Doniyor</a>
+                </span>
             </div>
             <div class="footer-links">
                 <a href="./html/news.html" langIn="FooterNews">Yangiliklar</a>
@@ -334,7 +338,6 @@
         </div>
     </footer>
 
-    
     <div class="settings-overlay" id="settingsOverlay">
         <div class="settings-modal">
             <div class="settings-main">
@@ -376,8 +379,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
     <div class="auth-overlay" id="authOverlay">
         <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
             <button class="auth-close" id="authClose" aria-label="Yopish">x</button>
@@ -417,7 +419,6 @@
             </div>
         </div>
     </div>
-    
     <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
         <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
             <img
@@ -435,7 +436,7 @@
         </div>
     </div>
     <div id="toast-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-    
+
     <script src="./js/main.js" defer></script>
     <script type="module" src="./js/index.js"></script>
     <script type="module" src="./js/auth-modal.js"></script>
