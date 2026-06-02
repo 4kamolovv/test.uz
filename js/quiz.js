@@ -10,7 +10,7 @@ import {
 
 (() => {
   const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
-  const DATA_URL = "https://4kamolov.github.io/docs/data/data.json";
+  const DATA_URL = "/data/qutests.json";
 
   const SESSION_KEY = "quizSession";
   const SELECTION_KEY = "quizSelection";
@@ -20,6 +20,9 @@ import {
     quizInfoTitle: document.querySelector(".quiz-info-title"),
     quizQuestionText: document.querySelector(".quiz-question-text"),
     quizQuestionProgress: document.querySelector(".quiz-question-progress"),
+    testReviews: document.querySelector(".test-reviews"),
+    testAmount: document.querySelector(".test-amount"),
+    testViews: document.querySelector(".test-views"),
     progressText: document.getElementById("progress-text"),
     progressPercent: document.getElementById("progress-percent"),
     progressFill: document.getElementById("progress-fill"),
@@ -264,7 +267,9 @@ import {
     const icon = isCorrect
       ? `${basePath}/images/icons/correct-success.svg`
       : `${basePath}/images/icons/incorrec.gif`;
-    const text = isCorrect ? "To'g'ri javob" : "Notog'ri javob";
+    const text = isCorrect
+      ? t("TestCorrectAnswer", "To'g'ri javob")
+      : t("TestWrongAnswer", "Noto'g'ri javob");
 
     elements.answerStatus.classList.toggle("is-correct", isCorrect);
     elements.answerStatus.classList.toggle("is-wrong", !isCorrect);
@@ -294,6 +299,37 @@ import {
     elements.btnCheck.textContent = text;
     elements.btnCheck.classList.toggle("active", active);
     elements.btnCheck.disabled = !active;
+  }
+
+  function getCheckButtonText(state) {
+    const labels = {
+      check: ["TestCheckBtn", "Tekshirish"],
+      next: ["TestNextBtn", "Keyingisi"],
+      results: ["TestResultsBtn", "Natijalar"],
+    };
+    const [key, fallback] = labels[state] || labels.check;
+    return t(key, fallback);
+  }
+
+  function refreshLanguageText() {
+    if (!session) return;
+    const item = session.items[session.currentIndex];
+    if (!item) return;
+
+    updateQuizInfoStats();
+
+    if (item.answered) {
+      setAnswerStatus(item.wasCorrect, false);
+      const state =
+        session.currentIndex === session.items.length - 1 ? "results" : "next";
+      setCheckButtonState(getCheckButtonText(state), true);
+      return;
+    }
+
+    setCheckButtonState(
+      getCheckButtonText("check"),
+      currentSelectedIndex !== null,
+    );
   }
 
   function setOptionsDisabled(disabled) {
@@ -326,6 +362,22 @@ import {
     }
   }
 
+  function updateQuizInfoStats() {
+    if (!session) return;
+    const count = session.items?.length || 0;
+    const rating =
+      count > 0 ? Math.min(5, Math.max(1, Math.round(count / 5))) : 0;
+
+    if (elements.testReviews) elements.testReviews.textContent = String(rating);
+    if (elements.testAmount) {
+      elements.testAmount.textContent = `${count} ${t(
+        "SavedTestsCount",
+        "test",
+      )}`;
+    }
+    if (elements.testViews) elements.testViews.textContent = String(count * 10);
+  }
+
   function renderQuestion() {
     if (!session || session.items.length === 0) return;
 
@@ -340,6 +392,7 @@ import {
     // );
 
     updateProgressUI();
+    updateQuizInfoStats();
 
     elements.quizSubjectEls.forEach((el) => {
       el.textContent = session.displaySubject || session.subject;
@@ -381,12 +434,12 @@ import {
         }
       });
       if (session.currentIndex === session.items.length - 1) {
-        setCheckButtonState("Natijalar", true);
+        setCheckButtonState(getCheckButtonText("results"), true);
       } else {
-        setCheckButtonState("Keyingisi", true);
+        setCheckButtonState(getCheckButtonText("next"), true);
       }
     } else {
-      setCheckButtonState("Tekshirish", false);
+      setCheckButtonState(getCheckButtonText("check"), false);
     }
   }
 
@@ -474,9 +527,9 @@ import {
     });
 
     if (session.currentIndex === session.items.length - 1) {
-      setCheckButtonState("Natijalar", true);
+      setCheckButtonState(getCheckButtonText("results"), true);
     } else {
-      setCheckButtonState("Keyingisi", true);
+      setCheckButtonState(getCheckButtonText("next"), true);
     }
   }
 
@@ -489,11 +542,12 @@ import {
         currentSelectedIndex = index;
         elements.optionButtons.forEach((b) => b.classList.remove("selected"));
         btn.classList.add("selected");
-        setCheckButtonState("Tekshirish", true);
+        setCheckButtonState(getCheckButtonText("check"), true);
       });
     });
 
     elements.btnCheck?.addEventListener("click", handleCheckClick);
+    window.addEventListener("site-language-change", refreshLanguageText);
 
     const endTitle = elements.endModal?.querySelector(".modal-title");
     const endDesc = elements.endModal?.querySelector(".modal-desc");

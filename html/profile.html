@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title langIn="PageProfileTitle">Profil</title>
+  <title langIn="PageProfileTitle"></title>
   <script>
     (function () {
       const theme = localStorage.getItem("theme");
@@ -21,41 +21,41 @@
   <div id="progress-bg"></div>
   <div id="progress-bar"></div>
   <div id="toast-container"></div>
-
+  
   <header class="main-header">
     <div class="header-container">
       <a href="../index.html" class="logo-wrapper">
         <img id="logo-img" src="../images/image/logo_dark.png" alt="Logo">
       </a>
-            <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="3" rx="1.5"></rect><rect x="3" y="10.5" width="18" height="3" rx="1.5"></rect><rect x="3" y="16" width="18" height="3" rx="1.5"></rect></svg></button>
-            <nav class="nav">
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false"><svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="3" rx="1.5"></rect><rect x="3" y="10.5" width="18" height="3" rx="1.5"></rect><rect x="3" y="16" width="18" height="3" rx="1.5"></rect></svg></button>
+      <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="../index.html" class="nav-link" langIn="NavHome">Bosh sahifa</a>
+            <a href="../index.html" class="nav-link" langIn="NavHome"></a>
           </li>
           <li class="nav-item">
-            <a href="../html/themetest.html" class="nav-link" langIn="NavThemeTest">Mavzuli test</a>
+            <a href="../html/themetest.html" class="nav-link" langIn="NavThemeTest"></a>
           </li>
           <li class="nav-item">
-            <a href="../html/blocktests.html" class="nav-link" langIn="NavBlockTests">Blok testlar</a>
+            <a href="../html/blocktests.html" class="nav-link" langIn="NavBlockTests"></a>
           </li>
           <li class="nav-item">
-            <a href="../html/rating.html" class="nav-link" langIn="NavRating">Reyting</a>
+            <a href="../html/rating.html" class="nav-link" langIn="NavRating"></a>
           </li>
           <li class="nav-item">
-            <a href="../html/news.html" class="nav-link" langIn="NavNews">Yangiliklar</a>
+            <a href="../html/news.html" class="nav-link" langIn="NavNews"></a>
           </li>
         </ul>
       </nav>
       <div class="header-actions">
-        <button class="btn-settings-header" type="button" id="openSettingsGuest" data-open-settings langTitle="SettingsTitle" title="Sozlamalar" aria-label="Settings">
-                    <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="12" cy="12" r="3.2"></circle>
-                        <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
-                    </svg>
-                </button>
-                <button class="btn-login" type="button" id="openAuth"></button>
-
+        <button class="btn-settings-header" type="button" id="openSettingsGuest" data-open-settings langTitle="SettingsTitle" title="" aria-label="Settings">
+          <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3.2"></circle>
+            <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
+          </svg>
+        </button>
+        <button class="btn-login" type="button" id="openAuth"></button>
+        
         <div class="user-menu" id="userMenu" style="display:none;">
           <button class="user-pill" id="userMenuBtn" type="button" aria-haspopup="menu" aria-expanded="false">
             <span class="user-name" id="userName">Mehmon (Guest)</span>
@@ -63,23 +63,23 @@
             <span class="user-caret" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round"></path>
+                stroke-linecap="round" stroke-linejoin="round"></path>
               </svg>
             </span>
           </button>
-
+          
           <div class="user-dropdown" id="userDropdown" role="menu" aria-label="User menu">
             <a class="dd-item" href="../html/profile.html" role="menuitem">
               <span class="dd-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle>
                   <path d="M4 21a8 8 0 0 1 16 0" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round"></path>
+                  stroke-linecap="round"></path>
                 </svg>
               </span>
-              <span langIn="MenuProfile">Profil</span>
+              <span langIn="MenuProfile"></span>
             </a>
-
+            
             <a class="dd-item" href="../html/myresults.html" role="menuitem">
               <span class="dd-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
@@ -90,20 +90,20 @@
                   <path d="M20 19V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
                 </svg>
               </span>
-              <span langIn="MenuResults">Mening natijalarim</span>
+              <span langIn="MenuResults"></span>
             </a>
-
+            
             <a class="dd-item" href="../html/saved.html" role="menuitem">
               <span class="dd-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M6 3h12a2 2 0 0 1 2 2v16l-8-4-8 4V5a2 2 0 0 1 2-2Z"
-                    fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linejoin="round"></path>
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linejoin="round"></path>
                 </svg>
               </span>
-              <span langIn="MenuSaved">Saqlanganlar</span>
+              <span langIn="MenuSaved"></span>
             </a>
-
+            
             <a class="dd-item" href="" data-open-settings role="menuitem">
               <span class="dd-ico" aria-hidden="true">
                 <svg class="is-stroke" viewBox="0 0 24 24" aria-hidden="true">
@@ -111,227 +111,242 @@
                   <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 0 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 0 1-4 0v-.1a1.7 1.7 0 0 0-1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 0 1 0-4h.1a1.7 1.7 0 0 0 1.5-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3 1.7 1.7 0 0 0 1-1.5V3a2 2 0 0 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.5 1H21a2 2 0 0 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1Z"></path>
                 </svg>
               </span>
-              <span langIn="MenuSettings">Sozlamalar</span>
+              <span langIn="MenuSettings"></span>
             </a>
-
+            
             <div class="dd-sep" role="separator"></div>
-
+            
             <button class="dd-item danger" id="btnLogout" type="button" role="menuitem">
               <span class="dd-ico" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
                   <path d="M10 17v-2h8v-6h-8V7" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round"></path>
+                  stroke-linecap="round"></path>
                   <path d="M14 12H3" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round"></path>
+                  stroke-linecap="round"></path>
                   <path d="M6 9l-3 3 3 3" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round" stroke-linejoin="round"></path>
+                  stroke-linecap="round" stroke-linejoin="round"></path>
                   <path d="M20 21H12a2 2 0 0 1-2-2v-3" fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round"></path>
+                  stroke-linecap="round"></path>
                   <path d="M10 8V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2"
-                    fill="none" stroke="currentColor" stroke-width="2"
-                    stroke-linecap="round"></path>
+                  fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round"></path>
                 </svg>
               </span>
-              <span langIn="MenuLogout">Chiqish</span>
+              <span langIn="MenuLogout"></span>
             </button>
           </div>
         </div>
       </div>
     </div>
   </header>
-
+  
   <main class="profile-page container">
     <section class="profile-hero-card">
       <div class="profile-hero-left">
         <div class="profile-avatar-wrap">
           <div class="profile-avatar" id="profileAvatar">G</div>
           <input class="profile-avatar-input" id="profileAvatarInput" type="file" accept="image/*" hidden />
-          <button class="profile-avatar-btn" id="profileAvatarBtn" type="button" langIn="ProfileUploadPhoto">Rasm yuklash</button>
+          <button class="profile-avatar-btn" id="profileAvatarBtn" type="button" langIn="ProfileUploadPhoto"></button>
         </div>
         <div class="profile-user-meta">
-          <h1 class="profile-name" id="profileName" langIn="ProfileGuestName">Foydalanuvchi</h1>
-          <p class="profile-email" id="profileEmail" langIn="ProfileEmailPrompt">Email: -</p>
-          <p class="profile-status" id="profileStatus" langIn="ProfileStatusGuest">Profil holati: Mehmon rejimida</p>
+          <h1 class="profile-name" id="profileName" langIn="ProfileGuestName"></h1>
+          <p class="profile-email" id="profileEmail" langIn="ProfileEmailPrompt"></p>
+          <p class="profile-status" id="profileStatus" langIn="ProfileStatusGuest"></p>
         </div>
       </div>
       <div class="profile-hero-right">
-        <p class="profile-level-title" langIn="ProfileLevelTitle">Daraja progressi</p>
+        <p class="profile-level-title" langIn="ProfileLevelTitle"></p>
         <p class="profile-level-text" id="profileLevelText">Level 1 - 0%</p>
         <div class="profile-progress">
           <div class="profile-progress-fill" id="profileLevelBar"></div>
         </div>
       </div>
     </section>
-
+    
     <section class="profile-grid">
       <article class="profile-card">
-        <h2 langIn="ProfileStatsTitle">Statistika</h2>
+        <h2 langIn="ProfileStatsTitle"></h2>
         <div class="profile-stats-grid">
           <div class="profile-stat-item">
-            <span class="stat-label" langIn="ProfileStatTotalScore">Umumiy ball</span>
+            <span class="stat-label" langIn="ProfileStatTotalScore"></span>
             <strong id="statTotalScore">0</strong>
           </div>
           <div class="profile-stat-item">
-            <span class="stat-label" langIn="ProfileStatTodayScore">Bugungi ball</span>
+            <span class="stat-label" langIn="ProfileStatTodayScore"></span>
             <strong id="statTodayScore">0</strong>
           </div>
           <div class="profile-stat-item">
-            <span class="stat-label" langIn="ProfileStatSolved">Yechilgan testlar</span>
+            <span class="stat-label" langIn="ProfileStatSolved"></span>
             <strong id="statSolved">0</strong>
           </div>
           <div class="profile-stat-item">
-            <span class="stat-label" langIn="ProfileStatAccuracy">Aniqlik</span>
+            <span class="stat-label" langIn="ProfileStatAccuracy"></span>
             <strong id="statAccuracy">0%</strong>
           </div>
         </div>
       </article>
-
+      
       <article class="profile-card">
-        <h2 langIn="ProfileGoalsTitle">Maqsad progressi</h2>
+        <h2 langIn="ProfileGoalsTitle"></h2>
         <div class="goal-row">
           <div class="goal-head">
-            <span langIn="ProfileGoalDaily">Kunlik ball (100)</span>
+            <span langIn="ProfileGoalDaily"></span>
             <b id="goalDailyLabel">0%</b>
           </div>
           <div class="goal-track"><div class="goal-fill" id="goalDailyBar"></div></div>
         </div>
         <div class="goal-row">
           <div class="goal-head">
-            <span langIn="ProfileGoalAccuracy">Aniqlik maqsadi (80%)</span>
+            <span langIn="ProfileGoalAccuracy"></span>
             <b id="goalAccuracyLabel">0%</b>
           </div>
           <div class="goal-track"><div class="goal-fill" id="goalAccuracyBar"></div></div>
         </div>
         <div class="goal-row">
           <div class="goal-head">
-            <span langIn="ProfileGoalWeekly">Haftalik testlar (20)</span>
+            <span langIn="ProfileGoalWeekly"></span>
             <b id="goalSolvedLabel">0%</b>
           </div>
           <div class="goal-track"><div class="goal-fill" id="goalSolvedBar"></div></div>
         </div>
       </article>
-
+      
       <article class="profile-card profile-card-wide">
         <div class="profile-card-head">
-          <h2 langIn="ProfileRecentTitle">Oxirgi natijalar</h2>
-          <a href="./myresults.html" class="see-all" langIn="ProfileSeeAll">Barchasi</a>
+          <h2 langIn="ProfileRecentTitle"></h2>
+          <a href="./myresults.html" class="see-all" langIn="ProfileSeeAll"></a>
         </div>
         <ul class="recent-list" id="profileRecentResults">
-          <li class="recent-empty" langIn="ProfileRecentLoading">Natijalar yuklanmoqda...</li>
+          <li class="recent-empty" langIn="ProfileRecentLoading"></li>
         </ul>
       </article>
     </section>
   </main>
-
+  
   <div class="settings-overlay" id="settingsOverlay">
     <div class="settings-modal">
       <div class="settings-main">
         <div class="settings-title">
+          <span langIn="SettingsTitle"></span>
           <button class="settings-close" id="settingsClose" type="button">
             <svg viewBox="0 0 24 24">
               <path d="M6 6l12 12M18 6L6 18"></path>
             </svg>
           </button>
-          <span langIn="SettingsTitle">Sozlamalar</span>
         </div>
         <div class="settings-right">
           <div class="set-pane active" data-pane="general">
-            <h2 langIn="SettingsGeneral">Umumiy</h2>
+            <h2 langIn="SettingsGeneral"></h2>
             <div class="set-row">
               <div class="meta">
-                <b langIn="SettingsBgLabel">Fon</b>
-                <span langIn="SettingsBgHint">Oq / Qora</span>
+                <b langIn="SettingsBgLabel"></b>
+                <span langIn="SettingsBgHint"></span>
               </div>
               <select class="settings-select" id="setTheme">
-                <option value="light" langIn="SettingsBgLight">Oq</option>
-                <option value="dark" langIn="SettingsBgDark">Qora</option>
+                <option value="light" langIn="SettingsBgLight"></option>
+                <option value="dark" langIn="SettingsBgDark"></option>
               </select>
             </div>
             <div class="set-row">
               <div class="meta">
-                <b langIn="SettingsLangLabel">Til</b>
-                <span langIn="SettingsLangHint">UZ / RU</span>
+                <b langIn="SettingsLangLabel"></b>
+                <span langIn="SettingsLangHint"></span>
               </div>
               <select class="settings-select" id="setLang">
-                <option value="uz" langIn="SettingsLangUz">UZ</option>
-                <option value="ru" langIn="SettingsLangRu">RU</option>
+                <option value="uz" langIn="SettingsLangUz"></option>
+                <option value="ru" langIn="SettingsLangRu"></option>
               </select>
             </div>
           </div>
           <div class="settings-footer">
-            <span langIn="SettingsVersion">Versiya: 1.0</span>
+            <span langIn="SettingsVersion"></span>
           </div>
         </div>
       </div>
     </div>
   </div>
-
+  
   <div class="auth-overlay" id="authOverlay">
     <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
       <button class="auth-close" id="authClose" aria-label="Yopish">x</button>
       <div class="auth-tabs">
-        <button class="auth-tab active" id="tabLogin" type="button" langIn="AuthTabLogin">Kirish</button>
-        <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister">Royxatdan otish</button>
+        <button class="auth-tab active" id="tabLogin" type="button" langIn="AuthTabLogin"></button>
+        <button class="auth-tab" id="tabRegister" type="button" langIn="AuthTabRegister"></button>
       </div>
       <div class="auth-pane active" id="paneLogin">
-        <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin">Kirish</h3>
-        <p class="auth-sub" langIn="AuthSubLogin">Email tasdiqlangan bolishi kerak.</p>
+        <h3 class="auth-title" id="authTitle" langIn="AuthTitleLogin"></h3>
+        <p class="auth-sub" langIn="AuthSubLogin"></p>
         <form id="loginForm" class="auth-form">
-          <input id="loginEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
-          <input id="loginPassword" class="auth-input" type="password" placeholder="Parol" langPlaceholder="AuthPlaceholderPassword" required />
-          <button class="auth-btn primary" type="submit" langIn="AuthBtnLogin">Kirish</button>
+          <input id="loginEmail" class="auth-input" type="email" placeholder="" langPlaceholder="AuthPlaceholderEmail" required />
+          <input id="loginPassword" class="auth-input" type="password" placeholder="" langPlaceholder="AuthPlaceholderPassword" required />
+          <button class="auth-btn primary" type="submit" langIn="AuthBtnLogin"></button>
         </form>
         <div class="auth-msg" id="loginMsg"></div>
       </div>
       <div class="auth-pane" id="paneRegister">
-        <h3 class="auth-title" langIn="AuthTitleRegister">Royxatdan otish</h3>
-        <p class="auth-sub" langIn="AuthSubRegister">Emailingizga tasdiqlash havolasi yuboriladi. Spam papkasini ham tekshiring.</p>
+        <h3 class="auth-title" langIn="AuthTitleRegister"></h3>
+        <p class="auth-sub" langIn="AuthSubRegister"></p>
         <form id="registerForm" class="auth-form">
-          <input id="regNickname" class="auth-input" type="text" placeholder="Nickname" langPlaceholder="AuthPlaceholderNickname" required />
-          <input id="regEmail" class="auth-input" type="email" placeholder="Email" langPlaceholder="AuthPlaceholderEmail" required />
-          <input id="regPassword" class="auth-input" type="password" placeholder="Parol (kamida 6 ta)" langPlaceholder="AuthPlaceholderPasswordMin" minlength="6" required />
-          <button class="auth-btn primary" type="submit" langIn="AuthBtnRegister">Royxatdan otish</button>
+          <input id="regNickname" class="auth-input" type="text" placeholder="" langPlaceholder="AuthPlaceholderNickname" required />
+          <input id="regEmail" class="auth-input" type="email" placeholder="" langPlaceholder="AuthPlaceholderEmail" required />
+          <input id="regPassword" class="auth-input" type="password" placeholder="" langPlaceholder="AuthPlaceholderPasswordMin" minlength="6" required />
+          <button class="auth-btn primary" type="submit" langIn="AuthBtnRegister"></button>
         </form>
         <div class="auth-msg" id="regMsg"></div>
       </div>
     </div>
   </div>
-
+  
   <div class="modal-overlay" id="logoutOverlay" aria-hidden="true">
     <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="logoutTitle">
       <img
-        class="yakunlash-image"
-        src="../images/icons/complateredicon.png"
-        alt="Warning icon"
-        langAlt="TestWarnAlt"
+      class="yakunlash-image"
+      src="../images/icons/complateredicon.png"
+      alt=""
+      langAlt="TestWarnAlt"
       />
-      <h4 class="modal-title" id="logoutTitle" langIn="LogoutTitle">Chiqib ketilsinmi?</h4>
-      <p class="modal-desc" langIn="LogoutSub">Hisobingizdan chiqmoqchimisiz?</p>
+      <h4 class="modal-title" id="logoutTitle" langIn="LogoutTitle"></h4>
+      <p class="modal-desc" langIn="LogoutSub"></p>
       <div class="modal-actions">
-        <button id="logoutCancel" type="button" langIn="LogoutCancel" class="btn-cancel">Bekor qilish</button>
-        <button id="logoutYes" type="button" langIn="LogoutYes" class="btn-ok">Ha, chiqish</button>
+        <button id="logoutCancel" type="button" langIn="LogoutCancel" class="btn-cancel"></button>
+        <button id="logoutYes" type="button" langIn="LogoutYes" class="btn-ok"></button>
       </div>
     </div>
   </div>
-
+  
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">test.uz</span>
-        <span class="footer-copy" langIn="FooterCopy">© 2026 test.uz. Barcha huquqlar himoyalangan.</span>
+        
+        <span class="footer-copy">
+          <span langIn="FooterCopy"></span>
+          <a href="https://akam.uz" target="_blank" rel="noopener noreferrer" class="footer-akam"> Akam.uz. </a>
+          <span langIn="FooterCopyEnd"></span>
+        </span>
       </div>
+      
       <div class="footer-links">
-        <a href="../html/news.html" langIn="FooterNews">Yangiliklar</a>
-        <a href="../html/rating.html" langIn="FooterRating">Reyting</a>
-        <a href="../html/themetest.html" langIn="FooterThemeTest">Mavzuli test</a>
-      </div>
+        <span class="footer-author">
+          <span langIn="FooterCreatedBy"></span>
+          <strong>Kamolov Doniyor</strong>
+        </span>
+        
+        <a
+        href="https://4kamolovv.github.io/PORTFOLIO-/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="footer-portfolio"
+        langIn="FooterPortfolio">
+      </a>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <script src="../js/main.js" defer></script>
-  <script type="module" src="../js/auth-modal.js"></script>
-  <script type="module" src="../js/profile.js"></script>
-  <script src="../js/settings-modal.js" defer></script>
+<script src="../js/main.js" defer></script>
+<script type="module" src="../js/auth-modal.js"></script>
+<script type="module" src="../js/profile.js"></script>
+<script src="../js/settings-modal.js" defer></script>
 </body>
 </html>
 

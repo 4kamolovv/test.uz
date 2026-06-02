@@ -72,8 +72,8 @@
 
 .progress-bar-track {
   height: 12px;
-  background: #eee;
-  border: 2px solid #c4c4c4;
+  background: var(--progress-track-bg);
+  border: 2px solid var(--progress-track-border);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -232,8 +232,8 @@
 }
 
 .btn-complete {
-  background-color: var(--red-soft);
-  color: var(--red-main);
+  background-color: var(--danger-button-bg);
+  color: var(--danger-button-text);
   transition: all 0.2s ease;
   font-size: 13.89px;
   font-weight: 600;
@@ -241,17 +241,18 @@
 }
 
 .btn-complete:hover {
-  background-color: var(--red-main);
-  color: #fff;
+  background-color: var(--danger-button-hover-bg);
+  color: var(--danger-button-hover-text);
 }
 
 .btn-check {
-  background-color: var(--green-dark);
-  color: #99a1af;
+  background-color: rgba(0, 200, 83, 0.28);
+  color: var(--green-hover);
   cursor: not-allowed;
   font-size: 13.89px;
   font-weight: 600;
   outline: none;
+  opacity: 1;
 }
 
 .btn-check.active {
@@ -421,7 +422,7 @@
   border-radius: 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
 }

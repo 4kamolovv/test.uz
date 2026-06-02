@@ -196,6 +196,12 @@ function setLanguage(lang) {
   document.querySelectorAll(".settings-select").forEach((el) => {
     el.dispatchEvent(new Event("lang-update"));
   });
+
+  window.dispatchEvent(
+    new CustomEvent("site-language-change", {
+      detail: { lang: resolvedLang },
+    }),
+  );
 }
 
 if (navToggle) {
