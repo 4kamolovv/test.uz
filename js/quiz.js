@@ -10,7 +10,7 @@ import {
 
 (() => {
   const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
-  const DATA_URL = "/data/qutests.json";
+  const DATA_URL = "https://4kamolovv.github.io/test.uz/data/qutests.json";
 
   const SESSION_KEY = "quizSession";
   const SELECTION_KEY = "quizSelection";

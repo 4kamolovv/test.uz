@@ -1,6 +1,6 @@
 (() => {
   const basePath = window.location.pathname.includes("/html/") ? ".." : ".";
-  const NEWS_URL = `${basePath}/data/news.json`;
+  const NEWS_URL = `${basePath}https://4kamolovv.github.io/test.uz/data/news.json`;
 
   const filtersEl = document.getElementById("newsFilters");
   const gridEl = document.getElementById("newsGrid");
