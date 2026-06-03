@@ -270,10 +270,12 @@
         "RatingAllLink": "Barchasi →",
         "RatingSolvedPrefix": "Yechilgan",
         "RatingLevel": "Daraja",
-        "RatingAccuracy": "Aniqlik"
-        ,
+        "RatingAccuracy": "Aniqlik",
         "RatingEmpty": "Hali reyting yo'q.",
-        "RatingEmptySub": "Birinchi natijani siz yarating."
+        "RatingEmptySub": "Birinchi natijani siz yarating.",
+        "BackModalTitle": "Orqaga qaytishni xohlaysizmi?",
+        "BackModalDesc": "Asosiy sahifaga qaytsangiz test yakunlanadi.",
+        "BackModalConfirm": "Ha, qaytish"
     },
     "ru": {
         "AuthRegSuccessTitle": "Регистрация завершена!",
@@ -546,9 +548,11 @@
         "RatingAllLink": "Все →",
         "RatingSolvedPrefix": "Решено",
         "RatingLevel": "Уровень",
-        "RatingAccuracy": "Точность"
-        ,
+        "RatingAccuracy": "Точность",
         "RatingEmpty": "Рейтинг пока пуст.",
-        "RatingEmptySub": "Создайте первый результат."
+        "RatingEmptySub": "Создайте первый результат.",
+        "BackModalTitle": "Вернуться назад?",
+        "BackModalDesc": "Если вы вернётесь, тест будет завершён.",
+        "BackModalConfirm": "Да, вернуться"
     }
 }

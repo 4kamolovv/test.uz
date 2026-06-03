@@ -463,3 +463,14 @@
   font-weight: 500;
   padding: 10px 54px;
 }
+
+.result-modal-box {
+  text-align: left;
+  padding: 20px 24px 24px;
+}
+
+.result-title-h {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
