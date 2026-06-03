@@ -126,8 +126,8 @@
         text-overflow:ellipsis; max-width:160px;
       }
       .test-card-footer { display:flex; align-items:center; justify-content:space-between; margin-top:auto; }
-      .test-card-count { font-size:0.8rem; color:rgba(255,255,255,0.45); font-weight:500; }
-      .test-card-arrow { color:rgba(255,255,255,0.3); transition:color 0.2s,transform 0.2s; display:flex; }
+      .test-card-count { font-size:0.8rem; color:var(--icon-color); font-weight:500; }
+      .test-card-arrow { color:var(--icon-color); transition:color 0.2s,transform 0.2s; display:flex; }
       .test-card:hover .test-card-arrow { color:#22c55e; transform:translateX(3px); }
     `;
     document.head.appendChild(style);
