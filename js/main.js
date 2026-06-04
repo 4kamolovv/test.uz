@@ -70,7 +70,7 @@ function applyTheme(theme) {
   const resolvedTheme =
     forcedTheme === "dark" || forcedTheme === "light"
       ? forcedTheme
-      : theme === "light"
+      : theme === "dark"
         ? "dark"
         : "light";
 

@@ -37,31 +37,7 @@
           <div class="quiz-info-title" langIn="TestTopic" data-lang-skip></div>
           <div class="quiz-info-footer">
             <div class="quiz-info-stat">
-              <img
-              class="quiz-info-icon"
-              src="../images/icons/staricon.svg"
-              alt=""
-              langAlt="RatingAlt"
-              />
-              <p class="quiz-info-text test-reviews"></p>
-            </div>
-            <div class="quiz-info-stat">
-              <img
-              class="quiz-info-icon"
-              src="../images/icons/quantityicon.svg"
-              alt=""
-              langAlt="TestCountAlt"
-              />
-              <p class="quiz-info-text test-amount"></p>
-            </div>
-            <div class="quiz-info-stat">
-              <img
-              class="quiz-info-icon"
-              src="../images/icons/viewsicon.svg"
-              alt=""
-              langAlt="ViewsAlt"
-              />
-              <p class="quiz-info-text test-views"></p>
+              <p class="quiz-info-text test-amount test-card-count"></p>
             </div>
           </div>
         </div>
@@ -150,13 +126,21 @@
   <div class="modal-overlay" id="resultModal">
     <div class="modal-box result-modal-box">
       <h4 class="result-title-h" langIn="TestResultTitle"></h4>
-      <img
-      class="result-icon-main"
-      src="../images/icons/happy-result.webp"
-      alt=""
-      langAlt="TestResultAlt"
-      />
-      <h2 class="result-user" id="username">O'quvchi_8848756415</h2>
+      <div class="result-speedo-wrap">
+        <svg id="spSvg" width="340" height="170" viewBox="0 0 380 180" aria-hidden="true">
+          <defs>
+            <linearGradient id="spGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#1a9e5c"/>
+              <stop offset="100%" stop-color="#00e676"/>
+            </linearGradient>
+          </defs>
+          <path id="spTrack" fill="none" stroke="#c9d4f5" stroke-width="20" stroke-linecap="butt"/>
+          <path id="spFill"  fill="none" stroke="url(#spGrad)" stroke-width="20" stroke-linecap="butt"/>
+          <g id="spTicks"></g>
+          <text id="spPct" x="190" y="148" font-size="36" font-weight="600" text-anchor="middle" fill="currentColor">0%</text>
+          <text x="190" y="168" font-size="12" text-anchor="middle" fill="#888" id="textAnchor"></text>
+        </svg>
+      </div>
       <div class="result-summary">
         <div class="result-stat">
           <div class="result-icon-text">
@@ -192,10 +176,13 @@
           <span langIn="TestWrongLabel"></span>
         </div>
       </div>
-      <div class="result-topic" id="resultTopic" langIn="TestResultTopic" data-lang-skip></div>
+      <div class="result-topic">
+        <span class="result-row-label" langIn="TestResultTopic"></span>
+        <span class="result-row-value" id="resultTopic" data-lang-skip></span>
+      </div>
       <div class="result-time">
-        <span langIn="TestResultTime"></span>
-        <span class="result-time-value" id="resultTime"></span>
+        <span class="result-row-label" langIn="TestResultTime"></span>
+        <span class="result-row-value result-time-value" id="resultTime"></span>
       </div>
       <div class="result-actions">
         <button class="back-tomain-page" langIn="TestBackHome"></button>
@@ -208,4 +195,3 @@
   <script type="module" src="../js/auth-modal.js"></script>
 </body>
 </html>
-

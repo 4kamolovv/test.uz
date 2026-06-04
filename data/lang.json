@@ -212,8 +212,8 @@
         "TestTotalLabel": "Jami test",
         "TestCorrectLabel": "To‘g‘rilar",
         "TestWrongLabel": "Xatolar",
-        "TestResultTopic": "Fan nomi va mavzusi",
-        "TestResultTime": "Sarflangan vaqt: ",
+        "TestResultTopic": "Mavzu:",
+        "TestResultTime": "Sarflangan vaqt:",
         "TestBackHome": "Asosiy sahifaga",
         "TestRestartBtn": "Qayta ishlash",
         "PageThemeTitle": "Mavzuli test",
@@ -275,7 +275,8 @@
         "RatingEmptySub": "Birinchi natijani siz yarating.",
         "BackModalTitle": "Orqaga qaytishni xohlaysizmi?",
         "BackModalDesc": "Asosiy sahifaga qaytsangiz test yakunlanadi.",
-        "BackModalConfirm": "Ha, qaytish"
+        "BackModalConfirm": "Ha, qaytish",
+        "accuracyLevel": "Aniqlik darajasi"
     },
     "ru": {
         "AuthRegSuccessTitle": "Регистрация завершена!",
@@ -490,8 +491,8 @@
         "TestTotalLabel": "Всего тестов",
         "TestCorrectLabel": "Правильные",
         "TestWrongLabel": "Ошибки",
-        "TestResultTopic": "Название предмета и темы",
-        "TestResultTime": "Затраченное время: ",
+        "TestResultTopic": "Тема:",
+        "TestResultTime": "Затраченное время:",
         "TestBackHome": "На главную",
         "TestRestartBtn": "Пройти снова",
         "PageThemeTitle": "Тематические тесты",
@@ -553,6 +554,7 @@
         "RatingEmptySub": "Создайте первый результат.",
         "BackModalTitle": "Вернуться назад?",
         "BackModalDesc": "Если вы вернётесь, тест будет завершён.",
-        "BackModalConfirm": "Да, вернуться"
+        "BackModalConfirm": "Да, вернуться",
+        "accuracyLevel": "Уровень точности"
     }
 }
