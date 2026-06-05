@@ -1,46 +1,46 @@
 ﻿(() => {
   const DATA_URL = "https://4kamolovv.github.io/test.uz/data/qutests.json";
   const SELECTION_KEY = "quizSelection";
-  
+
   const topicItems = Array.from(document.querySelectorAll(".topic-item"));
   const cardWrapper = document.querySelector(".test-card-wrapper");
   const contentTitle = document.querySelector(".content-title");
   const searchInput = document.querySelector(".search-input");
   const topicToggle = document.getElementById("topicToggle");
   const topicsPanel = document.getElementById("topicsPanel");
-  
+
   let allTests = [];
-  
+
   function t(key, fallback) {
     const lang = localStorage.getItem("siteLang") || "uz";
     return window.langData?.[lang]?.[key] || fallback;
   }
-  
+
   function normalizeKey(value) {
     return String(value || "")
-    .toLowerCase()
-    .trim()
-    .replace(/'/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+      .toLowerCase()
+      .trim()
+      .replace(/'/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
   }
-  
+
   function setActiveTopic(topicKey) {
     const key = normalizeKey(topicKey);
     topicItems.forEach((item) => {
       item.classList.toggle("active", normalizeKey(item.dataset.topic) === key);
     });
   }
-  
+
   function escapeHtml(value) {
     return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
-  
+
   function highlight(text, query) {
     const safeText = escapeHtml(text);
     const q = query.trim();
@@ -51,7 +51,7 @@
     );
     return safeText.replace(regex, (match) => `<mark>${match}</mark>`);
   }
-  
+
   function shuffle(arr) {
     const copy = arr.slice();
     for (let i = copy.length - 1; i > 0; i--) {
@@ -60,7 +60,7 @@
     }
     return copy;
   }
-  
+
   function toCardHtml({ subject, topic, count, displaySubject }, query) {
     return `
     <div class="test-card" data-subject="${escapeHtml(subject)}" data-topic="${escapeHtml(topic)}" data-count="${count}" data-display-subject="${escapeHtml(displaySubject)}">
@@ -85,7 +85,7 @@
       </div>
     </div>`;
   }
-  
+
   function injectStyles() {
     if (document.getElementById("bm-anim-style")) return;
     const style = document.createElement("style");
@@ -142,29 +142,29 @@
     `;
     document.head.appendChild(style);
   }
-  
+
   function buildCards(topicKey, query = "") {
     if (!cardWrapper) return;
-    
+
     const normalizedTopic = normalizeKey(topicKey);
     const filtered =
-    normalizedTopic === "barchasi"
-    ? allTests.slice()
-    : allTests.filter((t) => normalizeKey(t.subject) === normalizedTopic);
-    
+      normalizedTopic === "barchasi"
+        ? allTests.slice()
+        : allTests.filter((t) => normalizeKey(t.subject) === normalizedTopic);
+
     const subjectLabelMap = new Map(
       topicItems.map((item) => [
         normalizeKey(item.dataset.topic),
         item.querySelector("span")?.textContent || item.dataset.topic,
       ]),
     );
-    
+
     const topicMap = new Map();
     for (const test of filtered) {
       const key = `${test.subject}|||${test.topic}`;
       if (!topicMap.has(key)) {
         const displaySubject =
-        subjectLabelMap.get(normalizeKey(test.subject)) || test.subject;
+          subjectLabelMap.get(normalizeKey(test.subject)) || test.subject;
         topicMap.set(key, {
           subject: test.subject,
           displaySubject,
@@ -174,38 +174,38 @@
       }
       topicMap.get(key).count += 1;
     }
-    
+
     let cards = Array.from(topicMap.values()).sort((a, b) => {
       if (a.subject !== b.subject) return a.subject.localeCompare(b.subject);
       return a.topic.localeCompare(b.topic);
     });
-    
+
     const q = query.trim().toLowerCase();
     if (q)
       cards = cards.filter(
-      (c) =>
-        c.subject.toLowerCase().includes(q) ||
-      c.topic.toLowerCase().includes(q),
-    );
-    
+        (c) =>
+          c.subject.toLowerCase().includes(q) ||
+          c.topic.toLowerCase().includes(q),
+      );
+
     if (contentTitle) {
       const activeItem =
-      topicItems.find((item) => item.classList.contains("active")) ||
-      topicItems[0];
+        topicItems.find((item) => item.classList.contains("active")) ||
+        topicItems[0];
       contentTitle.textContent =
-      activeItem?.querySelector("span")?.textContent ||
-      t("ThemeAllTitle", "Barchasi");
+        activeItem?.querySelector("span")?.textContent ||
+        t("ThemeAllTitle", "Barchasi");
     }
-    
+
     if (cards.length === 0) {
       cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeEmpty", "Hozircha testlar yo'q.")}</div>`;
       return;
     }
-    
+
     cards = shuffle(cards);
     if (!q) cards = cards.slice(0, 18);
     cardWrapper.innerHTML = cards.map((card) => toCardHtml(card, q)).join("");
-    
+
     // Card click → test sahifasi
     cardWrapper.querySelectorAll(".test-card").forEach((card) => {
       card.addEventListener("click", (e) => {
@@ -213,8 +213,8 @@
         const subject = card.getAttribute("data-subject");
         const topic = card.getAttribute("data-topic");
         const displaySubject =
-        card.querySelector(".test-card-subject-badge")?.textContent ||
-        subject;
+          card.querySelector(".test-card-subject-badge")?.textContent ||
+          subject;
         if (!subject || !topic) return;
         localStorage.setItem(
           SELECTION_KEY,
@@ -228,12 +228,12 @@
         window.location.href = `./test.html?${new URLSearchParams({ subject, topic })}`;
       });
     });
-    
+
     document.dispatchEvent(
       new CustomEvent("cards-rendered", { detail: { cards } }),
     );
   }
-  
+
   async function initThemeTest() {
     injectStyles();
     try {
@@ -245,14 +245,14 @@
         cardWrapper.innerHTML = `<div class="empty-state">${t("ThemeLoadError", "Ma'lumot yuklanmadi.")}</div>`;
       return;
     }
-    
+
     const activeItem =
-    topicItems.find((item) => item.classList.contains("active")) ||
-    topicItems[0];
+      topicItems.find((item) => item.classList.contains("active")) ||
+      topicItems[0];
     const activeKey = activeItem?.dataset?.topic || "barchasi";
     setActiveTopic(activeKey);
     buildCards(activeKey, searchInput?.value || "");
-    
+
     topicItems.forEach((item) => {
       item.addEventListener("click", () => {
         const topicKey = item.dataset.topic || "barchasi";
@@ -264,29 +264,29 @@
         }
       });
     });
-    
+
     searchInput?.addEventListener("input", () => {
       const currentActive =
-      topicItems.find((item) => item.classList.contains("active")) ||
-      topicItems[0];
+        topicItems.find((item) => item.classList.contains("active")) ||
+        topicItems[0];
       buildCards(
         currentActive?.dataset?.topic || "barchasi",
         searchInput.value || "",
       );
     });
-    
+
     document.querySelectorAll(".settings-select").forEach((el) => {
       el.addEventListener("lang-update", () => {
         const currentActive =
-        topicItems.find((item) => item.classList.contains("active")) ||
-        topicItems[0];
+          topicItems.find((item) => item.classList.contains("active")) ||
+          topicItems[0];
         buildCards(
           currentActive?.dataset?.topic || "barchasi",
           searchInput?.value || "",
         );
       });
     });
-    
+
     if (topicToggle && topicsPanel) {
       topicToggle.addEventListener("click", () => {
         const isOpen = topicsPanel.classList.toggle("is-open");
@@ -294,6 +294,6 @@
       });
     }
   }
-  
+
   document.addEventListener("DOMContentLoaded", initThemeTest);
 })();
