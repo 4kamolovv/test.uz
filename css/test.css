@@ -499,8 +499,8 @@
 }
 
 .btn-confirm {
-  background-color: rgba(0, 200, 83, 0.28);
-  border: 2px solid #00c853;
+  background-color: var(--green-dark) !important;
+  border: none !important;
   color: #fff;
 }
 

@@ -276,7 +276,11 @@
         "BackModalTitle": "Orqaga qaytishni xohlaysizmi?",
         "BackModalDesc": "Asosiy sahifaga qaytsangiz test yakunlanadi.",
         "BackModalConfirm": "Ha, qaytish",
-        "accuracyLevel": "Aniqlik darajasi"
+        "accuracyLevel": "Aniqlik darajasi",
+        "EndModalCancel": "Bekor qilish",
+        "EndModalTitle": "Testni yakunlashni xohlaysizmi?",
+        "EndModalDesc": "Yakunlaganingizdan so'ng javoblaringizni o'zgartira olmaysiz. Davom etishni istaysizmi?",
+        "EndModalConfirm": "Yakunlash"
     },
     "ru": {
         "AuthRegSuccessTitle": "Регистрация завершена!",
@@ -555,6 +559,10 @@
         "BackModalTitle": "Вернуться назад?",
         "BackModalDesc": "Если вы вернётесь, тест будет завершён.",
         "BackModalConfirm": "Да, вернуться",
-        "accuracyLevel": "Уровень точности"
+        "accuracyLevel": "Уровень точности",
+        "EndModalCancel": "Отмена",
+        "EndModalTitle": "Завершить тест?",
+        "EndModalDesc": "После завершения вы не сможете изменить ответы. Продолжить?",
+        "EndModalConfirm": "Завершить"
     }
 }
