@@ -448,6 +448,16 @@ import {
     session.correctCount * SCORE_CORRECT - session.wrongCount * SCORE_WRONG;
     saveSession();
     
+    if (elements.btnComplete) {
+      elements.btnComplete.disabled = true;
+      elements.btnComplete.style.pointerEvents = "none";
+      elements.btnComplete.style.opacity = "0.4";
+    }
+    if (elements.backPointer) {
+      elements.backPointer.style.pointerEvents = "none";
+      elements.backPointer.style.opacity = "0.4";
+    }
+    
     if (elements.resultUsername) {
       const name =
       localStorage.getItem("authUserName") ||
@@ -680,10 +690,17 @@ function bindEvents() {
     hideResultModal();
     renderQuestion();
     startTimer();
-  });
-  
-  elements.resultModal?.addEventListener("click", (e) => {
-    if (e.target === elements.resultModal) hideResultModal();
+    
+    // ← QO'SHING: tugmalarni qayta yoqish
+    if (elements.btnComplete) {
+      elements.btnComplete.disabled = false;
+      elements.btnComplete.style.pointerEvents = "";
+      elements.btnComplete.style.opacity = "";
+    }
+    if (elements.backPointer) {
+      elements.backPointer.style.pointerEvents = "";
+      elements.backPointer.style.opacity = "";
+    }
   });
 }
 
